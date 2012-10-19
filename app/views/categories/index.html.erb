@@ -1,0 +1,17 @@
+<div class='container'>
+  <div class="row">
+    <ul class="thumbnails">
+      <% @categories.each do |category| %>
+        <li class="span4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/300x200" alt="">
+            <div class="caption">
+              <h3><%= category.name %></h3>
+              <p><%= category.description %><p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
