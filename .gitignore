@@ -13,3 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/db/migrate/20121019085904_create_admin_notes.rb
