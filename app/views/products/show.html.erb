@@ -1,0 +1,20 @@
+<div class='container'>
+  <div class="row-fluid">
+    <div class="span7">
+      <div><img src="http://placehold.it/300x200" alt=""></div>
+    </div>
+    <div class="span5">
+      <h3><%= @product.name %></h3>
+      <span class="price">Price: <%= @product.price %></span>
+      <%= link_to @product, class: 'btn btn-success' do %>
+        <i class="icon-shopping-cart"></i>
+        add to cart
+      <% end %>
+      <div class="product-description"><%= @product.description %></div>
+    </div>
+  </div>
+  <div class="review">
+    <h3>Review</h3>
+    review
+  </div>
+</div>

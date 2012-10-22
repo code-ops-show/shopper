@@ -1,0 +1,18 @@
+<div class='container'>
+  <div class="row">
+    <ul class="thumbnails">
+      <% @products.each do |product| %>
+        <li class="span4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/300x200" alt="">
+          </div>
+          <div>
+            <h3><%= link_to product.name, product %></h3>
+            <p><%= truncate(product.description, length: 100) %><p>
+            <p>Price: <%= product.price %><p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
