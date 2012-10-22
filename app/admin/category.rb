@@ -1,7 +1,6 @@
 ActiveAdmin.register Category do
-
   action_item do
-    link_to "Add product", new_admin_category_path(category) if action_name == 'show'
+    link_to "Add product", new_admin_category_product_path(category) if action_name == 'show'
   end
   
   index do
