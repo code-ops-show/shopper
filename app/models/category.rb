@@ -3,6 +3,11 @@ class Category < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: :slugged
-  
-  attr_accessible :name, :description
+
+  mount_uploader :cover, ImageUploader
+
+  attr_accessible :name, :description, :cover
+
+  friendly_id :name, use: :slugged
+
 end
