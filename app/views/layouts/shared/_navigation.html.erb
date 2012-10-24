@@ -1,6 +1,12 @@
 <ul class="nav pull-right">
   <li class="<%= if request.path == root_path then 'active' end %>"><%= link_to "Store", root_path %></li>
   <li class="<%= if request.path == categories_path then 'active' end %>"><%= link_to "Categories", categories_path %></li>
+  <li class="<%= if request.path == categories_path then 'active' end %>">
+    <%= link_to @product do %>
+      <i class="icon-shopping-cart icon-white"></i>
+      View Cart
+    <% end %>
+  </li>
   <% if current_user %>
   <li class="dropdown">
     <a href='#' class="dropdown-toggle" data-toggle="dropdown">
@@ -9,7 +15,6 @@
     </a>
     <ul class="dropdown-menu">
       <%= content_tag :li, (link_to "My Profile", edit_user_registration_path), class: "#{ if request.path == edit_user_registration_path then 'active' end}" %>
-      <%= content_tag :li,  my_course  %>
       <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
     </ul>
   </li>
