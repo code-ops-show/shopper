@@ -1,0 +1,7 @@
+<div class='container'>
+  <% @products.each do |product| %>
+    <%= image_tag product.cover, { size: '450x400', crop: 'fill' } %>
+    <p><%= product.name %></p>
+    <p>Price: <%= product.price %></p>
+  <% end %>
+</div>
