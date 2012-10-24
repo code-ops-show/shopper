@@ -4,7 +4,7 @@
       <% @products.each do |product| %>
         <li class="span4">
           <div class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
+            <%= image_tag product.cover, { size: '300x200', crop: 'fill' } %>
           </div>
           <div>
             <h3><%= link_to product.name, product %></h3>

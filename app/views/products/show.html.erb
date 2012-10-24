@@ -1,10 +1,11 @@
 <div class='container'>
   <div class="row-fluid">
     <div class="span7">
-      <div><img src="http://placehold.it/300x200" alt=""></div>
+      <div><%= image_tag @product.cover, { size: '450x400', crop: 'fill' } %></div>
     </div>
     <div class="span5">
-      <h3><%= @product.name %></h3>
+      <p>Name: <%= @product.name %></p>
+      <p>Quantity: <%= @product.quantity %></p>
       <span class="price">Price: <%= @product.price %></span>
       <%= link_to @product, class: 'btn btn-success' do %>
         <i class="icon-shopping-cart"></i>
