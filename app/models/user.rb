@@ -5,11 +5,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, ImageUploader
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :bio
   # attr_accessible :title, :body
+
+  has_many   :user,      through: :carts
+
+  mount_uploader :avatar, ImageUploader
+
+  def update_with_password params={}
+    return super if params[:password].present? or params[:password_confirmation].present?
+    params.delete :current_password
+    update_without_password params
+  end
 
   def to_s
     name or email
