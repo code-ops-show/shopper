@@ -9,7 +9,7 @@
           <div>
             <h3><%= link_to product.name, product %></h3>
             <p><%= truncate(product.description, length: 100) %><p>
-            <p>Price: <%= product.price %><p>
+            <p>Price: <%= number_to_currency product.price %><p>
           </div>
         </li>
       <% end %>
