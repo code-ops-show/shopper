@@ -1,0 +1,28 @@
+<div class="container">
+  <% puts "=--------------------=" %>
+  <% puts @cart.inspect %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Product name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Full Price</th>
+      </tr>
+    </thead>
+      <% @cart.cart_items.each_with_index do |cart_item, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= cart_item.product.name %></td>
+          <td><%= cart_item.quantity %></td>
+          <td><%= number_to_currency(cart_item.unit_price) %></td>
+          <td><%= number_to_currency(cart_item.full_price) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="4"><p class="pull-right">Total:</p></td>
+        <td colspan="1"><%= number_to_currency @cart.total_price %></td>
+      </tr>
+  </table>
+</div>
