@@ -1,8 +1,8 @@
 <ul class="nav pull-right">
   <li class="<%= if request.path == root_path then 'active' end %>"><%= link_to "Store", root_path %></li>
   <li class="<%= if request.path == categories_path then 'active' end %>"><%= link_to "Categories", categories_path %></li>
-  <li class="<%= if request.path == categories_path then 'active' end %>">
-    <%= link_to @product do %>
+  <li class="<%= if request.path == carts_path then 'active' end %>">
+    <%= link_to carts_path do %>
       <i class="icon-shopping-cart icon-white"></i>
       View Cart
     <% end %>
