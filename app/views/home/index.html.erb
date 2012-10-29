@@ -1,7 +1,16 @@
 <div class='container'>
-  <% @products.each do |product| %>
-    <%= image_tag product.cover, { size: '450x400', crop: 'fill' } %>
-    <p><%= product.name %></p>
-    <p>Price: <%= product.price %></p>
-  <% end %>
+  <ul class="thumbnails">
+    <% @products.each do |product| %>
+    <li class="thumbnail home-thumnails">
+      <div class="caption">
+      <%= link_to product do %>
+        <%= image_tag product.cover_url(:thumb), { size: '150x200' }  %>
+        <h4><%= product.name %></h4>
+      <% end %>
+      <p>Price: <%= number_to_currency product.price %></p>
+      <div class="home-add-cart"><%= render 'carts/add_to_cart', product: product %></div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
 </div>
