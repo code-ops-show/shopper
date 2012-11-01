@@ -24,6 +24,15 @@ group :assets do
   gem "meta_search",    '>= 1.1.0.pre'
 end
 
+group :test, :development do
+  gem 'quiet_assets'
+  gem "rspec-rails", '~> 2.0'
+  gem 'capybara'
+  gem "factory_girl_rails"
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+end
+
 
 
 # To use ActiveModel has_secure_password
