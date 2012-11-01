@@ -7,7 +7,5 @@ class Category < ActiveRecord::Base
   mount_uploader :cover, ImageUploader
 
   attr_accessible :name, :description, :cover
-
-  friendly_id :name, use: :slugged
-
+  
 end
