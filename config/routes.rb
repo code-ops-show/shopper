@@ -14,7 +14,6 @@ Shopingcart::Application.routes.draw do
   resources :products
   resources :categories
 
-  match "current_cart" => "carts#show"
   root to: 'home#index'
 
   # The priority is based upon order of creation:
