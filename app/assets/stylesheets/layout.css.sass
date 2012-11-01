@@ -1,21 +1,23 @@
 @import "bootstrap"
 
-$navbarBorder: #33363b
+$navbarBorder: #050505
 $maintext: #aa66ff
-$hover: #ffb028
-$link: #ff64ea
+$hover: black
+$link: white
 $shadow: #ef93e6
-$mainbackground : #f2f2f2
+$mainbackground : #050505
+$navbar: #ea0071
 
 
 body 
-  color: $maintext
+  color: $white
   font-family: 'Lato', sans-serif
+  background: $mainbackground
 
 a
   color: $link
 a:hover
-  color: $hover
+  color: $navbar
 
 .btn
   border-radius: 2px
@@ -25,17 +27,22 @@ form
 
 input[type='email']:focus, input[type='password']:focus, 
 input[type='text']:focus, textarea:focus
-  border-color: $hover
-  box-shadow: 0px 0px 4px $hover
+  border-style: solid
+  border-color: $navbar
+  box-shadow: 0px 0px 20px $navbar
   background: white
-  color: $link
+  color: $navbar
 
 div.navbar
+  a
+    color: $link
+  a:hover
+    color: $hover
   margin-bottom: 30px
   div.navbar-inner
     border-radius: 0px
     box-shadow: 0px 0px 0px
-    background: #33363b
+    background: $navbar
     border: none
     border-bottom: 2px solid $navbarBorder
     div.container 
@@ -64,16 +71,24 @@ div.navbar
       > a
         border-radius: 2px
         color: $white
-        background: $link
-  
+        margin-bottom: 5px
+        background: $black
       > a:hover
-        background: $navbarBorder
-        color: white
+        background: $white
+        color: $black
     > li.dropdown.open
       > a.dropdown-toggle
         border-radius: 2px
-        background: $link
-        color: white
+        background: $white
+        color: black
+      > ul.dropdown-menu
+        a
+          color: $black
+        > a:hover
+        > li
+          background: $white
+          > a:hover
+            background: $navbar
 
 ul.dropdown-menu
   li
@@ -90,7 +105,7 @@ ul.dropdown-menu
 footer
   margin-top: 40px
   border-top: 2px solid $navbarBorder
-  background: #33363b
+  background: $navbar
   div.container
     position:relative
     bottom: 0
