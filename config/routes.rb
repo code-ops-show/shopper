@@ -5,8 +5,8 @@ Shopingcart::Application.routes.draw do
 
   devise_for :users
 
-  resources :categories do
-    resources :products
+  resources :categories, only: [:index] do
+    resources :products, only: [:index, :show]
   end
 
   resources :cart_items
