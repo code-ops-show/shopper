@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :bio
   # attr_accessible :title, :body
 
-  has_many   :user,      through: :carts
+  has_many :carts
 
   mount_uploader :avatar, ImageUploader
 
