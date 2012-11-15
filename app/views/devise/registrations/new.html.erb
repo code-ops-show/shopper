@@ -6,7 +6,7 @@
 </header>
 <div class="container">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { multipart: true, class: "form-horizontal"}) do |f| %>
-    <div class='codemy-well clearfix'>
+    <div class='clearfix'>
       <%= content_tag :fieldset, class: 'span5 offset3' do %>
         <div class='control-group'>
           <%= f.label :name, class: 'control-label' %>
