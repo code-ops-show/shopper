@@ -1,12 +1,17 @@
+@import "layout"
+
 body.home
   div.hero-unit  
     border-radius: 0px
     height: 200px
-    background-image: url(asset-path('project_papper.png', 'image'))
+    background: #eaecef
     margin-bottom: 0px
+    -webkit-box-shadow: inset 1px 1px 25px #b5b5b5
+    border-bottom: 1px solid #b5b5b5
+    border-top: 1px solid #b5b5b5
     h1
-      color: #aa66ff
-      text-shadow: 0px 2px 1px black
+      color: $black
+      text-shadow: 0px 2px 1px white
     p.sign_me_up
       text-align: right
       position: relative
@@ -18,5 +23,15 @@ body.home
       margin-top: 10px
       font-size: 20px
       font-weight: bold
+      color: #a5acb5
   > div.initial
     padding-top: 50px
+    > div.container
+      > ul.thumbnails
+        > li.span4.home-item
+          padding-top: 15px
+          padding-bottom: 15px
+          height: 400px
+          color: $black
+          background: #d4e6ea
+          border-radius: 4px

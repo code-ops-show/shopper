@@ -1,37 +1,49 @@
 @import "bootstrap"
 
-$navbarBorder: #050505
-$maintext: #aa66ff
-$hover: black
-$link: white
-$shadow: #ef93e6
-$mainbackground : #050505
-$navbar: #ea0071
+$navbarBorder: #44b5c1 //#050505
+$maintext: $black //#aa66ff
+$hover: $black
+$link: #44b5c1
+$shadow: $white //#ef93e6
+$mainbackground : $white //#3d3d3d
+$navbar: $white //-webkit-linear-gradient(top, #ff337d, #df46b9)
+$footer: $white //-webkit-linear-gradient(bottom, #ff337d, #df46b9)
 
 
 body 
-  color: $white
+  color: $maintext
   font-family: 'Lato', sans-serif
   background: $mainbackground
+  //background-image: url(asset-path('linen.jpeg', 'image'))
+
 
 a
-  color: $link
+  color: #9099a3
 a:hover
   color: $navbar
 
+div.categories-caption
+  right: 0
+  bottom: 0
+  left: 0
+  padding: 5px
+  background: rgba(40, 50, 62, 0.75)
+
 .btn
   border-radius: 2px
+.btn-success
+  color: $maintext
+  background-image: -webkit-linear-gradient(top, #B0E200, #51A351)
 
 form  
   margin-bottom: 0px
 
 input[type='email']:focus, input[type='password']:focus, 
-input[type='text']:focus, textarea:focus
+input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, textarea:focus
   border-style: solid
-  border-color: $navbar
-  box-shadow: 0px 0px 20px $navbar
-  background: white
-  color: $navbar
+  border-color: $navbarBorder
+  box-shadow: 0px 0px 5px $navbarBorder
+  color: $navbarBorder
 
 div.navbar
   a
@@ -44,15 +56,16 @@ div.navbar
     box-shadow: 0px 0px 0px
     background: $navbar
     border: none
-    border-bottom: 2px solid $navbarBorder
+    border-bottom: 1px solid $navbarBorder
     div.container 
       width: 940px
     a.brand
-      padding-top: 5px
+      font-size: 60px
+      padding-top: 15px
       padding-bottom: 0px
       position: relative
       bottom: -3px
-      color: $link
+      color: $navbarBorder
       text-shadow: 0 0 0
   ul.nav
     margin-right: 0px
@@ -63,19 +76,27 @@ div.navbar
         text-shadow: none
         padding: 7px 10px 7px
         margin-top: 10px
-        color: $link
-        text-shadow: 0px 1px 1px #000
+        color: #9099a3
+        font: bold 16px/40px
       > a:hover
         color: $hover
     > li.active
       > a
         border-radius: 2px
-        color: $white
+        color: #e33f97
         margin-bottom: 5px
-        background: $black
+        text-decoration: none
+        background-color: $white
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
       > a:hover
-        background: $white
-        color: $black
+        text-decoration: none
+        background-color: $white
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        color: #e33f97
     > li.dropdown.open
       > a.dropdown-toggle
         border-radius: 2px
@@ -83,12 +104,12 @@ div.navbar
         color: black
       > ul.dropdown-menu
         a
-          color: $black
+          color: #9099A3
         > a:hover
         > li
           background: $white
           > a:hover
-            background: $navbar
+            background: $navbarBorder
 
 ul.dropdown-menu
   li
@@ -104,8 +125,8 @@ ul.dropdown-menu
       background: $hover
 footer
   margin-top: 40px
-  border-top: 2px solid $navbarBorder
-  background: $navbar
+  border-top: 1px solid $navbarBorder
+  background: $footer
   div.container
     position:relative
     bottom: 0
@@ -116,3 +137,11 @@ footer
     p
       color: $link
       margin-bottom: 10px
+
+
+
+div#viewCart
+  width: 70%
+  left: 30%
+div.modal.fade.in
+  top: 280px
