@@ -9,10 +9,15 @@ Shopingcart::Application.routes.draw do
     resources :products, only: [:index, :show]
   end
 
+  resources :carts, only: [:index] do
+    resources :addresses
+  end
+
   resources :cart_items
   resources :carts
   resources :products
   resources :categories
+  resources :addresses
 
   root to: 'home#index'
 

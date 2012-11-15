@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  
  private
   def token
     cookies[:token] ? cookies[:token] : rand(2468**10).to_s(32)
