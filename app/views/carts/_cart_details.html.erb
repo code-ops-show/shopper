@@ -7,7 +7,6 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>#</th>
           <th>Product pic</th>
           <th>Product Name</th>
           <th>Quantity</th>
@@ -15,27 +14,18 @@
           <th>Full Price</th>
         </tr>
       </thead>
-      <% @current_cart.cart_items.each_with_index do |cart_item, index| %>
-        <tr>
-          <td><%= index+1 %></td>
-          <td><%= image_tag cart_item.product.cover, { size: '50x50' } %></td>
-          <td><%= cart_item.product.name %></td>
-          <td>
-            <%= form_for cart_item do |f| %>
-              <%= f.number_field :quantity, width: 1 %>
-            <% end %>
-          </td>
-          <td><%= number_to_currency(cart_item.unit_price) %></td>
-          <td><%= number_to_currency(cart_item.full_price) %></td>
-        </tr>
+      <% @cart.cart_items.each do |cart_item| %>
+        <%= content_tag_for :tr, cart_item do %>
+          <%= render cart_item %>
+        <% end %>
       <% end %>
       <tr>
-        <td colspan="5"><p class="pull-right">Total:</p></td>
+        <td colspan="4"><p class="pull-right">Total:</p></td>
         <td colspan="1"><%= number_to_currency @cart.total_price %></td>
       </tr>
     </table>
   </div>
   <div class="modal-footer">
-    <%= link_to 'Check out', new_cart_address_path(@current_cart), class: 'btn btn-primary' %>
+    <%= link_to 'Check out', new_cart_address_path(@cart), class: 'btn btn-primary' %>
   </div>
 </div>
