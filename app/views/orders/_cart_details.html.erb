@@ -14,18 +14,12 @@
           <th>Full Price</th>
         </tr>
       </thead>
-      <% @cart.cart_items.each do |cart_item| %>
-        <%= content_tag_for :tr, cart_item do %>
-          <%= render cart_item %>
+      <% @order.items.each do |item| %>
+        <%= content_tag_for :tr, item do %>
+          <%= render item %>
         <% end %>
       <% end %>
-      <tr>
-        <td colspan="4"><p class="pull-right">Total:</p></td>
-        <td colspan="1"><%= number_to_currency @cart.total_price %></td>
-      </tr>
     </table>
-  </div>
-  <div class="modal-footer">
-    <%= link_to 'Check out', new_cart_address_path(@cart), class: 'btn btn-primary' %>
+    <%= link_to 'Check out', edit_order_path(@order), class: 'btn btn-primary pull-right' %>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<%= form_for product.items.build do |f| %>
+  <%= f.hidden_field :product_id %>
+  <%= f.number_field :quantity, value: 1, min: 1, in: 1..product.quantity, class: 'input-mini' %>            
+  <button class="btn btn-success"><i class="icon-shopping-cart icon-white"></i> Add Cart</button>
+<% end %>

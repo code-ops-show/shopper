@@ -1,0 +1,2 @@
+$('#cart_detail').html("<%= j @current_order.items.blank? ? render('orders/empty_cart') : render('orders/cart_details') %>");
+$('#viewCart').modal('show');

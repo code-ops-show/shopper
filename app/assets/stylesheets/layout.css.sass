@@ -1,26 +1,25 @@
 @import "bootstrap"
 
-$navbarBorder: #44b5c1 //#050505
-$maintext: $black //#aa66ff
-$hover: $black
-$link: #44b5c1
-$shadow: $white //#ef93e6
-$mainbackground : $white //#3d3d3d
-$navbar: $white //-webkit-linear-gradient(top, #ff337d, #df46b9)
-$footer: $white //-webkit-linear-gradient(bottom, #ff337d, #df46b9)
+$navbarBorder: #dd76ae 
+$maintext: $black 
+$hover: #c57f4c
+$link: #9df2d9
+$shadow: $white 
+$mainbackground : $white
+$navbar: $white 
+$footer: $white 
 
 
 body 
   color: $maintext
   font-family: 'Lato', sans-serif
   background: $mainbackground
-  //background-image: url(asset-path('linen.jpeg', 'image'))
 
 
 a
-  color: #9099a3
+  color: $link
 a:hover
-  color: $navbar
+  color: $hover
 
 div.categories-caption
   right: 0
@@ -79,11 +78,11 @@ div.navbar
         color: #9099a3
         font: bold 16px/40px
       > a:hover
-        color: $hover
+        color: $link
     > li.active
       > a
         border-radius: 2px
-        color: #e33f97
+        color: $hover
         margin-bottom: 5px
         text-decoration: none
         background-color: $white
@@ -96,7 +95,7 @@ div.navbar
         -webkit-box-shadow: none
         -moz-box-shadow: none
         box-shadow: none
-        color: #e33f97
+        color: $hover
     > li.dropdown.open
       > a.dropdown-toggle
         border-radius: 2px
@@ -135,7 +134,7 @@ footer
   div.copy-right
     padding-bottom: 20px
     p
-      color: $link
+      color: $navbarBorder
       margin-bottom: 10px
 
 

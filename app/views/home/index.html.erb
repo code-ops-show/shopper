@@ -17,7 +17,7 @@
               <h4><%= product.name %></h4>
               <p>Price: <%= number_to_currency product.price %></p>
               <p><%= truncate(product.description, length: 200) %></p>
-              <div class="btn-add-cart"><%= render 'carts/add_to_cart', product: product %></div>
+              <div class="btn-add-cart"><%= render 'orders/add_to_cart', product: product %></div>
           </div>
         </li>
       <% end %>

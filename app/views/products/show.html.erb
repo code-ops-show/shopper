@@ -8,7 +8,7 @@
       <p>Quantity: <%= @product.quantity %></p>
       <div class="price">Price: <%= number_to_currency @product.price %></div>
       <div class="form-inline add-cart-form">
-        <%= render 'carts/add_to_cart', product: @product %>
+        <%= render 'orders/add_to_cart', product: @product %>
       </div>
       <div class="product-description"><%= @product.description %></div>
     </div>

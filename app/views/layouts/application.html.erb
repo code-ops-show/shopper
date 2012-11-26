@@ -9,7 +9,7 @@
 <body class="<%= controller_name %>">
   <%= render "layouts/shared/header" %>
   <% flash.each do |name, msg| %>
-   <div id='flash' class="alert alert-<%= name == :notice || name == :success ? "success" : "error" %>">
+    <div id='flash' class="alert alert-<%= name == :notice || name == :success ? "success" : "error" %>">
       <div class='container'>
         <a class="close">×</a>
         <%= msg %>

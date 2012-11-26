@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
     cookies[:token] ? cookies[:token] : rand(2468**10).to_s(32)
   end
 
-  def current_cart
+  def current_order
     cookies[:token] = { value: token, expires: 1.hour.from_now }
-    @current_cart ||= Cart.where(token: token).first || Cart.create!(token: token)
+    @current_order ||= Order.where(token: token).first || Order.create!(token: token)
   end
 end
