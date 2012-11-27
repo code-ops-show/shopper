@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   has_many   :products,     through: :items
   belongs_to :user
 
-  attr_accessible :state, :token
+  attr_accessible :state, :token, :address_id
   accepts_nested_attributes_for :address
 
   scope :open_orders, -> { with_state(:cart) }

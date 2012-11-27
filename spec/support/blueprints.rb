@@ -12,7 +12,7 @@ require 'machinist/active_record'
     quantity          { 10  }
   end
 
-  Cart.blueprint do
+  Order.blueprint do
     token             { rand(2468**10).to_s(32) }
   end
 

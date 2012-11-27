@@ -1,0 +1,54 @@
+<div class='container'>
+  <%= form_for @address do |f| %>
+    <%= content_tag :fieldset, class: 'span5 offset3' do %>
+      <div class='clearfix'>
+        <div class='control-group'>
+          <%= f.label :street_address, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.text_area :street_address, size: "10x5", class: 'input-xlarge' %>
+          </div>
+        </div>
+        <div class='control-group'>
+          <%= f.label :city, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.text_field :city, class: 'input-xlarge' %>
+          </div>
+        </div>
+        <div class='control-group'>
+          <%= f.label :state, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.text_field :state, class: 'input-xlarge' %>
+          </div>
+        </div>
+        <div class='control-group'>
+          <%= f.label :zip, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.number_field :zip, class: 'input-xlarge' %>
+          </div>
+        </div>
+        <div class='control-group'>
+          <%= f.label :country, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.collection_select(:country, Country.all, :id, :name) %>
+          </div>
+        </div>
+        <div class='control-group'>
+            <%= f.label :phone, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.phone_field :phone, class: 'input-xlarge' %>
+          </div>
+        </div>
+        <div class='control-group'>
+          <%= f.label :email, class: 'control-label' %>
+          <div class='controls'>
+            <%= f.email_field :email, class: 'input-xlarge' %>
+          </div>
+        </div>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      </div>
+    <div class='offset2'>
+      <%= f.submit "Purchase", class: 'btn btn-large span3 btn-success' %>
+    </div>
+    <% end %>
+  <% end %>
+</div>

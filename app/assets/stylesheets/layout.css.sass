@@ -6,15 +6,15 @@ $hover: #c57f4c
 $link: #9df2d9
 $shadow: $white 
 $mainbackground : $white
-$navbar: $white 
-$footer: $white 
+$navbar: #f1f1f1
+$footer: #f1f1f1
 
 
 body 
   color: $maintext
   font-family: 'Lato', sans-serif
-  background: $mainbackground
-
+  // background: $mainbackground
+  background-image: url(asset-path('bg.png', 'image'))
 
 a
   color: $link
@@ -85,13 +85,13 @@ div.navbar
         color: $hover
         margin-bottom: 5px
         text-decoration: none
-        background-color: $white
+        background-color: $navbar
         -webkit-box-shadow: none
         -moz-box-shadow: none
         box-shadow: none
       > a:hover
         text-decoration: none
-        background-color: $white
+        background-color: $navbar
         -webkit-box-shadow: none
         -moz-box-shadow: none
         box-shadow: none

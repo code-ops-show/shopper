@@ -14,12 +14,8 @@
           <th>Full Price</th>
         </tr>
       </thead>
-      <% @order.items.each do |item| %>
-        <%= content_tag_for :tr, item do %>
-          <%= render item %>
-        <% end %>
-      <% end %>
+      <%= render @order.items %>
     </table>
-    <%= link_to 'Check out', edit_order_path(@order), class: 'btn btn-primary pull-right' %>
+    <%= link_to 'Check out', new_address_path, class: 'btn btn-primary pull-right' %>
   </div>
 </div>

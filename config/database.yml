@@ -51,7 +51,7 @@ test:
   host: localhost
 
 production:
-  adapter: postgresql
+  adapter: postgresql 
   encoding: unicode
   reconnect: false  
   database: shopingcart_production

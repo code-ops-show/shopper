@@ -1,18 +1,7 @@
 <div class='container'>
   <div class="row">
     <ul class="thumbnails">
-      <% @products.each do |product| %>
-        <li class="span4">
-          <div class="thumbnail">
-            <%= image_tag product.cover, { size: '300x200', crop: 'fill' } %>
-          </div>
-          <div>
-            <h3><%= link_to product.name, product %></h3>
-            <p><%= truncate(product.description, length: 100) %><p>
-            <p>Price: <%= number_to_currency product.price %><p>
-          </div>
-        </li>
-      <% end %>
+      <%= render  @products %>
     </ul>
   </div>
 </div>
