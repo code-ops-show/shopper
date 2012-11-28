@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :addresses
-  has_many :purchases,  through: :addresses
+  has_many :orders,  through: :addresses
 
   mount_uploader :avatar, ImageUploader
 

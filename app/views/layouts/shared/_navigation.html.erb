@@ -15,6 +15,7 @@
     </a>
     <ul class="dropdown-menu">
       <%= content_tag :li, (link_to "My Profile", edit_user_registration_path), class: "#{ if request.path == edit_user_registration_path then 'active' end}" %>
+      <%= content_tag :li, (link_to "My Order", user_orders_path(current_user)), class: "#{ if request.path == user_orders_path(current_user) then 'active' end}" %>
       <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
     </ul>
   </li>

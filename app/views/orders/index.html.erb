@@ -1,0 +1,6 @@
+<% current_user.orders.each do |order| %>
+  <ul>
+    <li>token <%= order.token %></li>
+    <li>state <%= order.state %></li>
+  </ul>
+<% end %>

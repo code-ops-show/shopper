@@ -2,7 +2,6 @@ class Order < ActiveRecord::Base
   has_many   :items
   belongs_to :address
   has_many   :products,     through: :items
-  belongs_to :user
 
   attr_accessible :state, :token, :address_id, :address_attributes
   accepts_nested_attributes_for :address
