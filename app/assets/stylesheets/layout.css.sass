@@ -26,6 +26,34 @@ a
     color: $hover
     text-decoration: none
 
+.no-bottom
+  margin: 0
+  input, textarea, td
+    margin: 0
+
+ul.thumbnails
+  li > div.thumbnail
+    background-color: #FFEACF
+    border: 1px solid darken(#FFEACF, 10%)
+    h1, h2, h3
+      margin: 0
+    h4, h5, h6
+      margin: 0 0 10px 0
+    a.thumb
+      display: block
+      height: 190px
+      width: 290px
+      overflow: hidden
+
+// .btn
+//   border-radius: 2px
+// .btn-success
+//   color: $maintext
+//   background-image: -webkit-linear-gradient(top, #B0E200, #51A351)
+
+form  
+  margin-bottom: 0px
+
 ul.thumbnails
   li 
     > div.thumbnail
@@ -51,6 +79,7 @@ ul.thumbnails
 
 .navbar-pastel 
   .navbar-inner
+      <%= content_tag :li, (link_to "My Order", user_orders_path(current_user)), class: "#{ if request.path == user_orders_path(current_user) then 'active' end}" %>
     background-color: $navbar
     background-image: -moz-linear-gradient(top, darken($navbar, 3%), $navbar)
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(darken($navbar, 3%)), to($navbar))
