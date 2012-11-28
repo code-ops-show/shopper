@@ -1,10 +1,12 @@
 <li class="span4">
   <div class="thumbnail">
-    <%= image_tag product.cover, { size: '300x200', crop: 'fill' } %>
-  </div>
-  <div>
-    <h3><%= link_to product.name, product %></h3>
-    <p><%= truncate(product.description, length: 100) %><p>
-    <p>Price: <%= number_to_currency product.price %><p>
+    <%= image_tag product.cover.thumb %>
+    <div class='caption'>
+      <h4>
+        <%= link_to product.name, product %>
+        <%= content_tag :span, number_to_currency(product.price), class: 'pull-right' %>
+      </h4>
+      <p><%= truncate(product.description, length: 100) %><p>
+    </div>
   </div>
 </li>

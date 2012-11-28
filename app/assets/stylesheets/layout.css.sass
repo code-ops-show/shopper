@@ -1,38 +1,51 @@
 @import "bootstrap"
 
-$navbarBorder: #dd76ae 
+$navbarBorder: #ccc 
 $maintext: $black 
-$hover: #c57f4c
-$link: #9df2d9
+$hover: darken(#F37989, 5%)
+$link: #F37989
 $shadow: $white 
 $mainbackground : $white
 $navbar: #f1f1f1
 $footer: #f1f1f1
 
-
 body 
+  padding-top: 60px
   color: $maintext
   font-family: 'Lato', sans-serif
   // background: $mainbackground
-  background-image: url(asset-path('bg.png', 'image'))
+  // background-image: url(asset-path('bg.png', 'image'))
 
 a
   color: $link
 a:hover
   color: $hover
+  text-decoration: none
 
-div.categories-caption
-  right: 0
-  bottom: 0
-  left: 0
-  padding: 5px
-  background: rgba(40, 50, 62, 0.75)
+.no-bottom
+  margin: 0
+  input, textarea, td
+    margin: 0
 
-.btn
-  border-radius: 2px
-.btn-success
-  color: $maintext
-  background-image: -webkit-linear-gradient(top, #B0E200, #51A351)
+ul.thumbnails
+  li > div.thumbnail
+    background-color: #FFEACF
+    border: 1px solid darken(#FFEACF, 10%)
+    h1, h2, h3
+      margin: 0
+    h4, h5, h6
+      margin: 0 0 10px 0
+    a.thumb
+      display: block
+      height: 190px
+      width: 290px
+      overflow: hidden
+
+// .btn
+//   border-radius: 2px
+// .btn-success
+//   color: $maintext
+//   background-image: -webkit-linear-gradient(top, #B0E200, #51A351)
 
 form  
   margin-bottom: 0px
@@ -44,103 +57,113 @@ input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, tex
   box-shadow: 0px 0px 5px $navbarBorder
   color: $navbarBorder
 
-div.navbar
-  a
-    color: $link
-  a:hover
-    color: $hover
-  margin-bottom: 30px
-  div.navbar-inner
-    border-radius: 0px
-    box-shadow: 0px 0px 0px
-    background: $navbar
-    border: none
-    border-bottom: 1px solid $navbarBorder
-    div.container 
-      width: 940px
-    a.brand
-      font-size: 60px
-      padding-top: 15px
-      padding-bottom: 0px
-      position: relative
-      bottom: -3px
-      color: $navbarBorder
-      text-shadow: 0 0 0
-  ul.nav
-    margin-right: 0px
-    > li
-      margin-left: 5px
-      margin-right: 5px
-      > a
-        text-shadow: none
-        padding: 7px 10px 7px
-        margin-top: 10px
-        color: #9099a3
-        font: bold 16px/40px
-      > a:hover
-        color: $link
-    > li.active
-      > a
-        border-radius: 2px
-        color: $hover
-        margin-bottom: 5px
-        text-decoration: none
-        background-color: $navbar
-        -webkit-box-shadow: none
-        -moz-box-shadow: none
-        box-shadow: none
-      > a:hover
-        text-decoration: none
-        background-color: $navbar
-        -webkit-box-shadow: none
-        -moz-box-shadow: none
-        box-shadow: none
-        color: $hover
-    > li.dropdown.open
-      > a.dropdown-toggle
-        border-radius: 2px
-        background: $white
-        color: black
-      > ul.dropdown-menu
-        a
-          color: #9099A3
-        > a:hover
-        > li
-          background: $white
-          > a:hover
-            background: $navbarBorder
+.navbar-pastel 
+  .navbar-inner
+    background-color: #B7CEBE
+    background-image: -moz-linear-gradient(top, lighten(#B7CEBE, 5%), #B7CEBE)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten(#B7CEBE, 5%)), to(#B7CEBE))
+    background-image: -webkit-linear-gradient(top, lighten(#B7CEBE, 5%), #B7CEBE)
+    background-image: -o-linear-gradient(top, lighten(#B7CEBE, 5%), #B7CEBE)
+    background-image: linear-gradient(to bottom, lighten(#B7CEBE, 5%), #B7CEBE)
+    background-repeat: repeat-x
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(#B7CEBE, 5%)', endColorstr='#B7CEBE', GradientType=0)
+    border-color: darken(#B7CEBE, 20%)
+  .nav 
+    .active > a, .active > a:hover, .active > a:focus
+      color: black
+      background-color: darken(#B7CEBE, 10%)
+  .brand, .nav > li > a
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
 
-ul.dropdown-menu
-  li
-    a:hover
-      background: $link
-  li:hover
-    a
-      color: white !important
-  li.active
-    a
-      background: $link
-    a:hover
-      background: $hover
+// div.navbar
+  // a
+  //   color: $link
+  // a:hover
+  //   color: $hover
+  // margin-bottom: 30px
+  // div.navbar-inner
+  //   border-radius: 0px
+  //   box-shadow: 0px 0px 0px
+  //   background: $navbar
+  //   border: none
+  //   border-bottom: 1px solid $navbarBorder
+  //   div.container 
+  //     width: 940px
+    // a.brand
+    //   font-size: 60px
+    //   padding-top: 15px
+    //   padding-bottom: 0px
+    //   position: relative
+    //   bottom: -3px
+    //   color: $navbarBorder
+    //   text-shadow: 0 0 0
+  // ul.nav
+  //   margin-right: 0px
+  //   > li
+  //     margin-left: 5px
+  //     margin-right: 5px
+  //     > a
+  //       text-shadow: none
+  //       padding: 7px 10px 7px
+  //       margin-top: 10px
+  //       color: #9099a3
+  //       font: bold 16px/40px
+  //     > a:hover
+  //       color: $link
+  //   > li.active
+  //     > a
+  //       border-radius: 2px
+  //       color: $hover
+  //       margin-bottom: 5px
+  //       text-decoration: none
+  //       background-color: $navbar
+  //       -webkit-box-shadow: none
+  //       -moz-box-shadow: none
+  //       box-shadow: none
+  //     > a:hover
+  //       text-decoration: none
+  //       background-color: $navbar
+  //       -webkit-box-shadow: none
+  //       -moz-box-shadow: none
+  //       box-shadow: none
+  //       color: $hover
+  //   > li.dropdown.open
+  //     > a.dropdown-toggle
+  //       border-radius: 2px
+  //       background: $white
+  //       color: black
+  //     > ul.dropdown-menu
+  //       a
+  //         color: #9099A3
+  //       > a:hover
+  //       > li
+  //         background: $white
+  //         > a:hover
+  //           background: $navbarBorder
+
+// ul.dropdown-menu
+//   li
+//     a:hover
+//       background: $link
+//   li:hover
+//     a
+//       color: white !important
+//   li.active
+//     a
+//       background: $link
+//     a:hover
+//       background: $hover
 footer
   margin-top: 40px
-  border-top: 1px solid $navbarBorder
-  background: $footer
-  div.container
-    position:relative
-    bottom: 0
-    margin-top: 20px
-    color: white
   div.copy-right
-    padding-bottom: 20px
+    // border-top: 1px solid $navbarBorder
     p
-      color: $navbarBorder
-      margin-bottom: 10px
-
-
+      padding: 10px 20px 0 20px
+      font: bold
 
 div#viewCart
-  width: 70%
-  left: 30%
+  // width: 740px
+  // width: 70%
+  // left: 30%
 div.modal.fade.in
   top: 280px
