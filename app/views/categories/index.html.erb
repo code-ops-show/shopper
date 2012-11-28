@@ -1,12 +1,6 @@
 <div class='container'>
   <h3>All Categories</h3>
-  <% @categories.each do |category| %>
-    <div class="category">
-      <%= image_tag 'http://placehold.it/940x150' %>
-      <div class="categories-caption">
-        <h3><%= link_to category.name, category_products_path(category) %></h3>
-      </div>
-    </div>
-  <% end %>
+  <ul class='thumbnails'>
+    <%= render @categories %>
+  </ul>
 </div>
-
