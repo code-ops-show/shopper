@@ -9,6 +9,10 @@ Shopingcart::Application.routes.draw do
     resources :products, only: [:index, :show]
   end
 
+  resources :users do
+    resources :orders
+  end
+
   resources :items
   resources :orders
   resources :products
