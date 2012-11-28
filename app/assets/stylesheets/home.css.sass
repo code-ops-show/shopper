@@ -1,44 +1,45 @@
 @import "layout"
 
 $border: #e4b6d2
+$pinkBorder: darken(#FFAAB5, 20%)
 
 body.home
   div.hero-unit  
     border-radius: 0px
-    height: 200px
-    background: #d982ac
-    margin-bottom: 0px
+    background: #F37989
     background-image: url(asset-path('masthead-pattern.png', 'image'))
-    -webkit-box-shadow: inset 1px 0px 2px #c2734c
-    border-bottom: 1px solid #c2734c
-    border-top: 1px solid #c2734c
+    // border-bottom: 1px solid darken(#F37989, 20%)
+    // border-top: 1px solid darken(#F37989, 20%)
+    -webkit-box-shadow: inset 0 8px 16px -8px $pinkBorder, inset 0 -8px 16px -8px $pinkBorder
+    -moz-box-shadow: inset 0 8px 16px -8px $pinkBorder, inset 0 -8px 16px -8px $pinkBorder
+    box-shadow: inset 0 8px 16px -8px $pinkBorder, inset 0 -8px 16px -8px $pinkBorder
     h1
-      color: $white
-      text-shadow: 0px 2px 1px #c57f4c
-    p.sign_me_up
-      text-align: right
-      position: relative
-      top: 180px
-      a 
-        padding: 15px 26px
-    p.lead
-      margin-bottom: 10px
-      margin-top: 10px
-      font-size: 20px
-      font-weight: bold
-      color: #cecece
-  > div.initial
-    padding-top: 50px
-    > div.container
-      > ul.thumbnails
-        > li.span4.home-item
-          padding-top: 15px
-          padding-bottom: 15px
-          height: 400px
-          color: $black
-          background: #f9cee9
-          border-radius: 4px
-          border-top: 1px solid $border
-          border-bottom: 1px solid $border
-          border-right: 1px solid $border
-          border-left: 1px solid $border
+      color: #FFEACF
+    p
+      color: #FFCCC0
+      // text-shadow: 0px 2px 1px #c57f4c
+  //   p.sign_me_up
+  //     text-align: right
+  //     position: relative
+  //     top: 180px
+  //     a 
+  //       padding: 15px 26px
+  //   p.lead
+  //     margin-bottom: 10px
+  //     margin-top: 10px
+  //     font-size: 20px
+  //     font-weight: bold
+  //     color: #cecece
+  // > div.initial
+  //   padding-top: 50px
+  //   > div.container
+  //     > ul.thumbnails
+  //       > li
+  //         padding: 15px 0
+  //         height: 300px
+          // background: #f9cee9
+          // border-radius: 4px
+          // border-top: 1px solid $border
+          // border-bottom: 1px solid $border
+          // border-right: 1px solid $border
+          // border-left: 1px solid $border
