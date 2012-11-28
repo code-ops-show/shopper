@@ -1,0 +1,11 @@
+<div class='container'>
+  <%= form_for @order do |field| %>
+    <%= content_tag :fieldset, class: 'span5 offset3' do %>
+      <%= field.collection_select :address_id, Address.all, :id, :street_address, { include_blank: true }, data: { remote: true, url: url_for(controller: 'orders', action: 'edit') } %>
+      <%= render 'orders/address', field: field %>
+      <div class='offset2'>
+        <%= field.submit "Purchase", class: 'btn btn-large span3 btn-success' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

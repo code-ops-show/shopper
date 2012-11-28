@@ -16,6 +16,6 @@
       </thead>
       <%= render @order.items %>
     </table>
-    <%= link_to 'Check out', new_address_path, class: 'btn btn-primary pull-right' %>
+    <%= link_to 'Check out', edit_order_path(@order), class: 'btn btn-primary pull-right' %>
   </div>
 </div>
