@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
         Product.joins(:category).where(categories: { slug: params[:category_id] })
       else
         Product.all
+      end
   end
 
   def show
