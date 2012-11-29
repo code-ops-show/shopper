@@ -1,41 +1,45 @@
-<header class='jumbotron subhead'>
+<header>
   <div class='container'>
     <h1>Sign in</h1>
     <p class='lead'>Don't have an account? <%= link_to "Sign up", new_user_registration_path %></p>
   </div>
 </header>
 <div class="container">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { class: "form-horizontal codemy-well clearfix"}) do |f| %>
-    <%= content_tag :fieldset, class: 'span5 offset3' do %>
-      <div class='control-group'>
-        <%= f.label :email, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.email_field :email, placeholder: "Your Email" %>
-        </div>
-      </div>
-      <div class='control-group'>
-        <%= f.label :password, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.password_field :password, placeholder: "Password" %>
-        </div>
-      </div>
-      <% if devise_mapping.rememberable? %>
-      <div class='control-group'>
-        <%= f.label :remember_me, class: 'control-label' %>
-        <%= content_tag :div, class: 'controls' do %>
-          <%= content_tag :label, class: 'checkbox' do %>
-            For two weeks
-            <%= f.check_box :remember_me %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { class: "form-horizontal clearfix"}) do |f| %>
+    <div class='row'>
+      <div class='span5 offset3'>
+        <%= content_tag :fieldset do %>
+          <div class='control-group'>
+            <%= f.label :email, class: 'control-label' %>
+            <div class='controls'>
+              <%= f.email_field :email, placeholder: "Your Email" %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= f.label :password, class: 'control-label' %>
+            <div class='controls'>
+              <%= f.password_field :password, placeholder: "Password" %>
+            </div>
+          </div>
+          <% if devise_mapping.rememberable? %>
+          <div class='control-group'>
+            <%= f.label :remember_me, class: 'control-label' %>
+            <%= content_tag :div, class: 'controls' do %>
+              <%= content_tag :label, class: 'checkbox' do %>
+                For two weeks
+                <%= f.check_box :remember_me %>
+              <% end %>
+            <% end %>
+          </div>
           <% end %>
+          <div class='pull-left'>
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+          </div>
+          <div class='pull-right'>
+            <%= f.submit "Sign in", class: 'btn btn-success btn-large span3' %>
+          </div>
         <% end %>
       </div>
-      <% end %>
-      <div class='pull-left'>
-        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-      </div>
-      <div class='pull-right'>
-        <%= f.submit "Sign in", class: 'btn span3 btn-success' %>
-      </div>
-    <% end %>
+    </div>
   <% end %>
 </div>
