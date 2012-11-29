@@ -2,25 +2,11 @@
   <div class="home-slide container">
     <h1>Smart, Beautiful.</h1>
     <p>Pride of the Shopping For Over a Hundred Years.</p>
-    <p><%= link_to "Register", new_user_registration_path, class: 'btn btn-success btn-large' unless current_user %></p>
+    <p><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-inverse btn-large' unless current_user %></p>
   </div>
 </div>
 <div class='container'>
   <ul class="thumbnails">
-    <% @products.each do |product| %>
-      <li class="span4">
-        <div class='thumbnail no-bottom'>
-          <%= link_to image_tag product.cover_url(:thumb), { size: '300x200' }  %>
-          <div class='caption'>
-            <h4>
-              <%= product.name %>
-              <%= content_tag :span, number_to_currency(product.price), class: 'pull-right' %>
-            </h4>
-            <p><%= truncate(product.description, length: 200) %></p>
-          </div>
-          <%= render 'orders/add_to_cart', product: product %>
-        </div>
-      </li>
-    <% end %>
+    <%= render @products %>
   </ul>
 </div>
