@@ -9,12 +9,14 @@ $mainbackground : $white
 $navbar: #f1f1f1
 $footer: #f1f1f1
 
-body 
+body
   padding-top: 60px
   color: $maintext
   font-family: 'Lato', sans-serif
   // background: $mainbackground
   // background-image: url(asset-path('bg.png', 'image'))
+body.home
+  padding-top: 40px
 
 a
   color: $link
@@ -29,8 +31,8 @@ a:hover
 
 ul.thumbnails
   li > div.thumbnail
-    background-color: #FFEACF
-    border: 1px solid darken(#FFEACF, 10%)
+    background-color: #D0F1F2
+    border: 1px solid darken(#D0F1F2, 10%)
     h1, h2, h3
       margin: 0
     h4, h5, h6
@@ -59,21 +61,28 @@ input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, tex
 
 .navbar-pastel 
   .navbar-inner
-    background-color: #B7CEBE
-    background-image: -moz-linear-gradient(top, lighten(#B7CEBE, 5%), #B7CEBE)
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten(#B7CEBE, 5%)), to(#B7CEBE))
-    background-image: -webkit-linear-gradient(top, lighten(#B7CEBE, 5%), #B7CEBE)
-    background-image: -o-linear-gradient(top, lighten(#B7CEBE, 5%), #B7CEBE)
-    background-image: linear-gradient(to bottom, lighten(#B7CEBE, 5%), #B7CEBE)
+    background-color: #B3EEF2
+    background-image: -moz-linear-gradient(top, lighten(#B3EEF2, 5%), #B3EEF2)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten(#B3EEF2, 5%)), to(#B3EEF2))
+    background-image: -webkit-linear-gradient(top, lighten(#B3EEF2, 5%), #B3EEF2)
+    background-image: -o-linear-gradient(top, lighten(#B3EEF2, 5%), #B3EEF2)
+    background-image: linear-gradient(to bottom, lighten(#B3EEF2, 5%), #B3EEF2)
     background-repeat: repeat-x
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(#B7CEBE, 5%)', endColorstr='#B7CEBE', GradientType=0)
-    border-color: darken(#B7CEBE, 20%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(#B3EEF2, 5%)', endColorstr='#B3EEF2', GradientType=0)
+    border-color: darken(#B3EEF2, 20%)
   .nav 
-    .active > a, .active > a:hover, .active > a:focus
+    .active > a, 
+    .active > a:hover, 
+    .active > a:focus, 
+    li.dropdown.open > .dropdown-toggle, 
+    li.dropdown.active > .dropdown-toggle, 
+    li.dropdown.open.active > .dropdown-toggle
       color: black
-      background-color: darken(#B7CEBE, 10%)
+      background-color: darken(#B3EEF2, 10%)
   .brand, .nav > li > a
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+
+
 
 // div.navbar
   // a
