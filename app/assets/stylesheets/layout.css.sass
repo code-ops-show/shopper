@@ -37,8 +37,8 @@ a
 
 ul.thumbnails
   li > div.thumbnail
-    background-color: #FFEACF
-    border: 1px solid darken(#FFEACF, 10%)
+    background-color: #D0F1F2
+    border: 1px solid darken(#D0F1F2, 10%)
     h1, h2, h3
       margin: 0
     h4, h5, h6
@@ -91,7 +91,6 @@ ul.thumbnails
 
 .navbar-pastel 
   .navbar-inner
-      <%= content_tag :li, (link_to "My Order", user_orders_path(current_user)), class: "#{ if request.path == user_orders_path(current_user) then 'active' end}" %>
     background-color: $navbar
     background-image: -moz-linear-gradient(top, darken($navbar, 3%), $navbar)
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(darken($navbar, 3%)), to($navbar))
@@ -155,7 +154,6 @@ form
       background-color: #F9F4F0
       border-top-color: #DDD1C8
       margin-bottom: 0
-
 footer
   margin-top: 40px
   div.copy-right
