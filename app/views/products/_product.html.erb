@@ -1,12 +1,13 @@
 <li class="span4">
-  <div class="thumbnail">
-    <%= image_tag product.cover.thumb %>
+  <div class='thumbnail no-bottom'>
+    <%= link_to image_tag(product.cover.thumb), product %>
     <div class='caption'>
       <h4>
         <%= link_to product.name, product %>
         <%= content_tag :span, number_to_currency(product.price), class: 'pull-right' %>
       </h4>
-      <p><%= truncate(product.description, length: 100) %><p>
+      <p><%= truncate(product.description, length: 200) %></p>
     </div>
+    <%= render 'orders/add_to_cart', product: product %>
   </div>
 </li>
