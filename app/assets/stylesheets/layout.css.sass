@@ -1,22 +1,21 @@
 @import "bootstrap"
 
-$navbarBorder: #ccc 
-$maintext: $black 
-$hover: darken(#F37989, 5%)
-$link: #F37989
-$shadow: $white 
+$maintext: $black
 $mainbackground : $white
-$navbar: #f1f1f1
+$link: #FF7979
+$hover: #FF6161
+$shadow: $white
+$navbar: #FF7979
+$navbarBorder: #ccc
 $footer: #f1f1f1
 
 body
   padding-top: 60px
   color: $maintext
   font-family: 'Lato', sans-serif
+  background-color: darken(#FEFAF6, 1%)
   // background: $mainbackground
   // background-image: url(asset-path('bg.png', 'image'))
-body.home
-  padding-top: 40px
 
 a
   color: $link
@@ -24,15 +23,15 @@ a:hover
   color: $hover
   text-decoration: none
 
-.no-bottom
+.no-bottom, .control-group.no-bottom
   margin: 0
   input, textarea, td
     margin: 0
 
 ul.thumbnails
   li > div.thumbnail
-    background-color: #D0F1F2
-    border: 1px solid darken(#D0F1F2, 10%)
+    background-color: #ffdfe3
+    border: 1px solid darken(#FFD6D6, 5%)
     h1, h2, h3
       margin: 0
     h4, h5, h6
@@ -51,6 +50,15 @@ ul.thumbnails
 
 form  
   margin-bottom: 0px
+.well.well-elderflower
+  background-color: white
+  border-color: #F0DED7
+  legend
+    border-bottom-color: #DDD1C8
+  .form-actions
+    background-color: #F9F4F0
+    border-top-color: #DDD1C8
+    margin-bottom: 0
 
 input[type='email']:focus, input[type='password']:focus, 
 input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, textarea:focus
@@ -61,27 +69,50 @@ input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, tex
 
 .navbar-pastel 
   .navbar-inner
-    background-color: #B3EEF2
-    background-image: -moz-linear-gradient(top, lighten(#B3EEF2, 5%), #B3EEF2)
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten(#B3EEF2, 5%)), to(#B3EEF2))
-    background-image: -webkit-linear-gradient(top, lighten(#B3EEF2, 5%), #B3EEF2)
-    background-image: -o-linear-gradient(top, lighten(#B3EEF2, 5%), #B3EEF2)
-    background-image: linear-gradient(to bottom, lighten(#B3EEF2, 5%), #B3EEF2)
+    background-color: $navbar
+    background-image: -moz-linear-gradient(top, darken($navbar, 3%), $navbar)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(darken($navbar, 3%)), to($navbar))
+    background-image: -webkit-linear-gradient(top, darken($navbar, 3%), $navbar)
+    background-image: -o-linear-gradient(top, darken($navbar, 3%), $navbar)
+    background-image: linear-gradient(to bottom, darken($navbar, 3%), $navbar)
     background-repeat: repeat-x
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(#B3EEF2, 5%)', endColorstr='#B3EEF2', GradientType=0)
-    border-color: darken(#B3EEF2, 20%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='darken($navbar, 3%)', endColorstr='$navbar', GradientType=0)
+    border-color: darken($navbar, 20%)
   .nav 
-    .active > a, 
-    .active > a:hover, 
-    .active > a:focus, 
+    > .active > a, 
+    > .active > a:hover, 
+    > .active > a:focus, 
     li.dropdown.open > .dropdown-toggle, 
     li.dropdown.active > .dropdown-toggle, 
     li.dropdown.open.active > .dropdown-toggle
-      color: black
-      background-color: darken(#B3EEF2, 10%)
+      color: white
+      background-color: darken($navbar, 5%)
+    > li 
+      > a
+        &:focus,
+        &:hover,
+          color: white
+          background-color: darken($navbar, 5%)
+          border: 0
+          -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15)
+          -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15)
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.15)
+          outline: 0
   .brand, .nav > li > a
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+    color: white
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2)
 
+ul.dropdown-menu
+  li
+    a
+      &:hover
+        color: white
+        background: $hover
+  li.active
+    a
+      background: $link
+      &:hover
+        background: $hover
 
 
 // div.navbar
