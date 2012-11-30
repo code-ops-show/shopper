@@ -16,14 +16,13 @@ body
   background-color: darken(#FEFAF6, 1%)
   // background: $mainbackground
   // background-image: url(asset-path('bg.png', 'image'))
-body.home
-  padding-top: 40px
 
 hr
   border-top-color: #F0DED7
 
 a
   color: $link
+<<<<<<< HEAD
   &:hover
     color: $hover
     text-decoration: none
@@ -50,6 +49,55 @@ ul.thumbnails
         a.thumb
           height: 198px
           width: 298px
+=======
+a:hover
+  color: $hover
+  text-decoration: none
+
+.no-bottom, .control-group.no-bottom
+  margin: 0
+  input, textarea, td
+    margin: 0
+
+ul.thumbnails
+  li > div.thumbnail
+    background-color: #ffdfe3
+    border: 1px solid darken(#FFD6D6, 5%)
+    h1, h2, h3
+      margin: 0
+    h4, h5, h6
+      margin: 0 0 10px 0
+    a.thumb
+      display: block
+      height: 190px
+      width: 290px
+      overflow: hidden
+
+// .btn
+//   border-radius: 2px
+// .btn-success
+//   color: $maintext
+//   background-image: -webkit-linear-gradient(top, #B0E200, #51A351)
+
+form  
+  margin-bottom: 0px
+.well.well-elderflower
+  background-color: white
+  border-color: #F0DED7
+  legend
+    border-bottom-color: #DDD1C8
+  .form-actions
+    background-color: #F9F4F0
+    border-top-color: #DDD1C8
+    margin-bottom: 0
+
+input[type='email']:focus, input[type='password']:focus, 
+input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, textarea:focus
+  border-style: solid
+  border-color: $navbarBorder
+  box-shadow: 0px 0px 5px $navbarBorder
+  color: $navbarBorder
+>>>>>>> updated view template, scheme
 
 .navbar-pastel 
   .navbar-inner
@@ -97,11 +145,14 @@ ul.dropdown-menu
       background: $link
       &:hover
         background: $hover
+<<<<<<< HEAD
 
 .no-bottom, .control-group.no-bottom
   margin: 0
   input, textarea, td
     margin: 0
+=======
+>>>>>>> updated view template, scheme
 
 form  
   margin-bottom: 0px
