@@ -17,55 +17,37 @@ body
   // background: $mainbackground
   // background-image: url(asset-path('bg.png', 'image'))
 
+hr
+  border-top-color: #F0DED7
+
 a
   color: $link
-a:hover
-  color: $hover
-  text-decoration: none
-
-.no-bottom, .control-group.no-bottom
-  margin: 0
-  input, textarea, td
-    margin: 0
+  &:hover
+    color: $hover
+    text-decoration: none
 
 ul.thumbnails
-  li > div.thumbnail
-    background-color: #ffdfe3
-    border: 1px solid darken(#FFD6D6, 5%)
-    h1, h2, h3
-      margin: 0
-    h4, h5, h6
-      margin: 0 0 10px 0
-    a.thumb
-      display: block
-      height: 190px
-      width: 290px
-      overflow: hidden
-
-// .btn
-//   border-radius: 2px
-// .btn-success
-//   color: $maintext
-//   background-image: -webkit-linear-gradient(top, #B0E200, #51A351)
-
-form  
-  margin-bottom: 0px
-.well.well-elderflower
-  background-color: white
-  border-color: #F0DED7
-  legend
-    border-bottom-color: #DDD1C8
-  .form-actions
-    background-color: #F9F4F0
-    border-top-color: #DDD1C8
-    margin-bottom: 0
-
-input[type='email']:focus, input[type='password']:focus, 
-input[type='text']:focus,input[type='tel']:focus,input[type='number']:focus, textarea:focus
-  border-style: solid
-  border-color: $navbarBorder
-  box-shadow: 0px 0px 5px $navbarBorder
-  color: $navbarBorder
+  li 
+    > div.thumbnail
+      background-color: white
+      border: 1px solid #F0DED7
+      padding: 0
+      h1, h2, h3
+        margin: 0
+      h4, h5, h6
+        margin: 0 0 10px 0
+      a.thumb
+        display: block
+        height: 190px
+        width: 290px
+        overflow: hidden
+      &.category
+        padding: 0
+        div.caption
+          padding: 4px 9px
+        a.thumb
+          height: 198px
+          width: 298px
 
 .navbar-pastel 
   .navbar-inner
@@ -114,96 +96,34 @@ ul.dropdown-menu
       &:hover
         background: $hover
 
+.no-bottom, .control-group.no-bottom
+  margin: 0
+  input, textarea, td
+    margin: 0
 
-// div.navbar
-  // a
-  //   color: $link
-  // a:hover
-  //   color: $hover
-  // margin-bottom: 30px
-  // div.navbar-inner
-  //   border-radius: 0px
-  //   box-shadow: 0px 0px 0px
-  //   background: $navbar
-  //   border: none
-  //   border-bottom: 1px solid $navbarBorder
-  //   div.container 
-  //     width: 940px
-    // a.brand
-    //   font-size: 60px
-    //   padding-top: 15px
-    //   padding-bottom: 0px
-    //   position: relative
-    //   bottom: -3px
-    //   color: $navbarBorder
-    //   text-shadow: 0 0 0
-  // ul.nav
-  //   margin-right: 0px
-  //   > li
-  //     margin-left: 5px
-  //     margin-right: 5px
-  //     > a
-  //       text-shadow: none
-  //       padding: 7px 10px 7px
-  //       margin-top: 10px
-  //       color: #9099a3
-  //       font: bold 16px/40px
-  //     > a:hover
-  //       color: $link
-  //   > li.active
-  //     > a
-  //       border-radius: 2px
-  //       color: $hover
-  //       margin-bottom: 5px
-  //       text-decoration: none
-  //       background-color: $navbar
-  //       -webkit-box-shadow: none
-  //       -moz-box-shadow: none
-  //       box-shadow: none
-  //     > a:hover
-  //       text-decoration: none
-  //       background-color: $navbar
-  //       -webkit-box-shadow: none
-  //       -moz-box-shadow: none
-  //       box-shadow: none
-  //       color: $hover
-  //   > li.dropdown.open
-  //     > a.dropdown-toggle
-  //       border-radius: 2px
-  //       background: $white
-  //       color: black
-  //     > ul.dropdown-menu
-  //       a
-  //         color: #9099A3
-  //       > a:hover
-  //       > li
-  //         background: $white
-  //         > a:hover
-  //           background: $navbarBorder
+form  
+  margin-bottom: 0px
 
-// ul.dropdown-menu
-//   li
-//     a:hover
-//       background: $link
-//   li:hover
-//     a
-//       color: white !important
-//   li.active
-//     a
-//       background: $link
-//     a:hover
-//       background: $hover
+.well
+  &.well-elderflower
+    background-color: white
+    border-color: #F0DED7
+    legend
+      border-bottom-color: #DDD1C8
+    .form-actions
+      background-color: #F9F4F0
+      border-top-color: #DDD1C8
+      margin-bottom: 0
+
 footer
   margin-top: 40px
   div.copy-right
-    // border-top: 1px solid $navbarBorder
     p
       padding: 10px 20px 0 20px
-      font: bold
+      font-weight: bold
 
-div#viewCart
-  // width: 740px
-  // width: 70%
-  // left: 30%
-div.modal.fade.in
-  top: 280px
+div.modal
+  width: 900px
+  margin: -250px 0 0 -450px
+  &.fade.in
+    top: 30%
