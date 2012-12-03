@@ -4,7 +4,7 @@
   <li class="<%= if request.path == categories_path then 'active' end %>"><%= link_to "Categories", categories_path %></li>
   <li class="<%= if request.path == orders_path then 'active' end %>">
     <%= link_to orders_path, remote: true do %>
-      <i class="icon-shopping-cart"></i> View Cart
+      <i class="icon-shopping-cart icon-white"></i> Cart
     <% end %>
   </li>
   <li class="dropdown<%= if request.path.match(/users/) then ' active' end %>">
