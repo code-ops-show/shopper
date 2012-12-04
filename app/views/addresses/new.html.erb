@@ -1,0 +1,7 @@
+<div class='container'>
+  <%= form_for :address, url: { action: :create } do |f| %>
+    <%= render 'addresses/address', f: f %>
+    <%= f.submit %>
+  <% end %>
+  <%= link_to 'back', :back %>
+</div>

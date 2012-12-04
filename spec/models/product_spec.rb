@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Product do
-  it { should have_many :cart_items }
-  it { should have_many(:carts).through(:cart_items) }
+  it { should have_many :items }
+  it { should have_many(:orders).through(:items) }
   it { should belong_to :category }
 
   describe "Model setup and utilities" do

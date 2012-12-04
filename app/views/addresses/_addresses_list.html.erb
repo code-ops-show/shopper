@@ -1,0 +1,16 @@
+<div class="pull-right">
+  <%= link_to 'new address', new_user_address_path(current_user), class: 'btn' %>
+</div>
+<div class="row">
+  <% current_user.addresses.each do |address| %>
+    <ul class="well well-large">
+      <li>
+        <%= address.street_address %>
+      <%= address.country %>
+      <div class="pull-right">
+        <%= link_to 'Show', user_address_path(current_user,address) %>
+      </div>
+      </li>
+    </ul>
+  <% end %>
+</div>

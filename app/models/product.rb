@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :category
   has_many   :items
-  has_many   :carts,         through: :items
+  has_many   :orders,         through: :items
 
   mount_uploader :cover, ImageUploader
 
