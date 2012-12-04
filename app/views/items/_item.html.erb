@@ -2,7 +2,7 @@
 <td><%= item.product.name %></td>
 <td>
   <%= form_for item, remote: true do |f| %>
-    <%= f.number_field :quantity, in: 1..item.product.quantity, class: 'input-mini', onChange: "this.form.submit.click();" %>
+    <%= f.number_field :quantity, in: 1..item.product.quantity, class: 'input-mini'%>
     <%= f.submit id: 'submit', class: 'hide' %>
   <% end %>
 </td>

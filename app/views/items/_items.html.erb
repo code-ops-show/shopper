@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% items.each do |item| %>
+    <% items.includes(:product).each do |item| %>
       <%= content_tag_for :tr, item, class: 'no-bottom' do %>
         <%= render item %>
       <% end %>
