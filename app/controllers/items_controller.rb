@@ -18,7 +18,6 @@ private
   def update_cart
     if item.product.quantity >= update_quantity
       item.update_attributes(quantity: update_quantity)
-      flash[:success] = "Product added to cart"
     else
       render json: [{error: "Product quantity not enough for add to cart"}], status: :unprocessable_entity
     end
