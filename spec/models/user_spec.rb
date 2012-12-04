@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  it { should have_many :carts }
+  it { should have_many :addresses}
+  it { should have_many(:orders).through(:addresses) }
 
   describe "Model setup and utilities" do
     let(:user)   { User.make! }
