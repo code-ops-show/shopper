@@ -1,2 +1,3 @@
-$('#cart_detail').html("<%= j render(current_order.items.blank? ? 'orders/cart_empty' : 'orders/cart') %>");
-$('#viewCart').modal('show');
+$('#view_cart').html("<%= j render(current_order.items.blank? ? 'orders/cart_empty' : 'orders/cart') %>");
+$('#view_cart').addClass('fade in')
+$('#view_cart').modal('show');
