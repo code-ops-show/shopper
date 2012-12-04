@@ -27,7 +27,7 @@ a
     text-decoration: none
 
 ul.thumbnails
-  li 
+  li
     > div.thumbnail
       background-color: white
       border: 1px solid #F0DED7
@@ -36,11 +36,19 @@ ul.thumbnails
         margin: 0
       h4, h5, h6
         margin: 0 0 10px 0
-      a.thumb
-        display: block
-        height: 190px
-        width: 290px
+      h4
+        height: 20px
         overflow: hidden
+        span.price
+          margin-right: 2px
+    &.span4
+      .cover
+        width: 298px
+        height: 198px
+        overflow: hidden
+        a > img
+          min-width: 298px
+          min-height: 198px
       &.category
         padding: 0
         div.caption

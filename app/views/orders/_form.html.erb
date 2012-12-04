@@ -1,11 +1,16 @@
-<%= form_for @order do |order_field| %>
-  <%= content_tag :fieldset, class: 'span5 offset3' do %>
-    <%= order_field.collection_select :address_id, Address.all, :id, :street_address, { include_blank: true }, data: { remote: true, url: url_for(controller: 'orders', action: 'edit') } %>
-    <%= order_field.fields_for :address do |f| %>
-      <%= render 'addresses/address', f: f %>
+<%= form_for @order, html: {class: 'form-horizontal'} do |f| %>
+  <%= content_tag :fieldset do %>
+    <legend>
+      Shipping Address
+      <div class='pull-right'>
+        <%= f.collection_select :address_id, Address.where(user_id: current_user.id), :id, :street_address, { include_blank: "&mdash; new address &mdash;".html_safe }, data: { remote: true, url: url_for(controller: 'orders', action: 'edit') } %>
+      </div>
+    </legend>
+    <%= f.fields_for :address do |address_field| %>
+      <%= render 'addresses/address', f: address_field %>
     <% end %>
-    <div class='offset2'>
-      <%= order_field.submit "Purchase", class: 'btn btn-large span3 btn-success' %>
+    <div class='form-actions'>
+      <%= f.submit "Purchase", class: 'btn btn-large btn-success span3' %>
     </div>
   <% end %>
 <% end %>
