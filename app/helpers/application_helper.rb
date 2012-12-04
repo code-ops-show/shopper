@@ -10,9 +10,9 @@ module ApplicationHelper
 
   def render_cart_menu
     active = request.path == edit_order_path(current_order.id) ? 'active' : ''
-    size = current_order.items.size 
+    size = current_order.items.sum(&:quantity)
     
-    content_tag :li, class: active do
+    content_tag :li, class: "cart #{active}" do
       if current_user and request.path == edit_order_path(current_order.id)
         link_to edit_order_path(current_order.id) do
           "<i class=\"icon-shopping-cart icon-white\"></i> Cart (#{size})".html_safe
