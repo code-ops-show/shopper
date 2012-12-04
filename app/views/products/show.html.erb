@@ -7,7 +7,6 @@
       <div class='product-title'>
         <h3><%= @product.name %> <small><%= @product.category.name %></small></h3>
       </div>
-      <p><%= @product.description %></p>
       Quantity: <%= @product.quantity %>
       </dl>
       <div class="form-inline">
@@ -18,6 +17,7 @@
       </div>
     </div>
   </div>
+  <p><%= simple_format @product.description %></p>
   <div>
     <h3>Review</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec augue diam. Nulla in venenatis ligula. Integer urna magna, mattis id condimentum vitae, ullamcorper non odio. Aenean eu sem at risus egestas vestibulum. Pellentesque auctor ultrices eros et auctor.</p>

@@ -2,11 +2,7 @@
   <li class="<%= if request.path == root_path then 'active' end %>"><%= link_to "Home", root_path %></li>
   <li class="<%= if request.path.match(/products/) then 'active' end %>"><%= link_to "Store", products_path %></li>
   <li class="<%= if request.path == categories_path then 'active' end %>"><%= link_to "Categories", categories_path %></li>
-  <li class="<%= if request.path == orders_path then 'active' end %>">
-    <%= link_to orders_path, remote: true do %>
-      <i class="icon-shopping-cart icon-white"></i> Cart
-    <% end %>
-  </li>
+  <li class="<%= if request.path == orders_path then 'active' end %>"><%= render_cart_menu %></li>
   <% if current_user %>
   <li class="dropdown<%= if request.path.match(/users/) then ' active' end %>">
     <a href='#' class="dropdown-toggle" data-toggle="dropdown">
