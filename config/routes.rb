@@ -11,6 +11,7 @@ Shopingcart::Application.routes.draw do
 
   resources :users do
     resources :orders
+    resources :addresses
   end
 
   resources :items
