@@ -1,6 +1,7 @@
 module ApplicationHelper
-  def render_menu_for text, path
+  def render_menu_for text, path, regxp = nil
     active = request.path == path ? 'active' : ''
+    active = request.path.match(regxp) ? 'active' : '' if regxp
 
     content_tag :li, class: active do
       link_to text, path
