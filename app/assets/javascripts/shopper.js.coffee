@@ -5,7 +5,9 @@ $(document).ready ->
       when 500 then "#{xhr.statusText}."
       else "Fail, please check action again or contact admin."
 
-    message = if message.error? then message.error else message
+    message = 
+      if message.error? then message.error 
+      else message
 
     noty
       text: message

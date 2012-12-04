@@ -1,6 +1,6 @@
 $(document).ready ->
   timer = null
-  $('#view_cart').on 'input', 'input[name*="item[quantity]"]', (e) -> 
+  $('#view_cart').on 'input', 'input[name*="item[quantity]"]', (e) ->
     if timer then clearTimeout(timer)
     timer = setTimeout (=> $(@).parent('form').submit()), 800
 
