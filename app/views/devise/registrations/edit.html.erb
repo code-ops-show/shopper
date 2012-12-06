@@ -37,6 +37,10 @@
           </div>
         <% end %>
         <%= content_tag :fieldset do %>
+          <legend>Address</legend>
+          <%= render 'addresses/addresses_list' %>
+        <% end %>
+        <%= content_tag :fieldset do %>
           <legend>Change Password</legend>
           <div class='control-group'>
             <%= f.label :password, class: 'control-label' %>
@@ -59,7 +63,5 @@
         </div>
       <% end %>
     </div>
-  <% end %>
-  <%= render 'addresses/addresses_list' %>
   </div>
 </div>

@@ -42,8 +42,11 @@
     </div>
   </div>
   <div class='control-group'>
-    <%= f.check_box :default, class: 'input-xlarge' %>
-    <span>Set this address as defaulte</span>
+    <div class='controls'>
+      <label class='checkbox'>
+        <%= f.check_box :default %> Set this address as default
+      </label>
+    </div>
   </div>
   <%= f.hidden_field :user_id, value: current_user.id %>
 </div>
