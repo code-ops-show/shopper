@@ -7,8 +7,8 @@ ActiveAdmin.register Product do
       row :description
       row :quantity
       row :price
-      row "Cover" do |course|
-        image_tag(category.cover, { size: '300x200', crop: 'fill' })
+      row "Cover" do |product|
+        image_tag(product.cover.thumb)
       end
     end
   end

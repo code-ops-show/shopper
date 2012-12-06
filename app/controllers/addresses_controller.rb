@@ -9,7 +9,12 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(params[:address])
-    @address.save ? redirect_to(edit_user_registration_path(current_user)) : render(:new)
+    
+    if @address.save
+      redirect_to(edit_user_registration_path(current_user))
+    else
+      render json: @address.erorrs, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -18,7 +23,12 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    @address.update_attributes(params[:address]) ? render(:show) : render(:edit)
+    
+    if @address.update_attributes(params[:address])
+      redirect_to(edit_user_registration_path(current_user))
+    else
+      render json: @address.erorrs, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -11,5 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap
+//= require noty/jquery.noty
+//= require noty/layouts/top
+//= require noty/layouts/topRight
+//= require noty/themes/default
+//= require shopper
+//= require orders

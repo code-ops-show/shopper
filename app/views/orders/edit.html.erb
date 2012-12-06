@@ -1,3 +1,13 @@
 <div class='container'>
-  <%= render 'orders/form' %>
+  <div class='row'>
+    <div class='span8 offset2'>
+      <div id='view_cart' class='well well-elderflower'>
+        <%= content_tag :fieldset do  %>
+          <legend>Order Items</legend>
+          <%= render 'items/items', items: @order.items %>
+        <% end %>
+        <%= render 'orders/form' %>
+      </div>
+    </div>
+  </div>
 </div>

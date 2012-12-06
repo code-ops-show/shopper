@@ -1,20 +1,27 @@
 <div class='container'>
-  <div class="row-fluid">
+  <div class="row">
     <div class="span7">
-      <div><%= image_tag @product.cover, { size: '450x400', crop: 'fill' } %></div>
+      <div><%= image_tag @product.cover %></div>
     </div>
     <div class="span5">
-      <p>Name: <%= @product.name %></p>
-      <p>Quantity: <%= @product.quantity %></p>
-      <div class="price">Price: <%= number_to_currency @product.price %></div>
-      <div class="form-inline add-cart-form">
-        <%= render 'orders/add_to_cart', product: @product %>
+      <div class='product-title'>
+        <h3><%= @product.name %> <small><%= @product.category.name %></small></h3>
       </div>
-      <div class="product-description"><%= @product.description %></div>
+      Quantity: <%= @product.quantity %>
+      </dl>
+      <div class="form-inline">
+        <h4>
+          <%= number_to_currency @product.price %>
+          <%= render 'orders/add_to_cart', product: @product %>
+        </h4>
+      </div>
     </div>
   </div>
-  <div class="review">
+  <p><%= simple_format @product.description %></p>
+  <div>
     <h3>Review</h3>
-    review
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec augue diam. Nulla in venenatis ligula. Integer urna magna, mattis id condimentum vitae, ullamcorper non odio. Aenean eu sem at risus egestas vestibulum. Pellentesque auctor ultrices eros et auctor.</p>
+    <p>Ut nibh orci, molestie vitae interdum eget, sagittis nec risus. Morbi interdum placerat condimentum. Ut semper semper tempor. Nunc vestibulum scelerisque sapien sit amet posuere. Praesent tincidunt bibendum rhoncus. In pulvinar mollis felis, nec aliquet tellus tincidunt at. </p>
+    <p>Vestibulum pretium, ligula vitae lobortis consequat, lorem orci gravida nisl, sed convallis erat lacus consectetur metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer sed condimentum massa. Vestibulum condimentum scelerisque justo, a tincidunt eros porttitor vel. Maecenas dignissim venenatis massa nec bibendum.</p>
   </div>
 </div>

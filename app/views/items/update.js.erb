@@ -1,1 +1,2 @@
 $('#item_<%= @item.id %>').html("<%= j render @item %>");
+Cart.update(<%= current_order.items.sum(&:quantity) %>)

@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   def index
-    @order ||= current_order
   end
 
   def edit
@@ -10,11 +9,11 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update_attributes(params[:order])
+    if @order.update_attributes!(params[:order])
       @order.purchase
       redirect_to root_path
     else
-      redirect_to :show
+      render :index
     end
   end
 end
