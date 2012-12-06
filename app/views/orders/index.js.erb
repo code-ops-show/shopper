@@ -1,3 +1,3 @@
 $('#view_cart').html("<%= j render(current_order.items.present? ? 'orders/cart' : 'orders/cart_empty') %>");
-$('#view_cart').addClass('fade in')
+$('#view_cart').addClass('fade in');
 $('#view_cart').modal('show');
