@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @order.purchase
       redirect_to root_path
     else
-      redirect_to :show
+      redirect_to :index
     end
   end
 end
