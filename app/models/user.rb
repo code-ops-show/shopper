@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def to_s
     name or email
   end
+
+  def default_address
+    addresses.default.first
+  end
 end
