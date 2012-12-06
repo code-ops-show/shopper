@@ -2,8 +2,6 @@ class ItemsController < ApplicationController
   def create
     if item.blank?
       current_order.items.create!(params[:item])
-      flash[:success] = "Product added to cart"
-      redirect_to :back
     else
       update_cart
     end
