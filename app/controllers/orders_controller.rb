@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       @order.purchase
       redirect_to root_path
     else
-      render :index
+      redirect_to :index
     end
   end
 end

@@ -10,10 +10,18 @@ Product.blueprint do
   description       { "product description" }
   price             { 100 }
   quantity          { 10  }
+  category          { object.category || Category.make! }
 end
 
 Order.blueprint do
   token             { rand(2468**10).to_s(32) }
+  address           { object.address || Address.make! }
+end
+
+Item.blueprint do
+  quantity          { 1 }
+  product           { object.product || Product.make! }
+  order             { object.order || Order.make! }
 end
 
 User.blueprint do
@@ -29,5 +37,5 @@ Address.blueprint do
   country           { "country-#{sn}" }
   phone             { sn }
   email             { "email-#{sn}@test.com" }
-  user_id           { User.make }
+  user              { object.user || User.make! }
 end 
