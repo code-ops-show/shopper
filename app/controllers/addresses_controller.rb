@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
     @address = Address.new(params[:address])
     
     if @address.save
-      redirect_to(edit_user_registration_path(current_user))
+      redirect_to edit_user_registration_path
     else
       render json: @address.erorrs, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     
     if @address.update_attributes(params[:address])
-      redirect_to(edit_user_registration_path(current_user))
+      redirect_to edit_user_registration_path
     else
       render json: @address.erorrs, status: :unprocessable_entity
     end
