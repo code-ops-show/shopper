@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ProductsController < ApplicationController  
   def index
     @products = 
       if params[:category_id].present?
@@ -10,5 +10,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+
+    add_breadcrumb "Product", products_path
+    add_breadcrumb @product.name, product_path(@product)
   end
 end

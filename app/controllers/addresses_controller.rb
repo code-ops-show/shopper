@@ -5,6 +5,7 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
+    add_breadcrumb "User", edit_user_registration_path(current_user)
   end
 
   def create
@@ -19,6 +20,8 @@ class AddressesController < ApplicationController
 
   def edit
     @address = Address.find(params[:id])
+    add_breadcrumb "User", edit_user_registration_path(current_user)
+    add_breadcrumb @address.street_address, edit_user_address_path(current_user)
   end
 
   def update
