@@ -1,0 +1,9 @@
+<%= semantic_form_for [:admin, @shipping_rate], html: { multipart: true } do |f| %>
+  <fieldset class="inputs">
+    <ol>
+      <li><%= f.input :name %></li>
+      <li><%= f.input :rate %></li>
+    </ol>
+  </fieldset>
+  <%= f.submit %>
+<% end %>
