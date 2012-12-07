@@ -1,3 +1,6 @@
+$(document).ready ->
+  Cart.setup()
+
 window.Cart =
   setup: ->
     timer = null
