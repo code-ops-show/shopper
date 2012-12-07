@@ -1,4 +1,6 @@
-<ul>
-  <li>token <%= order.token %></li>
-  <li>state <%= order.state %></li>
-</ul>
+<li>
+  <%= link_to user_order_path(current_user, order), remote: true do %>
+    <%= l order.updated_at, format: :long %> (<%= number_to_human(order.items.size, units: 'item') %>)
+  <% end %>
+  <span class='label label-success pull-right'><%= order.state.humanize %></span>
+</li>

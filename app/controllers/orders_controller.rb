@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
-  def index
+  def show
+    @order = Order.where(id: params[:id]).includes(items: [:product]).first
   end
 
   def edit
-    @order = Order.find(params[:id])
+    @order = Order.where(id: params[:id]).includes(items: [:product]).first
     @order.address = 
       if params[:order] and params[:order][:address_id].present?
         Address.find(params[:order][:address_id])
