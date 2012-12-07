@@ -10,10 +10,10 @@ describe ItemsController do
   end
 
   describe "POST 'create'" do
-     it "creates a new contact" do
+     it "creates a new item" do
       expect{
         post :create, item: @item, format: :js
-      }.to change(Item,:count).by(1)
+      }.to change(Item, :count).by(1)
     end
   end
 

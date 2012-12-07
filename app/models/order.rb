@@ -28,7 +28,7 @@ class Order < ActiveRecord::Base
 
   def self.cart_by token
     cart = Order.where(token: token, state: 'cart').first
-    cart.touch
+    cart.touch if cart.present?
     cart
   end
 
