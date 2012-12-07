@@ -9,15 +9,15 @@ class Item < ActiveRecord::Base
   end
   
   def full_price
-    unit_price*quantity
+    unit_price * quantity
   end
 
   def update_quantity(item_quantity)
-    self.update_attributes(quantity: amout_for(item_quantity)) if amout_for(item_quantity) <= self.product.quantity
+    self.update_attributes(quantity: amount_for(item_quantity)) if amount_for(item_quantity) <= product.quantity
   end
 
 private
-  def amout_for item_quantity
-    self.quantity + item_quantity.to_i
+  def amount_for item_quantity
+    quantity + item_quantity.to_i
   end
 end

@@ -1,6 +1,12 @@
 class ItemsController < ApplicationController
   def create
-    current_item.blank? ? current_order.items.create!(params[:item]) : current_item.update_quantity(params[:item][:quantity])
+    if current_item.blank? 
+      current_order.items.create!(params[:item])
+    else 
+      unless current_item.update_quantity(params[:item][:quantity])
+        render json: [{error: "Number is over product quantity"}], status: :unprocessable_entity
+      end
+    end
   end
 
   def update
