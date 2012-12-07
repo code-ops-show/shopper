@@ -9,7 +9,7 @@ describe AddressesController do
 
   describe "GET 'new'" do
     it "assigns to the new address" do
-      get :new
+      get :new, format: :js
       assigns(:address).should_not be_nil
     end
   end
@@ -22,13 +22,8 @@ describe AddressesController do
 
     it "creates a new address" do
       expect{
-        post :create, address: address_attr
+        post :create, address: address_attr, format: :js
       }.to change(Address, :count).by(1)
-    end
-
-    it "should redirects back to the edit user registration page" do
-      post :create, address: address_attr
-      response.should redirect_to edit_user_registration_path
     end
   end
 
@@ -43,13 +38,13 @@ describe AddressesController do
     end
 
     it "should located the requested @address " do
-      put :update, id: @address.id, address: address_attr
+      put :update, id: @address.id, address: address_attr, format: :js
       @address.reload
       assigns(:address).should eq(@address) 
     end
 
     it "should changes @address's attributes" do
-      put :update, id: @address.id, address: address_attr
+      put :update, id: @address.id, address: address_attr, format: :js
       @address.reload
       @address.street_address.should eq("street-1")
     end
@@ -59,13 +54,8 @@ describe AddressesController do
   
     it "should deletes the address" do
       expect{
-        delete :destroy, id: address.id
+        delete :destroy, id: address.id, format: :js
       }.to change(Address,:count).by(-1)
-    end
-      
-    it "should redirects to edit user's registration path" do
-      delete :destroy, id: address.id
-      response.should redirect_to edit_user_registration_path
     end
   end
 

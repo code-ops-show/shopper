@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order.address = 
       if params[:order] and params[:order][:address_id].present?
         Address.find(params[:order][:address_id])
-      elsif not params[:order] and current_user.default_address.present?
+      elsif not params[:order] and current_user and current_user.default_address.present?
         current_user.default_address
       else
         Address.new

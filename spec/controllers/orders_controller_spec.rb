@@ -14,17 +14,17 @@ describe OrdersController do
 
   describe "GET 'edit'" do
     it "should return http success" do
-      get :edit, id: order.id
+      get :edit, id: order.id, format: :js
       response.should be_success
     end
 
     it "should assign order" do
-      get :edit, id: order.id
+      get :edit, id: order.id, format: :js
       assigns[:order].should_not be_nil
     end
 
     it "should assign order" do
-      get :edit, id: order.id
+      get :edit, id: order.id, format: :js
       assigns[:order].should eq order
     end
   end
