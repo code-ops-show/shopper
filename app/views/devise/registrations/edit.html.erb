@@ -44,7 +44,9 @@
                 <i class='icon-plus'></i>
               <% end %>
           </legend>
-          <%= render 'addresses/addresses' %>
+          <div id="user_addresses">
+            <%= render 'addresses/addresses' %>
+          </div>
         <% end %>
         <%= content_tag :fieldset do %>
           <legend>Change Password</legend>

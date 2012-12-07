@@ -1,15 +1,5 @@
 <ul class="well main-list">
   <% current_user.addresses.sort.each do |address| %>
-    <li>
-      <%= link_to user_address_path(current_user, address, address: {default: true}), class: "btn btn-mini btn-link", method: :put do %><i class="<%= current_user.default_address == address ? 'icon-star' : 'icon-minus' %>"></i><% end %>
-      <%= link_to edit_user_address_path(current_user, address) do %>
-        <%= address.street_address %> / <%= address.country.name %>
-      <% end %>
-
-      <div class="pull-right">
-        <%= link_to edit_user_address_path(current_user, address), class: 'btn btn-mini' do %><i class='icon-edit'></i><% end %>
-        <%= link_to user_address_path(current_user, address), method: :delete, confirm: "You sure?", class: 'btn btn-mini' do %><i class='icon-remove'></i><% end %>
-      </div>
-    </li>
+    <%= render "addresses/address", address: address %> 
   <% end %>
 </ul>

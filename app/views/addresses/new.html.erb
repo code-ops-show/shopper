@@ -4,7 +4,7 @@
       <%= form_for :address, url: { action: :create }, html: { class: 'form-horizontal well well-elderflower' } do |f| %>
         <%= content_tag :fieldset do %>
           <legend>New Address</legend>
-          <%= render 'addresses/address', f: f %>
+          <%= render 'addresses/form', f: f %>
           <div class='form-actions'>
             <%= link_to 'Back', :back, class: 'btn btn-large' %>
             <%= f.submit "Save", class: 'btn btn-large btn-success span2' %>

@@ -1,50 +1,13 @@
-<div class='control-group'>
-  <%= f.label :street_address, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.text_area :street_address, size: "10x5", class: 'input-xlarge' %>
+<li>
+  <%= link_to user_address_path(current_user, address, address: {default: true}), method: :put, remote: true, class: "btn btn-mini btn-link" do %>
+    <i class="<%= current_user.default_address == address ? 'icon-star' : 'icon-minus' %>"></i>
+  <% end %>
+  <%= link_to edit_user_address_path(current_user, address) do %>
+    <%= address.street_address %> / <%= address.country.name %>
+  <% end %>
+
+  <div class="pull-right">
+    <%= link_to edit_user_address_path(current_user, address), class: 'btn btn-mini' do %><i class='icon-edit'></i><% end %>
+    <%= link_to user_address_path(current_user, address), method: :delete, confirm: "You sure?", class: 'btn btn-mini' do %><i class='icon-remove'></i><% end %>
   </div>
-</div>
-<div class='control-group'>
-  <%= f.label :city, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :city, class: 'input-xlarge' %>
-  </div>
-</div>
-<div class='control-group'>
-  <%= f.label :state, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :state, class: 'input-xlarge' %>
-  </div>
-</div>
-<div class='control-group'>
-  <%= f.label :zip, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.number_field :zip, class: 'input-xlarge' %>
-  </div>
-</div>
-<div class='control-group'>
-  <%= f.label :country_id, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.collection_select(:country_id, Country.all, :id, :name) %>
-  </div>
-</div>
-<div class='control-group'>
-    <%= f.label :phone, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.phone_field :phone, class: 'input-xlarge' %>
-  </div>
-</div>
-<div class='control-group'>
-  <%= f.label :email, class: 'control-label' %>
-  <div class='controls'>
-    <%= f.email_field :email, class: 'input-xlarge' %>
-  </div>
-</div>
-<div class='control-group'>
-  <div class='controls'>
-    <label class='checkbox'>
-      <%= f.check_box :default %> Set this address as default
-    </label>
-  </div>
-</div>
-<%= f.hidden_field :user_id, value: current_user.id %>
+</li>

@@ -7,7 +7,7 @@
       </div>
     </legend>
     <%= f.fields_for :address do |address_field| %>
-      <%= render 'addresses/address', f: address_field %>
+      <%= render 'addresses/form', f: address_field %>
     <% end %>
     <div class='form-actions'>
       <%= f.submit "Purchase", class: 'btn btn-large btn-success span3' %>

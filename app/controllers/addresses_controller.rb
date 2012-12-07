@@ -24,9 +24,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     
-    if @address.update_attributes(params[:address])
-      redirect_to edit_user_registration_path
-    else
+    unless @address.update_attributes(params[:address])
       render json: @address.erorrs, status: :unprocessable_entity
     end
   end
