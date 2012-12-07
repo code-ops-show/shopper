@@ -5,27 +5,7 @@ describe AddressesController do
   let!(:user)        { User.make!}
   let!(:address)     { user.addresses.make! }
 
-  describe "GET 'show'" do
-    it "return http success" do
-      get :show, id: address.id
-      response.should be_success
-    end
-
-    it "assigns the requested address to @address" do
-      get :show, id: address.id
-      assigns(:address).should eq(address)
-    end
-      
-    it "renders the #show view" do
-      get :show, id: address.id
-      response.should render_template :show
-    end
-
-    it "should assign the all address to the view" do
-      get :show, id: address.id
-      assigns[:address].should_not be_nil
-    end
-  end
+  before { sign_in user }
 
   describe "GET 'new'" do
     it "assigns to the new address" do
@@ -37,9 +17,8 @@ describe AddressesController do
   describe "POST 'create'" do
     let(:address_attr) { { street_address: 'street-1', city: 'city-1', 
                            state: 'state-1', zip: 12223, 
-                           country: "Thailand", phone: 2312, email: "test@test.com",
+                           country_id: 1, phone: 2312, email: "test@test.com",
                            user_id: user.id } }
-
 
     it "creates a new address" do
       expect{
@@ -57,7 +36,7 @@ describe AddressesController do
 
     let(:address_attr) { { street_address: 'street-1', city: 'city-1', 
                            state: 'state-1', zip: 12223, 
-                           country: "Thailand", phone: 2312, email: "test@test.com",
+                           phone: 2312, email: "test@test.com",
                            user_id: user.id } }
     before :all do
       @address = user.addresses.make!

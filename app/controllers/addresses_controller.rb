@@ -1,7 +1,5 @@
 class AddressesController < ApplicationController
-  def show
-    @address = Address.find(params[:id])
-  end
+  before_filter :authenticate_user!
 
   def new
     @address = Address.new
