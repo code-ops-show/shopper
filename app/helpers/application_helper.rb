@@ -34,8 +34,8 @@ module ApplicationHelper
           concat "#{current_user} <b class=\"caret\"></b>".html_safe
         end
         menu = content_tag :ul, class: "dropdown-menu" do
-          concat render_menu_for("My Profile", edit_user_registration_path)
-          concat render_menu_for("My Order", user_orders_path(current_user))
+          concat render_menu_for("Profile", edit_user_registration_path)
+          concat render_menu_for("Orders History", user_orders_path(current_user))
           concat content_tag :li, (link_to "Log out", destroy_user_session_path, method: :delete)
         end
 

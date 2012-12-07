@@ -1,0 +1,14 @@
+<div class='modal-header'>
+  <button class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+  <h3>Order</h3>
+</div>
+<div class='modal-body'>
+  <%= render 'items/items', items: order.items %>
+</div>
+<div class='modal-footer'>
+  <span class='pull-left'>
+    <span class='label label-success'><%= order.state.humanize %></span>
+    <%= l order.updated_at, format: :long %>
+  </span>
+  <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+</div>

@@ -11,7 +11,7 @@
   <tbody>
     <% items.each do |item| %>
       <%= content_tag_for :tr, item, class: 'no-bottom' do %>
-        <%= render 'items/item', item: item %>
+        <%= render 'items/item_form', item: item %>
       <% end %>
     <% end %>
   </tbody>

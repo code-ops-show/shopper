@@ -1,10 +1,18 @@
 class OrdersController < ApplicationController
-  def index
+  def show
+    @order = Order.where(id: params[:id]).includes(items: [:product]).first
   end
 
   def edit
-    @order = Order.find(params[:id])
-    @order.address = ( params[:order] and params[:order][:address_id].present? ) ? Address.find(params[:order][:address_id]) : Address.new
+    @order = Order.where(id: params[:id]).includes(items: [:product]).first
+    @order.address = 
+      if params[:order] and params[:order][:address_id].present?
+        Address.find(params[:order][:address_id])
+      elsif not params[:order] and current_user.default_address.present?
+        current_user.default_address
+      else
+        Address.new
+      end
   end
 
   def update

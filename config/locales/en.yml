@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  item:
+    unit:
+      one: "item"
+      other: "items"

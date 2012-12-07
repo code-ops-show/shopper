@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   
   def current_order
     cookies[:token] = { value: token, expires: 1.hour.from_now }
-    @current_order ||= Order.where(token: token, state: 'cart').first || Order.create!(token: token)
+    @current_order ||= Order.where(token: token, state: 'cart').includes(items: [:product]).first || Order.create!(token: token)
   end
 end

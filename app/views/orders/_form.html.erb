@@ -3,11 +3,18 @@
     <legend>
       Shipping Address
       <div class='pull-right'>
-        <%= f.collection_select :address_id, Address.where(user_id: current_user.id).sort, :id, :street_address, options = { include_blank: "&mdash; new address &mdash;".html_safe }, data: { remote: true, url: url_for(controller: 'orders', action: 'edit') } %>
+        <%= f.collection_select :address_id, Address.where(user_id: current_user.id).sort, :id, :street_address, options = { include_blank: "&mdash; new address &mdash;".html_safe, selected: (@order.address.id rescue nil) }, data: { remote: true, url: url_for(controller: 'orders', action: 'edit') } %>
       </div>
     </legend>
     <%= f.fields_for :address do |address_field| %>
-      <%= render 'addresses/address', f: address_field %>
+      <%= render 'addresses/form', f: address_field %>
+      <div class='control-group'>
+        <div class='controls'>
+          <label class='checkbox'>
+            <%= address_field.check_box :default %> Set this address as default
+          </label>
+        </div>
+      </div>
     <% end %>
     <div class='form-actions'>
       <%= f.submit "Purchase", class: 'btn btn-large btn-success span3' %>

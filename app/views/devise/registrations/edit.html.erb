@@ -5,7 +5,10 @@
 </header>
 <div class="container">
   <div class='row'>
-    <div class='span8 offset2'>
+    <div class='span3'>
+      <%= render 'devise/shared/navigation_list' %>
+    </div>
+    <div class='span9'>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true, method: :put, class: 'form-horizontal well well-elderflower' }) do |f| %>
         <%= content_tag :fieldset do %>
           <legend>Information</legend>
@@ -40,11 +43,13 @@
           <legend>
             Address
             <span class='pull-right'>
-              <%= link_to new_user_address_path(current_user), class: 'btn btn-small' do %>
+              <%= link_to new_user_address_path(current_user), remote: true, class: 'btn btn-small' do %>
                 <i class='icon-plus'></i>
               <% end %>
           </legend>
-          <%= render 'addresses/addresses' %>
+          <div id="user_addresses">
+            <%= render 'addresses/addresses' %>
+          </div>
         <% end %>
         <%= content_tag :fieldset do %>
           <legend>Change Password</legend>
@@ -63,8 +68,7 @@
             </div>
           </div>
         <% end %>
-        <hr>
-        <div class='offset3'>
+        <div class='form-actions'>
           <%= f.submit "Update", class: 'btn btn-large btn-success' %>
         </div>
       <% end %>
