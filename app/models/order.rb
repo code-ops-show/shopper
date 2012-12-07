@@ -26,6 +26,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def self.cart_by token
+    cart = Order.where(token: token, state: 'cart').first
+    cart.touch if cart.present?
+    cart
+  end
+
   def total_price
     items.to_a.sum(&:full_price)
   end

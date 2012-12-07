@@ -1,15 +1,15 @@
 class AddressesController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @address = Address.new
-    add_breadcrumb "User", edit_user_registration_path(current_user)
-    add_breadcrumb "New", new_user_address_path
   end
 
   def create
     @address = Address.new(params[:address])
     
     if @address.save
-      redirect_to(edit_user_registration_path(current_user))
+      redirect_to edit_user_registration_path
     else
       render json: @address.errors, status: :unprocessable_entity
     end
@@ -17,8 +17,6 @@ class AddressesController < ApplicationController
 
   def edit
     @address = Address.find(params[:id])
-    add_breadcrumb "User", edit_user_registration_path(current_user)
-    add_breadcrumb @address.street_address, edit_user_address_path(current_user)
   end
 
   def update

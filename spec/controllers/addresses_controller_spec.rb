@@ -5,6 +5,8 @@ describe AddressesController do
   let!(:user)        { User.make!}
   let!(:address)     { user.addresses.make! }
 
+  before { sign_in user }
+
   describe "GET 'new'" do
     it "assigns to the new address" do
       get :new

@@ -13,6 +13,7 @@ gem "rmagick"
 gem "carrierwave"
 gem 'state_machine'
 gem "breadcrumbs_on_rails"
+gem 'whenever'
 
 # Gems used only for assets and not required
 # in production environments by default.
