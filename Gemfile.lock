@@ -178,6 +178,10 @@ GEM
       rubyzip
     shoulda-matchers (1.3.0)
       activesupport (>= 3.0.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -224,6 +228,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   shoulda-matchers
+  simplecov
   state_machine
   uglifier (>= 1.0.3)
   whenever

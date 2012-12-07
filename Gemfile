@@ -34,6 +34,7 @@ group :test, :development do
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'simplecov', :require => false
 end
 
 
