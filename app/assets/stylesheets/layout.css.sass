@@ -137,6 +137,8 @@ ul.main-list
     padding: 6px
     border: 1px solid #ddd
     border-radius: 4px
+    &.success
+      background-color: #DFF0D8
 
 footer
   margin-top: 40px
@@ -146,7 +148,17 @@ footer
       font-weight: bold
 
 div.modal
-  width: 900px
-  margin: -250px 0 0 -450px
-  &.fade.in
-    top: 30%
+  &.cart
+    width: 900px
+    margin: -250px 0 0 -450px
+    &.fade.in
+      top: 30%
+  &.address 
+    > form > .modal-body
+      max-height: 430px
+    &.fade.in
+      top: 40%
+
+
+
+

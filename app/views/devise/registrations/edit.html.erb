@@ -40,7 +40,7 @@
           <legend>
             Address
             <span class='pull-right'>
-              <%= link_to new_user_address_path(current_user), class: 'btn btn-small' do %>
+              <%= link_to new_user_address_path(current_user), remote: true, class: 'btn btn-small' do %>
                 <i class='icon-plus'></i>
               <% end %>
           </legend>

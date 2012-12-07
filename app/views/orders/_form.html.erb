@@ -8,6 +8,13 @@
     </legend>
     <%= f.fields_for :address do |address_field| %>
       <%= render 'addresses/form', f: address_field %>
+      <div class='control-group'>
+        <div class='controls'>
+          <label class='checkbox'>
+            <%= address_field.check_box :default %> Set this address as default
+          </label>
+        </div>
+      </div>
     <% end %>
     <div class='form-actions'>
       <%= f.submit "Purchase", class: 'btn btn-large btn-success span3' %>

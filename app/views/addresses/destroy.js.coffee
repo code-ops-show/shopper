@@ -1,0 +1,1 @@
+$('#address_<%= @address.id %>').remove()
