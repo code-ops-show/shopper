@@ -12,6 +12,7 @@ gem 'friendly_id'
 gem "rmagick"
 gem "carrierwave"
 gem 'state_machine'
+gem "breadcrumbs_on_rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

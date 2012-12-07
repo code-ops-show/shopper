@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def create
     current_item.blank? ? current_order.items.create!(params[:item]) : current_item.update_quantity(params[:item][:quantity])
-    redirect_to :back
   end
 
   def update
