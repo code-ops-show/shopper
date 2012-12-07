@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207110552) do
+ActiveRecord::Schema.define(:version => 20121207114610) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -78,15 +78,9 @@ ActiveRecord::Schema.define(:version => 20121207110552) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "countries_shipping_rates", :force => true do |t|
-    t.integer  "country_id"
-    t.integer  "shipping_rate_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "shipping_rate_id"
   end
 
   create_table "items", :force => true do |t|
