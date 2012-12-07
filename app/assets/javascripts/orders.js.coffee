@@ -1,10 +1,10 @@
-$(document).ready ->
-  timer = null
-  $('#view_cart').on 'input', 'input[name*="item[quantity]"]', (e) ->
-    if timer then clearTimeout(timer)
-    timer = setTimeout (=> $(@).parent('form').submit()), 800
-
 window.Cart =
+  setup: ->
+    timer = null
+    $('#view_cart').on 'input', 'input[name*="item[quantity]"]', (e) ->
+      if timer then clearTimeout(timer)
+      timer = setTimeout (=> $(@).parent('form').submit()), 800
+
   update: (quantity = 0) ->
     cart = $('.navbar').find('.cart a')
     cart.stop(true, true).effect('pulsate')
