@@ -30,7 +30,7 @@ a
     color: $hover
     text-decoration: none
 
-@mixin thumbnail($height, $width)
+@mixin thumbnail($height, $width, $p-height: 80px)
   .cover
     width: $height
     height: $width
@@ -45,6 +45,9 @@ a
     a.thumb
       width: $height
       height: $width
+  div.caption
+    p
+      height: $p-height
 
 ul.thumbnails
   li
@@ -62,9 +65,9 @@ ul.thumbnails
         span.price
           margin-right: 2px
     &.span3
-      @include thumbnail(218px, 145px)
+      @include thumbnail(218px, 145px, 80px)
     &.span4
-      @include thumbnail(298px, 198px)
+      @include thumbnail(298px, 198px, 120px)
 
 .navbar-pastel 
   .navbar-inner
