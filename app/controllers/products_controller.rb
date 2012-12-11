@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     add_breadcrumb "Store", products_path
+    add_breadcrumb @product.category.name, category_products_path(@product.category)
     add_breadcrumb @product.name, product_path(@product)
   end
 
