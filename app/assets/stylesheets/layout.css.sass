@@ -30,6 +30,22 @@ a
     color: $hover
     text-decoration: none
 
+@mixin thumbnail($height, $width)
+  .cover
+    width: $height
+    height: $width
+    overflow: hidden
+    a > img
+      min-width: $height
+      min-height: $width
+  &.category
+    padding: 0
+    div.caption
+      padding: 4px 9px
+    a.thumb
+      width: $height
+      height: $width
+
 ul.thumbnails
   li
     > div.thumbnail
@@ -46,35 +62,9 @@ ul.thumbnails
         span.price
           margin-right: 2px
     &.span3
-      .cover
-        width: 218px
-        height: 145px
-        overflow: hidden
-        a > img
-          min-width: 218px
-          min-height: 145px
-      &.category
-        padding: 0
-        div.caption
-          padding: 4px 9px
-        a.thumb
-          width: 218px
-          height: 145px
+      @include thumbnail(218px, 145px)
     &.span4
-      .cover
-        width: 298px
-        height: 198px
-        overflow: hidden
-        a > img
-          min-width: 298px
-          min-height: 198px
-      &.category
-        padding: 0
-        div.caption
-          padding: 4px 9px
-        a.thumb
-          width: 298px
-          height: 198px
+      @include thumbnail(298px, 198px)
 
 .navbar-pastel 
   .navbar-inner
@@ -111,17 +101,25 @@ ul.thumbnails
     color: white
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2)
 
+.nav-tabs
+  &.nav-stacked 
+    > li > a
+      background-color: white
+    > li.active > a, 
+    > li.active > a:hover
+      background-color: $hover
+      border-color: $hover
+      color: white
+
 ul.dropdown-menu
-  li
-    a
-      &:hover
-        color: white
-        background: $hover
-  li.active
-    a
-      background: $link
-      &:hover
-        background: $hover
+  li > a
+    &:hover
+      color: white
+      background: $hover
+  li.active > a
+    background: $link
+    &:hover
+      background: $hover
 
 .no-bottom, .control-group.no-bottom
   margin: 0
