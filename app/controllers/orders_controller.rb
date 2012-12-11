@@ -17,11 +17,8 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update_attributes!(params[:order])
-      @order.purchase
-      redirect_to root_path
-    else
-      redirect_to :index
-    end
+    @order.update_attributes!(params[:order])
+    @order.purchase
+    redirect_to root_path
   end
 end
