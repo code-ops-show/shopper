@@ -1,12 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class='span3'>
-      <ul class='nav nav-tabs nav-stacked'>
-        <li class='<%= 'active' if request.path == products_path %>'><a href="<%= products_path %>">All Products</a></li>
-        <% Category.all.each do |category| %>
-          <li class='<%= 'active' if request.path == category_products_path(category) %>'><a href="<%= category_products_path(category) %>"><%= category.name %></a></li>
-        <% end %>
-      </ul>
+      <%= render 'navigation' %>
     </div>
     <div class='span9'>
       <% if @products.size == 0 %>
