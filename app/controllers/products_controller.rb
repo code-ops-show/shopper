@@ -1,11 +1,6 @@
 class ProductsController < ApplicationController  
   def index
-    @products = 
-      if params[:category_id].present?
-        Product.joins(:category).where(categories: { slug: params[:category_id] })
-      else
-        Product.all
-      end
+    @products = params[:category_id].present? ? Product.by_category(params[:category_id]) : Product.all
   end
 
   def show
