@@ -7,25 +7,36 @@
           <%= image_tag @product.cover %></div>
         </div>
       <div class='span5'>
-        <div class='product-title'>
-          <h3><%= @product.name %> <small><%= @product.category.name %></small></h3>
-        </div>
-        Product availability: <%= @product.quantity %>
-        </dl>
-        <div class="form-inline">
-          <h4>
-            <%= number_to_currency @product.price %>
-            <%= render 'products/add_to_cart', product: @product %>
-          </h4>
+        <div class='product-details'>
+          <div class='title'>
+            <h2><%= truncate(@product.name, length: 40) %> <small><%= @product.category.name %></small></h2>
+          </div>
+          <div class='description'>
+            <%= truncate(@product.description, length: 240) %>
+          </div>
+          <div class='actions'>
+            <% if @product.quantity > 0 %>
+              In Stock <span class='badge badge-success'><%= @product.quantity %></span>
+            <% else %>
+              <span class='badge badge-important'>Out of Stock</span>
+            <% end %>
+            <hr>
+            <div class="form-inline">
+              <h3>
+                <%= number_to_currency @product.price %>
+                <%= render 'products/add_to_cart', product: @product %>
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class='clearfix'><br></div>
+    <br>
     <div class='row-fluid'>
       <div class='span12'>
         <h4>Description</h4>
         <%= simple_format @product.description %>
       </div>
     </div>
-  </div.>
+  </div>
 </div>
