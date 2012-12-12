@@ -1,28 +1,29 @@
 @import "bootstrap"
 @import "noty"
 
-$maintext: $black
-$mainbackground : $white
+$mainText: $black
+$mainBackground: darken(#FEFAF6, 1%)
 $link: #FF7979
 $hover: #FF6161
 $shadow: $white
 $navbar: #FF7979
 $navbarBorder: #ccc
+$border: #F0DED7
 $footer: #f1f1f1
 
 body
   padding-top: 60px
-  color: $maintext
+  color: $mainText
   font-family: 'Lato', sans-serif
-  background-color: darken(#FEFAF6, 1%)
-  // background: $mainbackground
+  background-color: $mainBackground
+  // background: $mainBackground
   // background-image: url(asset-path('bg.png', 'image'))
   #flash
     margin-top: -20px
     margin-bottom: 0
 
 hr
-  border-top-color: #F0DED7
+  border-top-color: $border
 
 a
   color: $link
@@ -53,7 +54,7 @@ ul.thumbnails
   li
     > div.thumbnail
       background-color: white
-      border: 1px solid #F0DED7
+      border: 1px solid $border
       padding: 0
       h1, h2, h3
         margin: 0
@@ -129,14 +130,11 @@ ul.dropdown-menu
   input, textarea, td
     margin: 0
 
-form  
-  margin-bottom: 0px
-
 .well
   &.well-elderflower
     padding: 0
     background-color: white
-    border-color: #F0DED7
+    border-color: $border
     legend
       border-bottom-color: #DDD1C8
       margin-bottom: 0
@@ -161,6 +159,36 @@ form
   &.no-actions > fieldset
     padding: 19px
 
+form  
+  margin-bottom: 0px
+
+$btnLight: $link
+$btnDark: #E84A5F
+$btnBackground: darken($btnLight, 5%)
+$btnBackgroundDark: #CC2A41
+
+.btn-primary
+  color: white
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+  background-color: $btnBackground
+  background-image: -moz-linear-gradient(top, $btnLight, $btnDark)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($btnLight), to($btnDark))
+  background-image: -webkit-linear-gradient(top, $btnLight, $btnDark)
+  background-image: -o-linear-gradient(top, $btnLight, $btnDark)
+  background-image: linear-gradient(to bottom, $btnLight, $btnDark)
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF$btnLight', endColorstr='#FF$btnTo', GradientType=0)
+  border-color: $btnDark $btnDark $btnBackgroundDark
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+  *background-color: $btnDark
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)
+  &:active, &.active
+    background-color: $btnBackgroundDark \9
+  &:hover, &:active, &.active, &.disabled, &[disabled]
+    color: white
+    background-color: $btnDark
+    *background-color: $btnLight
+
 ul.main-list
   list-style: none
   margin: 0 0 20px 0
@@ -183,16 +211,20 @@ footer
 
 div.modal
   &.cart
-    width: 900px
-    margin: -250px 0 0 -450px
+    width: 800px
+    margin: -250px 0 0 -400px
     &.fade.in
       top: 30%
+    .modal-body
+      padding: 15px 0
   &.address 
     > form > .modal-body
       max-height: 430px
     &.fade.in
       top: 40%
-
+  div.modal-footer
+    background-color: $mainBackground
+    border-color: $border
 
 
 
