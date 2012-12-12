@@ -1,5 +1,5 @@
-<ul class="well main-list">
-  <% current_user.addresses.sort.each do |address| %>
+<ul class="main-list">
+  <% current_user.addresses.includes(:country).sort.each do |address| %>
     <%= render "addresses/address", address: address %> 
   <% end %>
 </ul>
