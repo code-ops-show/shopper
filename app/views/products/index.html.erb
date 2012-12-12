@@ -1,15 +1,17 @@
 <div class='container'>
   <div class='row'>
-    <div class='span12'>
-      <% if @products.size == 0 %>
+    <div class='span3'>
+      <%= render 'navigation' %>
+    </div>
+    <div class='span9'>
+      <% if @products.length == 0 %>
         <div class='alert alert-block'>No Products</div>
       <% else %>
-        <% @products.group_by(&:category).each do |category, product| %>
-          <h3><%= category.name %></h3>
-          <ul class="thumbnails">
+        <ul class="thumbnails">
+          <% @products.each do |product| %>
             <%= render product %>
-          </ul>
-        <% end %>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>

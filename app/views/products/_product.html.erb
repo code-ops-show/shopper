@@ -1,4 +1,4 @@
-<li class="span4">
+<li class="span3">
   <div class='thumbnail no-bottom'>
     <div class='cover'>
       <%= link_to image_tag(product.cover.thumb, title: product.name), product %>
@@ -10,8 +10,8 @@
           <div class='span4'><%= content_tag :span, number_to_currency(product.price), class: 'price' %></div>
         </div>
       </h4>
-      <p><%= truncate(product.description, length: 200) %></p>
-      <%= render 'orders/add_to_cart', product: product %>
+      <p><%= truncate(product.description, length: 100) %></p>
+      <%= render 'products/add_to_cart', product: product %>
     </div>
   </div>
 </li>

@@ -25,6 +25,6 @@ class User < ActiveRecord::Base
   end
 
   def default_address
-    addresses.default.first
+    address ||= addresses.default.first
   end
 end

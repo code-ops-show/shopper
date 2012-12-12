@@ -1,0 +1,22 @@
+<ul class='nav nav-tabs nav-stacked'>
+  <li class='<%= 'active' if request.path == products_path %>'><a href="<%= products_path %>">All Products</a></li>
+  <% Category.all.each do |category| %>
+    <li class='<%= 'active' if request.path == category_products_path(category) %>'><a href="<%= category_products_path(category) %>"><%= category.name %></a></li>
+  <% end %>
+</ul>
+
+<div class='price-rate well well-small clearfix'>
+  <h5>
+    <a href='#' class='btn-block price-toggle' data-toggle="collapse">
+      Price Range
+      <span class='pull-right'><i class='icon-chevron-<%= (session[:min].present? and session[:max].present?) ? 'up' : 'down' %> icon-white'></i></span>
+    </a>
+  </h5>
+  <div class='price collapse <%= 'in' if (session[:min].present? and session[:max].present?) %>'>
+    <%= form_tag request.path, method: :get do %>
+      <span class='pull-right'>from <%= text_field_tag 'min', session[:min], class: 'span2', placeholder: 'min' %></span>
+      <span class='pull-right'>to <%= text_field_tag 'max', session[:max], class: 'span2', placeholder: 'max' %></span>
+      <%= button_tag 'View', name: nil, class: 'btn btn-success btn-block' %>
+    <% end %>
+  </div>
+</div>

@@ -1,28 +1,42 @@
 <div class='container'>
-  <h3><%= render_breadcrumbs %></h3>
-  <div class="row">
-    <div class="span7">
-      <div><%= image_tag @product.cover %></div>
-    </div>
-    <div class="span5">
-      <div class='product-title'>
-        <h3><%= @product.name %> <small><%= @product.category.name %></small></h3>
+  <div class='product'>
+    <div class='product-header'><%= render_breadcrumbs separator: '&nbsp; /  &nbsp;' %></div>
+    <div class="row-fluid">
+      <div class='span7'>
+        <div class='cover'>
+          <%= image_tag @product.cover %></div>
+        </div>
+      <div class='span5'>
+        <div class='product-details'>
+          <div class='title'>
+            <h2><%= truncate(@product.name, length: 40) %> <small><%= @product.category.name %></small></h2>
+          </div>
+          <div class='description'>
+            <%= truncate(@product.description, length: 240) %>
+          </div>
+          <div class='actions'>
+            <% if @product.quantity > 0 %>
+              In Stock <span class='badge badge-success'><%= @product.quantity %></span>
+            <% else %>
+              <span class='badge badge-important'>Out of Stock</span>
+            <% end %>
+            <hr>
+            <div class="form-inline">
+              <h3>
+                <%= number_to_currency @product.price %>
+                <%= render 'products/add_to_cart', product: @product %>
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
-      Quantity: <%= @product.quantity %>
-      </dl>
-      <div class="form-inline">
-        <h4>
-          <%= number_to_currency @product.price %>
-          <%= render 'orders/add_to_cart', product: @product %>
-        </h4>
+    </div>
+    <br>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <h4>Description</h4>
+        <%= simple_format @product.description %>
       </div>
     </div>
-  </div>
-  <p><%= simple_format @product.description %></p>
-  <div>
-    <h3>Review</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec augue diam. Nulla in venenatis ligula. Integer urna magna, mattis id condimentum vitae, ullamcorper non odio. Aenean eu sem at risus egestas vestibulum. Pellentesque auctor ultrices eros et auctor.</p>
-    <p>Ut nibh orci, molestie vitae interdum eget, sagittis nec risus. Morbi interdum placerat condimentum. Ut semper semper tempor. Nunc vestibulum scelerisque sapien sit amet posuere. Praesent tincidunt bibendum rhoncus. In pulvinar mollis felis, nec aliquet tellus tincidunt at. </p>
-    <p>Vestibulum pretium, ligula vitae lobortis consequat, lorem orci gravida nisl, sed convallis erat lacus consectetur metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer sed condimentum massa. Vestibulum condimentum scelerisque justo, a tincidunt eros porttitor vel. Maecenas dignissim venenatis massa nec bibendum.</p>
   </div>
 </div>
