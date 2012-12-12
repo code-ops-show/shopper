@@ -47,4 +47,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def product_added_for product_id
+    cart_order ||= current_order.product_ids.include?(product_id)
+  end
 end
