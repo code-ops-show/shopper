@@ -216,12 +216,21 @@ footer
 
 div.modal
   &.cart
-    width: 800px
-    margin: -250px 0 0 -400px
+    width: 780px
+    margin: -250px 0 0 -390px
     &.fade.in
       top: 30%
     .modal-body
       padding: 15px 0
+      table.table
+        margin-bottom: 0
+        td
+          vertical-align: middle
+      &.empty
+        padding: 20px 15px
+        .alert
+          padding-top: 16px
+          padding-bottom: 16px
   &.address 
     > form > .modal-body
       max-height: 430px
