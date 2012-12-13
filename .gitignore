@@ -15,3 +15,5 @@
 /tmp
 
 /db/migrate/20121019085904_create_admin_notes.rb
+/coverage/index.html
+/coverage/.resultset.json
