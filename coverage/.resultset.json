@@ -114,14 +114,13 @@
       "/Users/developer/Repositories/shopingcart/app/models/category.rb": [
         1,
         1,
-        null,
-        1,
         1,
         null,
         1,
         null,
         1,
         null,
+        1,
         null
       ],
       "/Users/developer/Repositories/shopingcart/app/uploaders/image_uploader.rb": [
@@ -254,6 +253,8 @@
         1,
         null,
         1,
+        2,
+        1,
         4,
         null
       ],
@@ -349,13 +350,6 @@
         null,
         null
       ],
-      "/Users/developer/Repositories/shopingcart/app/controllers/categories_controller.rb": [
-        1,
-        1,
-        3,
-        null,
-        null
-      ],
       "/Users/developer/Repositories/shopingcart/app/controllers/home_controller.rb": [
         1,
         1,
@@ -436,19 +430,24 @@
       "/Users/developer/Repositories/shopingcart/app/controllers/products_controller.rb": [
         1,
         1,
+        null,
+        1,
+        4,
         4,
         null,
-        1,
-        null,
-        3,
-        null,
-        null,
         null,
         1,
         3,
         null,
         3,
         3,
+        3,
+        null,
+        null,
+        1,
+        1,
+        4,
+        4,
         null,
         null
       ],
@@ -457,6 +456,6 @@
         null
       ]
     },
-    "timestamp": 1355374909
+    "timestamp": 1355375613
   }
 }

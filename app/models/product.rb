@@ -10,5 +10,5 @@ class Product < ActiveRecord::Base
   scope :last_four_products, order('created_at DESC').limit(4)
   scope :by_category,        proc { |category_id| joins(:category).where(categories: { slug: category_id }) }
   scope :by_price_range,     proc { |min, max| where("price >= ? and price <= ?", min, max) }
-  scope :available, -> { where("quantity != ?", 0) }
+  scope :available,          -> { where("quantity != ?", 0) }
 end
