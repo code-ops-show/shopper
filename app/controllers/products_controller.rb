@@ -2,8 +2,7 @@ class ProductsController < ApplicationController
   before_filter :set_price_range, only: [:index]
 
   def index
-    @products = params[:category_id].present? ? Product.by_category(params[:category_id]) : Product
-    @products = (session[:min].present? and session[:max].present?) ? @products.by_price_range(session[:min], session[:max]) : @products.all
+    @products = Product.by_category(params[:category_id]).by_price_range(session[:min], session[:max])
   end
 
   def show

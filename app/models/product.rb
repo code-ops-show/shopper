@@ -8,7 +8,13 @@ class Product < ActiveRecord::Base
   attr_accessible :category_id, :name, :description, :quantity, :price, :cover
 
   scope :last_four_products, order('created_at DESC').limit(4)
-  scope :by_category,        proc { |category_id| joins(:category).where(categories: { slug: category_id }) }
-  scope :by_price_range,     proc { |min, max| where("price >= ? and price <= ?", min, max) }
   scope :available,          -> { where("quantity != ?", 0) }
+
+  def self.by_category(category_id)
+    category_id.present? ? joins(:category).where(categories: { slug: category_id }) : scoped
+  end
+
+  def self.by_price_range(min, max)
+    (min.present? and max.present?) ? where("price >= ? and price <= ?", min, max) : scoped
+  end
 end

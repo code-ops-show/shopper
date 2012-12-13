@@ -22,7 +22,7 @@ describe ProductsController do
     end
 
     it "should assign the all product to the view by category" do
-      get :index, category_id: category.id
+      get :index, category_id: category.slug
       assigns[:products].size.should eq category.products.size
     end
   end
