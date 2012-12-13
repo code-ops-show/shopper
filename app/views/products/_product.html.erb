@@ -1,4 +1,4 @@
-<li class="span4">
+<%= content_tag_for(:li, product, class: 'span4') do |product| %>
   <div class='thumbnail no-bottom'>
     <div class='cover'>
       <%= link_to image_tag(product.cover.thumb, title: product.name), product %>
@@ -14,4 +14,4 @@
       <%= render 'orders/add_to_cart', product: product %>
     </div>
   </div>
-</li>
+<% end %>
