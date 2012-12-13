@@ -4,6 +4,6 @@ module ProductsHelper
   end
 
   def add_cart_for product
-    product_added_for(product.id) ?  current_order.items.where(product_id: product.id).first : [product, product.items.build]
+    product_added_for(product.id) ? current_order.items.where(product_id: product.id).first : [product, product.items.build]
   end
 end
