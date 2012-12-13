@@ -90,9 +90,12 @@ ul.thumbnails
     li.dropdown.open.active > .dropdown-toggle,
       color: white
       background-color: darken($navbar, 5%)
-      b.caret
+      .caret
         border-top-color: white
         border-bottom-color: white
+    li.dropdown > .dropdown-toggle .caret,
+      border-top-color: white
+      border-bottom-color: white
     > li 
       > a
         &:focus,
@@ -135,7 +138,22 @@ ul.dropdown-menu
   input, textarea, td
     margin: 0
 
+ul.main-list
+  list-style: none
+  margin: 0 0 20px 0
+  padding: 6px 0
+  > li
+    background-color: white
+    margin: 6px 0
+    padding: 6px
+    border: 1px solid #ddd
+    border-radius: 4px
+    &.success
+      background-color: #DFF0D8
+
 .well
+  &.main-list
+    padding: 2px 6px
   &.well-elderflower
     padding: 0
     background-color: white
@@ -153,7 +171,7 @@ ul.dropdown-menu
       border-bottom-right-radius: 4px
       margin-top: 0
       margin-bottom: 0
-      padding-left: 160px + 19px
+      padding-left: 160px + 39px
   &.well-nav-list
     padding: 8px 0
     max-width: 220px
@@ -194,19 +212,6 @@ $btnBackgroundDark: #CC2A41
     background-color: $btnDark
     *background-color: $btnLight
 
-ul.main-list
-  list-style: none
-  margin: 0 0 20px 0
-  padding: 2px 6px
-  > li
-    background-color: white
-    margin: 6px 0
-    padding: 6px
-    border: 1px solid #ddd
-    border-radius: 4px
-    &.success
-      background-color: #DFF0D8
-
 footer
   margin-top: 40px
   div.copy-right
@@ -224,8 +229,6 @@ div.modal
       padding: 15px 0
       table.table
         margin-bottom: 0
-        td
-          vertical-align: middle
       &.empty
         padding: 20px 15px
         .alert
@@ -239,6 +242,10 @@ div.modal
   div.modal-footer
     background-color: $mainBackground
     border-color: $border
+
+#view_cart
+  table.table td
+    vertical-align: middle
 
 
 
