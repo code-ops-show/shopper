@@ -1,5 +1,0 @@
-$('#item_<%= @item.id %>').addClass('remove_me').hide();
-$("<%= j render 'items/form', item: @item %>").insertBefore('#item_<%= @item.id %>');
-$('.remove_me').remove();
-$('#item_<%= @item.id %>').effect('highlight', {}, 400);
-Cart.update(<%= current_order.items.sum(&:quantity) %>)

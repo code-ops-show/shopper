@@ -4,9 +4,9 @@
       <div id='view_cart' class='well well-elderflower'>
         <%= content_tag :fieldset do  %>
           <legend>Order Items</legend>
-          <%= render 'items/items', items: @order.items, partial_type: 'form' %>
+          <%= render 'items/items', items: @cart.items, partial_type: 'form' %>
         <% end %>
-        <%= render 'orders/form' %>
+        <%= render 'form' %>
       </div>
     </div>
   </div>
