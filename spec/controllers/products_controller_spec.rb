@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe ProductsController do
 
-  let(:product) { Product.make! }
+  let(:product)     { Product.make! }
+  let(:category)    { product.category }
 
   describe "GET 'index'" do
     it "return http success" do
@@ -10,7 +11,7 @@ describe ProductsController do
       response.should be_success
     end
 
-    it "should assign the all product to the view" do
+    it "should assign product not nil" do
       get :index
       assigns[:products].should_not be_nil
     end
@@ -18,6 +19,11 @@ describe ProductsController do
     it "should assign the all product to the view" do
       get :index
       assigns[:products].should == Product.all
+    end
+
+    it "should assign the all product to the view by category" do
+      get :index, category_id: category.id
+      assigns[:products].size.should eq category.products.size
     end
   end
 
