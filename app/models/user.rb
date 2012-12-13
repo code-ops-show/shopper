@@ -27,4 +27,12 @@ class User < ActiveRecord::Base
   def default_address
     address ||= addresses.default.first
   end
+
+  def select_address_for order
+    if order and order[:address_id].present?
+      addresses.find(order[:address_id])
+    elsif not order
+      default_address
+    end
+  end
 end

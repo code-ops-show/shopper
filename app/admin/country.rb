@@ -16,8 +16,6 @@ ActiveAdmin.register Country do
     end
 
     panel "City" do
-      puts country.inspect
-      puts country.cities
       table_for country.cities do
         column "Name" do |city|
           link_to city.name, admin_country_city_path(country, city)

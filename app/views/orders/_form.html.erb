@@ -3,7 +3,7 @@
     <legend>
       Shipping Address
       <div class='pull-right'>
-        <%= f.collection_select :address_id, Address.where(user_id: current_user.id).sort, :id, :street_address, options = { include_blank: "&mdash; new address &mdash;".html_safe, selected: (@order.address.id rescue nil) }, data: { remote: true, url: url_for(controller: 'orders', action: 'edit') } %>
+        <%= f.collection_select :address_id, Address.where(user_id: current_user.id).sort, :id, :street_address, options = { include_blank: "&mdash; new address &mdash;".html_safe, selected: (@order.address.id rescue nil) }, data: { remote: true, url: edit_order_path(@order) } %>
       </div>
     </legend>
     <%= f.fields_for :address do |address_field| %>

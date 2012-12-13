@@ -7,10 +7,7 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(params[:address])
-    
-    unless @address.save
-      render json: @address.errors, status: :unprocessable_entity
-    end
+    render_form_error_for @address unless @address.save
   end
 
   def edit
@@ -19,10 +16,7 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    
-    unless @address.update_attributes(params[:address])
-      render json: @address.errors, status: :unprocessable_entity
-    end
+    render_form_error_for @address unless @address.update_attributes(params[:address])
   end
 
   def destroy

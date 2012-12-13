@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_order
   
  private
   def token
@@ -10,5 +9,20 @@ class ApplicationController < ActionController::Base
   def current_order
     cookies[:token] = { value: token, expires: 1.hour.from_now }
     @current_order ||= Order.cart_by(token) || Order.create!(token: token)
+  end
+  helper_method :current_order
+
+  def render_form_error_for object
+    error = {
+        id: object.id,
+        model: controller_name.singularize, 
+        errors: object.errors 
+      }
+    render json: error , status: :unprocessable_entity
+  end
+
+  def render_box_error_for object
+    error = { noty: object.errors  }
+    render json: error , status: :unprocessable_entity
   end
 end
