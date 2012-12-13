@@ -6,6 +6,10 @@ describe OrdersController do
   let!(:address)    { order.address }
   let(:user)        { address.user }
 
+  before :each do
+    controller.stub(:current_user).and_return(user)
+  end
+
   describe "GET 'show" do
    it "should return http success" do
       get :show, id: order.id, format: :js
@@ -53,7 +57,7 @@ describe OrdersController do
 
     it "should assign order address" do
       get :edit, id: order.id, format: :js
-      assigns[:order].address.id.should be_nil
+      assigns[:order].address.should eq order.address
     end
 
     it "should assign order address with default address should not nil" do

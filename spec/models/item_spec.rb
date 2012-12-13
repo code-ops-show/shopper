@@ -14,7 +14,7 @@ describe Item do
     end
 
     it "should return full price" do
-      item.full_price.should eq(1000)
+      item.full_price.should eq(100)
     end
     context "update" do 
       it "should not be valid on update" do 
