@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter "/admin"
+  add_filter "/uploaders"
 end
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'

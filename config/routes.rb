@@ -16,6 +16,7 @@ Shopingcart::Application.routes.draw do
 
   resources :items
   resources :orders
+  resources :carts
   resources :products do 
     resources :items, only: [:create]
   end
