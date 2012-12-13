@@ -1,21 +1,18 @@
 class ItemsController < ApplicationController
+  respond_to :js, :json
+
   def create
-    if current_item.blank? 
-      current_order.items.create!(params[:item])
-    else 
-      unless current_item.update_quantity(params[:item][:quantity])
-        render json: [{error: "Number is over product quantity"}], status: :unprocessable_entity
-      end
+    @product = Product.available.find(params[:product_id])
+    @item = @product.items.build(params[:item])
+    if @item.order = current_order and @item.save
+      respond_with @item
+    else
+      render_box_error_for @item
     end
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.update_attributes(params[:item])
-  end
-
-private
-  def current_item
-    current_order.items.where(product_id: params[:item][:product_id]).first
+    @item = current_order.items.find(params[:id])
+    render_box_error_for(@item) unless @item.update_attributes(params[:item])
   end
 end
