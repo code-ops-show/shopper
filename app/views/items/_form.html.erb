@@ -10,6 +10,6 @@
   <td><%= number_to_currency(item.unit_price) %></td>
   <td><%= full_price(item) %></td>
   <td>
-    <a class='btn btn-link remove'><i class='icon-remove'></i></a>
+    <%= link_to item_path(item), method: :delete, remote: true, class: 'btn btn-link remove', confirm: "Are you sure remove #{item.product.name} from cart?" do %><i class='icon-remove'></i><% end %>
   </td>
 <% end %>

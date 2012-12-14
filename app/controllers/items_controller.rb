@@ -15,4 +15,9 @@ class ItemsController < ApplicationController
     @item = current_order.items.find(params[:id])
     render_box_error_for(@item) unless @item.update_attributes(params[:item])
   end
+
+  def destroy
+    @item = current_order.items.find(params[:id])
+    render_box_error_for(@item) unless @item.destroy
+  end
 end
