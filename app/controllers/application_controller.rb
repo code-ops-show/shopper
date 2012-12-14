@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   def render_form_error_for object
-    error = {
+    error = 
+      {
         id: object.id,
         model: controller_name.singularize, 
         errors: object.errors 
@@ -21,8 +22,8 @@ class ApplicationController < ActionController::Base
     render json: error , status: :unprocessable_entity
   end
 
-  def render_box_error_for object
-    error = { noty: object.errors  }
-    render json: error , status: :unprocessable_entity
+  def render_box_error_for object, text = nil
+    error = { noty: text ? text : object.errors }
+    render json: error, status: :unprocessable_entity
   end
 end
