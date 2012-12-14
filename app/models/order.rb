@@ -33,6 +33,6 @@ class Order < ActiveRecord::Base
   end
 
   def total_price
-    items.to_a.sum(&:full_price)
+    items.sum(&:full_price)
   end
 end

@@ -1,13 +1,58 @@
 <div class='container'>
   <div class='row'>
-    <div class='span8 offset2'>
+    <div class='span8'>
       <div id='view_cart' class='well well-elderflower'>
         <%= content_tag :fieldset do  %>
-          <legend>Order Items</legend>
+          <legend>Cart Items</legend>
           <%= render 'items/items', items: @cart.items, partial_type: 'form' %>
         <% end %>
-        <%= render 'form' %>
+        <%= form_for @cart, url: {controller: 'carts', action: :update}, html: {class: 'form-horizontal'} do |f| %>
+        <%= content_tag :fieldset do %>
+          <legend>
+            Shipping Address
+            <div class='pull-right'>
+              <%= f.collection_select :address_id, Address.where(user_id: current_user.id).sort, :id, :street_address, options = { include_blank: "&mdash; new address &mdash;".html_safe, selected: (@cart.address.id rescue nil) }, data: { remote: true, url: edit_cart_path(@cart) } %>
+            </div>
+          </legend>
+          <%= f.fields_for :address do |address_field| %>
+            <%= render 'addresses/form', f: address_field %>
+            <div class='control-group'>
+              <div class='controls'>
+                <label class='checkbox'>
+                  <%= address_field.check_box :default %> Set this address as default
+                </label>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class='span4'>
+      <div id='current-total' class='well well-elderflower'>
+        <%= content_tag :fieldset do %>
+          <legend>Your Current Total</legend>
+          <div class='total'><%= number_to_currency(@cart.total_price + @cart.address.country.shipping_rate.rate) %></div>
+          <table class='table'>
+            <thead>
+              <tr>
+                <th colspan='2'>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sub Total</td>
+                <td width='90' class='sub-total price' data-sub-total='<%= @cart.total_price %>'><%= number_to_currency(@cart.total_price) %></td>
+              </tr>
+              <tr>
+                <td>Shipping Rate</td>
+                <td class='shipping-rate price'>not calculated</td>
+              </tr>
+            </tbody>
+          </table>
+          <p><%= f.submit "Purchase", class: 'btn btn-block btn-success' %></p>
+        <% end %>
       </div>
     </div>
   </div>
+  <% end %>
 </div>

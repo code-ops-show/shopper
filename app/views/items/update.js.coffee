@@ -6,3 +6,6 @@ else
   $("#product_<%= @item.product.id %>").find('.caption').effect('highlight', {}, 2000)
 
 Cart.update(<%= current_order.items.sum(&:quantity) %>)
+Cart.setSubTotal("<%= number_to_currency(current_order.total_price) %>")
+Cart.setTotal("<%= number_to_currency(@total) %>")
+$('#current-total').effect('highlight', {}, 400)

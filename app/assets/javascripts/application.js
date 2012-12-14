@@ -19,4 +19,4 @@
 //= require noty/layouts/topRight
 //= require noty/themes/default
 //= require shopper
-//= require orders
+//= require carts
