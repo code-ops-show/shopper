@@ -242,8 +242,16 @@ div.modal
     border-color: $border
 
 #view_cart
-  table.table td
-    vertical-align: middle
-
+  table.table 
+    td
+      vertical-align: middle
+    &.items
+      td > div.thumb
+        width: 40px
+        height: 27px
+        overflow: hidden
+        > img
+          min-width: 40px
+          min-height: 27px
 
 
