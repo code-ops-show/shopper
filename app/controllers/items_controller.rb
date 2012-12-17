@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     @item = current_order.items.find(params[:id])
     
     if @item.update_attributes(params[:item])
-      @total = current_order.total + (session[:shipping_rate] || 0)
+      @balance = current_order.reload.total + (session[:shipping_rate] || 0)
     else
       render_box_error_for(@item) 
     end

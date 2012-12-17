@@ -5,13 +5,13 @@ $(document).ready ->
 window.Cart =
   setup: ->
     timer = null
-    $('#view_cart').on 'input', 'input[name*="item[quantity]"]', (e) ->
+    $('#view_cart').on 'input', 'input[name*="[quantity]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout => 
           $.ajax
-            url: $(@).parent('form').attr('action')
+            url: $(@).parents('form').attr('action')
             dataType: 'script'
-            data: $(@).parent('form').serialize()
+            data: $(@).parents('form').serialize()
             type: "POST"
             error: (jqXHR, textStatus, error) =>
               $(@).effect('highlight', {}, 2000)

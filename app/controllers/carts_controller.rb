@@ -9,7 +9,12 @@ class CartsController < OrdersController
 
   def update
     @cart = Order.find(params[:id])
+    render_box_error_for(@cart) unless @cart.update_attributes(params[:order])
+    # if params[:order][:address]
+    #   current_order.purchase
+    # else 
+    # end
     # @cart.purchase if @cart.update_attributes!(params[:order])
-    redirect_to root_path
+    # redirect_to root_path
   end
 end

@@ -1,10 +1,11 @@
 class Order < ActiveRecord::Base
   belongs_to :address
-  has_many   :items
+  has_many   :items,    order: 'created_at ASC'
   has_many   :products, through: :items
 
-  attr_accessible :state, :token, :address_id, :address_attributes
-  accepts_nested_attributes_for :address
+  attr_accessible :state, :token, :address_id, :address_attributes, :items_attributes
+  accepts_nested_attributes_for :address, reject_if: :reject_address
+  accepts_nested_attributes_for :items
 
   scope :open_orders, -> { with_state(:cart) }
 
@@ -28,6 +29,10 @@ class Order < ActiveRecord::Base
 
   def self.cart_by token
     Order.where(token: token, state: 'cart').includes(items: [:product]).first
+  end
+
+  def reject_address(attribute)
+    attribute["street_address"].blank?
   end
 
   def calculate_items

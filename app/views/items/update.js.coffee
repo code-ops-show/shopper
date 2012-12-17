@@ -7,5 +7,5 @@ else
 
 Cart.update(<%= current_order.reload.items_count %>)
 Cart.setSubTotal("<%= number_to_currency(current_order.total) %>")
-Cart.setTotal("<%= number_to_currency(@total) %>")
+Cart.setTotal("<%= number_to_currency(@balance) %>")
 $('#current-total').effect('highlight', {}, 400)

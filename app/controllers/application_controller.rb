@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   
   def current_order
     cookies[:token] = { value: token, expires: 1.hour.from_now }
-    @current_order ||= Order.cart_by(token) || Order.create!(token: token)
+    @current_order = Order.cart_by(token) || Order.create!(token: token)
     first_time_visit unless session[:first_time]
     @current_order
   end

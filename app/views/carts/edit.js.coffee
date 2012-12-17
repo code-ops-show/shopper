@@ -1,6 +1,5 @@
-$('#edit_order_<%= @cart.id %>').html("<%= j render 'form' %>")
+$('#shipping').html("<%= j render 'shipping', cart: @cart %>")
 
-Cart.setShipping()
-Cart.setSubTotal("<%= number_to_currency(current_order.total) %>")
-Cart.setTotal("<%= number_to_currency(@total) %>")
+$('#current-total').find('.content').html("<%= j render 'current_total', cart: @cart %>")
 $('#current-total').effect('highlight', {}, 400)
+Cart.setShipping()
