@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.cart_by token
-    cart ||= Order.where(token: token, state: 'cart').includes(items: [:product]).first
+    Order.where(token: token, state: 'cart').includes(items: [:product]).first
   end
 
   def calculate_items
