@@ -4,7 +4,7 @@ class CartsController < OrdersController
     @cart.address = current_user.select_address_for(params[:order]) || Address.new
 
     session[:shipping_rate] = @cart.address.id ? @cart.address.country.shipping_rate.rate : nil
-    @total = current_order.total_price + (session[:shipping_rate] || 0)
+    @total = current_order.total + (session[:shipping_rate] || 0)
   end
 
   def update

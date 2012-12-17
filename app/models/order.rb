@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
-  has_many   :items
   belongs_to :address
-  has_many   :products,     through: :items
+  has_many   :items
+  has_many   :products, through: :items
 
   attr_accessible :state, :token, :address_id, :address_attributes
   accepts_nested_attributes_for :address
@@ -27,12 +27,12 @@ class Order < ActiveRecord::Base
   end
 
   def self.cart_by token
-    cart = Order.where(token: token, state: 'cart').includes(items: [:product]).first
-    cart.touch if cart.present?
-    cart
+    cart ||= Order.where(token: token, state: 'cart').includes(items: [:product]).first
   end
 
-  def total_price
-    items.sum(&:full_price)
+  def calculate_items
+    self.items_count = items.sum(&:quantity)
+    self.total = items.sum(&:sub_total)
+    self.save
   end
 end

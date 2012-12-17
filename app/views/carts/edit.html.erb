@@ -31,7 +31,7 @@
       <div id='current-total' class='well well-elderflower'>
         <%= content_tag :fieldset do %>
           <legend>Your Current Total</legend>
-          <div class='total'><%= number_to_currency(@cart.total_price + @cart.address.country.shipping_rate.rate) %></div>
+          <div class='total'><%= number_to_currency(@cart.total + @cart.address.country.shipping_rate.rate) %></div>
           <table class='table'>
             <thead>
               <tr>
@@ -41,7 +41,7 @@
             <tbody>
               <tr>
                 <td>Sub Total</td>
-                <td width='90' class='sub-total price' data-sub-total='<%= @cart.total_price %>'><%= number_to_currency(@cart.total_price) %></td>
+                <td width='90' class='sub-total price' data-sub-total='<%= @cart.total %>'><%= number_to_currency(@cart.total) %></td>
               </tr>
               <tr>
                 <td>Shipping Rate</td>

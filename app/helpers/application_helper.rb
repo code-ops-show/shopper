@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def render_cart_menu
     active = request.path == edit_cart_path(current_order.id) ? 'active' : ''
-    size = current_order.items.sum(&:quantity)
+    size = current_order.items_count
     
     content_tag :li, class: "cart #{active}" do
       link_to (current_user and active.eql?('active')) ? edit_cart_path(current_order.id) : cart_path(current_order), remote: (not active.eql?('active')) do
