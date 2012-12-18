@@ -34,3 +34,4 @@
     <%= f.phone_field :phone, class: 'input-xlarge' %>
   </div>
 </div>
+<%= f.hidden_field :user_id, value: current_or_guest_user.id %>
