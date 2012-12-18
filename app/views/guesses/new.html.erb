@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="span6">
-          <%= form_for("user", url: new_user_registration_path, html: { multipart: true, class: "form-horizontal well well-elderflower"}) do |f| %>
+          <%= form_for(User.new, as: :user, url: registration_path(:user), html: { multipart: true, class: "form-horizontal well well-elderflower"}) do |f| %>
             <%= content_tag :fieldset do %>
               <h3>Sign up</h3>
               <p>It’s free and always will be.</p>
