@@ -8,7 +8,7 @@ class CartsController < OrdersController
     @cart = Order.find(params[:id])
     if @cart.update_attributes(params[:order])
       @cart.purchase if params[:order][:address_id] or (current_or_guest_user and params[:order][:address_attributes])
-      reset_session
+      session.delete(:guest_user_id)
       redirect_to root_path
     else 
       render_box_error_for(@cart)
