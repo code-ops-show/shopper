@@ -1,0 +1,55 @@
+$(document).ready ->
+  Cart.setup()
+  Cart.setShipping()
+
+window.Cart =
+  setup: ->
+    timer = null
+    $('#view_cart').on 'input', 'input[name*="[quantity]"]', (e) ->
+      if timer then clearTimeout(timer)
+      timer = setTimeout (=> 
+          $.ajax
+            url: $(@).parents('form').attr('action')
+            data: $(@).parents('form').serialize()
+            dataType: 'script'
+            type: "POST"
+            error: (jqXHR, textStatus, error) =>
+              $(@).effect('highlight', {}, 2000)
+              $(@).val($(@).data('quantity'))
+        ), 800
+    $('#shipping').on 'change', 'input[name="order[address_id]"]', (e) ->
+      if timer then clearTimeout(timer)
+      timer = setTimeout (=> 
+          $.ajax
+            url: "#{$(@).parents('form').attr('action')}/edit"
+            data: $(@).parents('form').serialize()
+            dataType: 'script'
+            type: "GET"
+        ), 800
+
+  update: (quantity = 0) ->
+    cart = $('.navbar').find('.cart a')
+    cart.stop(true, true).effect('pulsate', { times: 3 })
+    cart.html("<i class=\"icon-shopping-cart icon-white\"></i> Cart (#{quantity})")
+  
+  shippingChanged: ->
+    shipping = $('[name="order[address_id]"]:checked').data('shipping-rate')
+    shipping_for_total = $('#current-total').find('.shipping-rate').data('shipping-rate')
+
+    shipping isnt shipping_for_total
+
+  setSubTotal: (price = 0) ->
+    $('#current-total').find('.sub-total').html(price)
+
+  setShipping: ->
+    rate = $('[name="order[address_id]"]:checked').data('shipping-rate')
+    shipping = $('#current-total').find('.shipping-rate')
+    if shipping and rate
+      shipping.html(rate)
+      shipping.attr('data-shipping-rate', rate)
+
+  setTotal: (price = 0) ->
+    $('#current-total').find('.total').html(price)
+
+  shippingSubmit: ->
+    $('#shipping').find('form ').submit()

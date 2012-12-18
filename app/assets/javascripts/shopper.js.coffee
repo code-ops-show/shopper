@@ -18,7 +18,8 @@ $(document).ready ->
         element = $("##{response.model}_#{k}")
         if element.length > 0
           element.parents('.control-group').addClass('error')
-          element.parents('.controls').append("<span class='help-block'>#{v}</span>") if element.parents('.controls').find('.help-block').length is 0
+          element.attr('placeholder', v)
+          # element.parents('.controls').append("<span class='help-block'>#{v}</span>") if element.parents('.controls').find('.help-block').length is 0
 
   $('#flash').on 'click', 'a.close', (e) ->
     e.preventDefault()

@@ -25,7 +25,7 @@
 <div class='control-group'>
   <%= f.label :country_id, class: 'control-label' %>
   <div class='controls'>
-    <%= f.select :country_id, options_for_select(Country.all.map { |c| [c.name, c.id, { "data-shipping-rate" => c.shipping_rate.rate }] }, selected: f.object.country_id), include_blank: true %>
+    <%= f.select :country_id, options_for_select(Country.includes(:shipping_rate).all.map { |c| [c.name, c.id, { "data-shipping-rate" => c.shipping_rate.rate }] }, selected: (f.object.country_id rescue nil)), include_blank: true %>
   </div>
 </div>
 <div class='control-group'>
@@ -40,4 +40,4 @@
     <%= f.email_field :email, class: 'input-xlarge' %>
   </div>
 </div>
-<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :user_id, value: current_user ? current_user.id : nil %>
