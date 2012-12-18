@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def current_or_guest_user
     current_user || guest_user
   end
+  helper_method :current_or_guest_user
 
 private
 
@@ -12,8 +13,8 @@ private
   end
 
   def create_guest_user
-    u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
-    u.save(:validate => false)
+    u = User.create(:name => "guest", email: "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    u.save(validate: false)
     u
   end
 
