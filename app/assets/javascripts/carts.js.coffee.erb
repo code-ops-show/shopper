@@ -21,10 +21,10 @@ window.Cart =
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
           $.ajax
-            url: "#{$(@).parents('form').attr('action')}/edit"
+            url: $(@).parents('form').attr('action')
             data: $(@).parents('form').serialize()
             dataType: 'script'
-            type: "GET"
+            type: "POST"
         ), 800
 
   update: (quantity = 0) ->

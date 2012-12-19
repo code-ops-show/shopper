@@ -3,4 +3,6 @@ class Country < ActiveRecord::Base
   belongs_to :shipping_rate
 
   attr_accessible :name, :shipping_rate_id
+
+  delegate :rate, to: :shipping_rate
 end

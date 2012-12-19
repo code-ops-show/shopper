@@ -5,6 +5,8 @@ class Address < ActiveRecord::Base
 
   scope :default, -> { where(default: true) }
 
+  delegate :rate, to: :country
+
   validates :street_address, :city, :state, :zip, :country_id, :phone, :email, :user_id, presence: true
   attr_accessible :street_address, :city, :state, :zip, :country_id, :phone, :email, :user_id, :default
   accepts_nested_attributes_for :orders

@@ -8,9 +8,9 @@
 </legend>
 <div class="radios">
   <%= form_for(cart, url: cart_path(cart), remote: true, html: { class: 'form-horizontal' }) do |f| %>
-    <% Address.where(user_id: current_user.id).includes(country: [:shipping_rate]).sort.each do |address| %>
+    <% current_user.addresses.includes(country: [:shipping_rate]).sort.each do |address| %>
       <%= content_tag_for :label, address do %>
-        <%= f.radio_button :address_id, address.id, checked: ((params[:order] and params[:order][:address_id].to_i == address.id) || (not params[:order] and address.default)), data: { shipping_rate: address.country.shipping_rate.rate } %>
+        <%= f.radio_button :address_id, address.id, checked: ((address.id == cart.address_id) || (not cart.address_id and address.default)), data: { shipping_rate: address.country.shipping_rate.rate } %>
           <div class='row-fluid address'>
             <div class='span1 checked'>
               <i class='icon-ok-sign icon-white' class='hide'></i>
@@ -21,7 +21,7 @@
           </div>
       <% end %>
     <% end %>
-    <% if Address.where(user_id: current_user.id).size == 0 %>
+    <% if current_user.addresses.size.eql?(0) %>
       <div class='alert alert-info'>Create new address</div>
     <% end %>
   <% end %>

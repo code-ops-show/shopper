@@ -1,5 +1,5 @@
 <legend>Your Current Total</legend>
-<div class='total'><%= number_to_currency(cart.total + (cart.address.country.shipping_rate.rate rescue 0)) %></div>
+<div class='total'><%= number_to_currency(@cart.get_balance) %></div>
 <table class='table'>
   <thead>
     <tr>

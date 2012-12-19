@@ -6,7 +6,7 @@
           <legend>Cart Items</legend>
           <%= render 'carts/items/items', cart: @cart %>
         <% end %>
-        <%= content_tag :fieldset, id: 'shipping', data: { bound_to: edit_cart_path(@cart) } do  %>
+        <%= content_tag :fieldset, id: 'shipping' do  %>
           <%= render (current_user ? 'carts/addresses/shipping' : 'carts/addresses/shipping_guest'), cart: @cart %>
         <% end %>
       </div>

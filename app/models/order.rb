@@ -26,6 +26,10 @@ class Order < ActiveRecord::Base
       transition :purchased => :shipped
     end
   end
+  
+  def get_balance
+    total + ((not address or address.new_record?) ? 0 : address.rate)
+  end
 
   def self.cart_by token
     Order.where(token: token, state: 'cart').includes(items: [:product]).first
