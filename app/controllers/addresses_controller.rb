@@ -1,6 +1,4 @@
 class AddressesController < ApplicationController
-  before_filter :authenticate_user!
-
   def new
     @address = Address.new
   end
