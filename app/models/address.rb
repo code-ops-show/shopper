@@ -7,7 +7,7 @@ class Address < ActiveRecord::Base
 
   delegate :rate, to: :country
 
-  validates :street_address, :city, :state, :zip, :country_id, :phone, :email, presence: true
+  validates :street_address, :city, :state, :zip, :country_id, :phone, presence: true
   attr_accessible :street_address, :city, :state, :zip, :country_id, :phone, :user_id, :default
   accepts_nested_attributes_for :orders
 

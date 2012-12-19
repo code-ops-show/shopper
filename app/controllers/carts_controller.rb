@@ -1,7 +1,7 @@
 class CartsController < OrdersController
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
-    @cart.address = @cart.address || current_or_guest_user.select_address_for(params[:order]) || Address.new
+    @cart.address = @cart.address || (current_or_guest_user and current_or_guest_user.default_address) || Address.new
   end
 
   def update
