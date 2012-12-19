@@ -1,12 +1,16 @@
 class CartsController < OrdersController
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
-    @cart.address = @cart.address || (current_user and current_user.default_address) || Address.new
+    @cart.address = @cart.address || current_or_guest_user.select_address_for(params[:order]) || Address.new
   end
 
   def update
     @cart = Order.find(params[:id])
-    render_box_error_for(@cart) unless @cart.update_attributes(params[:order])
+    if @cart.update_attributes(params[:order])
+      session.delete(:guest_user_id)
+    else 
+      render_box_error_for(@cart)
+    end
 
     respond_to do |format|
       format.js {

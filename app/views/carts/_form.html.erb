@@ -1,0 +1,23 @@
+<%= form_for @cart, url: {controller: 'carts', action: :update}, html: {class: 'form-horizontal'} do |f| %>
+  <%= content_tag :fieldset do %>
+    <legend>
+      Shipping Address
+      <div class='pull-right'>
+        <%= f.collection_select :address_id, Address.where(user_id: current_user.id).sort, :id, :street_address, options = { include_blank: "&mdash; new address &mdash;".html_safe, selected: (@cart.address.id rescue nil) }, data: { remote: true, url: edit_cart_path(@cart) } if current_user %>
+      </div>
+    </legend>
+    <%= f.fields_for :address do |address_field| %>
+      <%= render 'addresses/form', f: address_field %>
+      <div class='control-group'>
+        <div class='controls'>
+          <label class='checkbox'>
+            <%= address_field.check_box :default %> Set this address as default
+          </label>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class='form-actions'>
+    <%= f.submit "Purchase", class: 'btn btn-large btn-success span3' %>
+  </div>
+<% end %>

@@ -32,4 +32,5 @@ Shopingcart::Application.routes.draw do
   resources :addresses
 
   root to: 'home#index'
+  match "/guesses/new" => "guesses#new"
 end

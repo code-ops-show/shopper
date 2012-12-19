@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20121219034358) do
     t.string   "state"
     t.integer  "zip"
     t.integer  "phone"
-    t.string   "email"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"

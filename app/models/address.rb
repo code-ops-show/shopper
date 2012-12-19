@@ -7,8 +7,8 @@ class Address < ActiveRecord::Base
 
   delegate :rate, to: :country
 
-  validates :street_address, :city, :state, :zip, :country_id, :phone, :email, :user_id, presence: true
-  attr_accessible :street_address, :city, :state, :zip, :country_id, :phone, :email, :user_id, :default
+  validates :street_address, :city, :state, :zip, :country_id, :phone, :email, presence: true
+  attr_accessible :street_address, :city, :state, :zip, :country_id, :phone, :user_id, :default
   accepts_nested_attributes_for :orders
 
   after_create  :set_default, if: -> { default == true or user.addresses.size.eql?(1) }
