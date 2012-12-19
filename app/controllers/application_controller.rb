@@ -52,5 +52,5 @@ private
 
   def after_sign_in_path_for(resource)
     URI(request.referer).path == "/guesses/new" ? edit_cart_path(current_order) : root_path
-  end   
+  end
 end

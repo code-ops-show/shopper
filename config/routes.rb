@@ -1,4 +1,4 @@
-Shopingcart::Application.routes.draw do
+Shopper::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
