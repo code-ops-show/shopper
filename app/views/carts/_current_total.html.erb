@@ -1,0 +1,19 @@
+<legend>Your Current Total</legend>
+<div class='total'><%= number_to_currency(@cart.get_balance) %></div>
+<table class='table'>
+  <thead>
+    <tr>
+      <th colspan='2'>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sub Total</td>
+      <td width='90' class='sub-total price' data-sub-total='<%= cart.total %>'><%= number_to_currency(@cart.total) %></td>
+    </tr>
+    <tr>
+      <td>Shipping Rate</td>
+      <td class='shipping-rate price'>not calculated</td>
+    </tr>
+  </tbody>
+</table>

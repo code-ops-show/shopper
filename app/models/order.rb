@@ -1,10 +1,11 @@
 class Order < ActiveRecord::Base
-  has_many   :items
   belongs_to :address
-  has_many   :products,     through: :items
+  has_many   :items,    order: 'created_at ASC'
+  has_many   :products, through: :items
 
-  attr_accessible :state, :token, :address_id, :address_attributes
-  accepts_nested_attributes_for :address
+  attr_accessible :state, :token, :address_id, :address_attributes, :items_attributes
+  accepts_nested_attributes_for :address, reject_if: :reject_address
+  accepts_nested_attributes_for :items
 
   scope :open_orders, -> { with_state(:cart) }
 
@@ -25,14 +26,22 @@ class Order < ActiveRecord::Base
       transition :purchased => :shipped
     end
   end
-
-  def self.cart_by token
-    cart = Order.where(token: token, state: 'cart').includes(items: [:product]).first
-    cart.touch if cart.present?
-    cart
+  
+  def get_balance
+    total + ((not address or address.new_record?) ? 0 : address.rate)
   end
 
-  def total_price
-    items.to_a.sum(&:full_price)
+  def self.cart_by token
+    Order.where(token: token, state: 'cart').includes(items: [:product]).first
+  end
+
+  def reject_address(attribute)
+    attribute["street_address"].blank?
+  end
+
+  def calculate_items
+    self.items_count = items.sum(&:quantity)
+    self.total = items.sum(&:sub_total)
+    self.save
   end
 end

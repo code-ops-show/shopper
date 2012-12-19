@@ -14,9 +14,17 @@ Shopingcart::Application.routes.draw do
     resources :addresses
   end
 
+  namespace :cart do 
+    resources :users do 
+      resources :addresses, only: [:index]
+    end
+  end
+
   resources :items
   resources :orders
-  resources :carts
+  resources :carts do
+    resources :addresses, only: [:new, :create]
+  end
   resources :products do 
     resources :items, only: [:create]
   end

@@ -3,13 +3,11 @@
   <td><%= item.product.name %></td>
   <td><%= number_to_currency(item.product_price) %></td>
   <td>
-    <%= form_for item, remote: true do |f| %>
-      <%= f.number_field :quantity, in: 1..item.product.quantity, data: { quantity: item.quantity }, class: 'input-mini'%>
-      <%= f.submit name: nil, class: 'hide' %>
-    <% end %>
+    <%= i.number_field :quantity, in: 1..item.product.quantity, data: { quantity: item.quantity }, class: 'input-mini'%>
   </td>
   <td><%= full_price(item) %></td>
   <td>
     <%= link_to item_path(item), method: :delete, remote: true, class: 'btn btn-link remove', confirm: "Are you sure remove #{item.product.name} from cart?" do %><i class='icon-remove'></i><% end %>
   </td>
+  <%= i.hidden_field :id %>
 <% end %>

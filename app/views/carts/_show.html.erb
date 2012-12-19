@@ -3,7 +3,7 @@
   <h3>Shopping Cart</h3>
 </div>
 <div class="modal-body">
-  <%= render 'items/items', items: current_order.items, partial_type: 'form' %>
+  <%= render 'carts/items/items', cart: current_order %>
 </div>
 <div class='modal-footer'>
   <a class='btn btn-success' data-dismiss='modal' aria-hidden='true '>Continue Shopping</a>

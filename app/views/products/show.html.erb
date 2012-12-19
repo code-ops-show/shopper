@@ -17,14 +17,14 @@
           <div class='actions'>
             <% if @product.quantity > 0 %>
               In Stock <span class='badge badge-success'><%= @product.quantity %></span>
-            <% else %>
-              <span class='badge badge-important'>Out of Stock</span>
             <% end %>
             <hr>
             <div class="form-inline">
               <h3>
-                <%= number_to_currency @product.price %>
-                <%= render 'products/add_to_cart', product: @product %>
+                <div class='row-fluid'>
+                  <div class='span5'><%= number_to_currency @product.price %></div>
+                  <div class='span7'><%= render 'products/add_to_cart', product: @product %></div>
+                </div>
               </h3>
             </div>
           </div>

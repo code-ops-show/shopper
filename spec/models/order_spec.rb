@@ -40,7 +40,7 @@ describe Order do
 
     describe 'total_price' do
       it "should total price" do
-        order.total_price.should eq(100)
+        order.total.should eq(100)
       end
     end
 

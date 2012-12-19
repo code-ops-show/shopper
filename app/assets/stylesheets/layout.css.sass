@@ -47,6 +47,8 @@ a
       width: $height
       height: $width
   div.caption
+    h4.price
+      text-align: right
     p
       height: $p-height
 
@@ -63,8 +65,6 @@ ul.thumbnails
       h4
         height: 20px
         overflow: hidden
-        span.price
-          margin-right: 2px
     &.span3
       @include thumbnail(218px, 145px, 80px)
     &.span4
@@ -221,8 +221,8 @@ footer
 
 div.modal
   &.cart
-    width: 780px
-    margin: -250px 0 0 -390px
+    width: 700px
+    margin: -250px 0 0 -350px
     &.fade.in
       top: 30%
     .modal-body
@@ -244,8 +244,16 @@ div.modal
     border-color: $border
 
 #view_cart
-  table.table td
-    vertical-align: middle
-
+  table.table 
+    td
+      vertical-align: middle
+    &.items
+      td > div.thumb
+        width: 40px
+        height: 27px
+        overflow: hidden
+        > img
+          min-width: 40px
+          min-height: 27px
 
 

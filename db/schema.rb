@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212095938) do
+ActiveRecord::Schema.define(:version => 20121219034358) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(:version => 20121212095938) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.string   "country_id"
     t.integer  "phone"
     t.string   "email"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"
     t.boolean  "default"
+    t.integer  "country_id"
   end
 
   create_table "admin_users", :force => true do |t|
@@ -87,16 +87,20 @@ ActiveRecord::Schema.define(:version => 20121212095938) do
     t.integer  "product_id"
     t.integer  "order_id"
     t.integer  "quantity",   :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.float    "sub_total",  :default => 0.0
   end
 
   create_table "orders", :force => true do |t|
     t.string   "token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "state"
     t.integer  "address_id"
+    t.integer  "items_count", :default => 0
+    t.float    "total",       :default => 0.0
+    t.float    "balance",     :default => 0.0
   end
 
   create_table "products", :force => true do |t|

@@ -10,11 +10,11 @@ describe Item do
     let(:order)    { item.order }
 
     it "should return unit price" do
-      item.unit_price.should eq(product.price)
+      item.product_price.should eq(product.price)
     end
 
     it "should return full price" do
-      item.full_price.should eq(100)
+      item.sub_total.should eq(100)
     end
     context "update" do 
       it "should not be valid on update" do 
