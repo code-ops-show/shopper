@@ -7,7 +7,7 @@
           <%= render 'carts/items/items', cart: @cart %>
         <% end %>
         <%= content_tag :fieldset, id: 'shipping' do  %>
-          <%= render (current_user ? 'carts/addresses/shipping' : 'carts/addresses/shipping_guest'), cart: @cart %>
+          <%= render 'carts/addresses/shipping', cart: @cart %>
         <% end %>
       </div>
     </div>
@@ -17,7 +17,11 @@
           <%= render 'current_total', cart: @cart %>
         <% end %>
         <%= content_tag :fieldset, class: 'actions' do %>
-          <%= button_to_function "Purchase", "Cart.shippingSubmit()", class: 'btn btn-block btn-success' %>
+        <%= form_for @cart, url: {controller: 'carts', action: :update}, html: {class: 'form-horizontal'} do |f| %>
+          <%= f.hidden_field :address_id, value: @cart.address_id %>
+          <%= f.hidden_field :state_event, value: 'purchase' %>
+          <%= f.submit "Purchase", class: 'btn btn-block btn-success' %>
+        <% end %>
         <% end %>
       </div>
     </div>

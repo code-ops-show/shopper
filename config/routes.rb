@@ -1,4 +1,4 @@
-Shopingcart::Application.routes.draw do
+Shopper::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
@@ -32,5 +32,6 @@ Shopingcart::Application.routes.draw do
   resources :addresses
 
   root to: 'home#index'
-  match "/guesses/new" => "guesses#new"
+  match "/guests/new" => "guests#new"
+  match "/guests/create" => "guests#create"
 end

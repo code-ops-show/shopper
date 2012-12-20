@@ -12,6 +12,9 @@
         <div class='controls'>
           <label class='checkbox'>
             <%= address_field.check_box :default %> Set this address as default
+            <div class="field">
+              <%= f.hidden_field :state_event, value: 'purchase' %>
+            </div>
           </label>
         </div>
       </div>

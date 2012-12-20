@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
 private
 
   def guest_user
-   User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+    session[:guest_user_id] = session[:guest_user_id].nil? ? create_guest_user.id : session[:guest_user_id]
+    User.find(session[:guest_user_id])
   end
 
   def create_guest_user
@@ -51,6 +52,6 @@ private
   end
 
   def after_sign_in_path_for(resource)
-    URI(request.referer).path == "/guesses/new" ? edit_cart_path(current_order) : root_path
+    URI(request.referer).path == "/guests/new" ? edit_cart_path(current_order) : root_path
   end   
 end
