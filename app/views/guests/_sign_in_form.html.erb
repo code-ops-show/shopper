@@ -1,0 +1,15 @@
+<%= form_for("user", url: user_session_path, html: { class: "well well-elderflower"}) do |f| %>
+  <%= content_tag :fieldset do %>
+    <h3>Sign in</h3>
+    <div class="form-inline">
+      <%= f.email_field :email, placeholder: "Your Email", class: 'input-medium' %>
+      <%= f.password_field :password, placeholder: "Password", class: 'input-medium' %>
+      <%= f.submit "Sign in", class: 'btn btn-success' %>
+    </div>
+    <div class="form-inline checkbox inline">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %> |
+      <%= link_to "Forgot your password?", new_password_path('user') %>
+    </div>
+  <% end %>
+<% end %>
