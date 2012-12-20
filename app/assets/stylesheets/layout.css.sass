@@ -19,6 +19,7 @@ body
   // background: $mainBackground
   // background-image: url(asset-path('bg.png', 'image'))
   #flash
+    padding: 10px
     margin-top: -20px
     margin-bottom: 0
 
@@ -179,8 +180,24 @@ ul.main-list
       > .active > a,
       > .active > a:hover
         background-color: $hover
+  &.sign-in > fieldset
+    .form-inline
+      &.form-field > .btn.btn-success
+        width: 84px
+      &.form-helper
+        padding: 6px 0 0
   &.no-actions > fieldset
     padding: 19px
+
+div[class*="span6"]
+  .form-horizontal
+    .control-group
+      > .control-label
+        width: 120px
+      > .controls
+        margin-left: 140px
+    .form-actions
+      padding-left: 159px
 
 form  
   margin-bottom: 0px

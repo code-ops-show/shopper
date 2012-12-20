@@ -16,7 +16,7 @@ development:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: shopingcart_development
+  database: shopper_development
   pool: 5
   username: developer
   password:
@@ -44,7 +44,7 @@ test:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: shopingcart_test
+  database: shopper_test
   pool: 5
   username: developer
   password:
@@ -54,7 +54,7 @@ production:
   adapter: postgresql 
   encoding: unicode
   reconnect: false  
-  database: shopingcart_production
+  database: shopper_production
   pool: 5
   username: developer
   password:

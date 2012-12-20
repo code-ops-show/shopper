@@ -12,7 +12,7 @@
           <div class='control-group'>
             <%= f.label :email, class: 'control-label' %>
             <div class='controls'>
-              <%= f.email_field :email, placeholder: "Your Email" %>
+              <%= f.email_field :email, placeholder: "Your Email", autofocus: true %>
             </div>
           </div>
           <div class='control-group'>
@@ -36,7 +36,7 @@
               <%= link_to "Forgot Password?", new_password_path(resource_name) %>
             <% end %>
             <div class='controls'>
-              <%= f.submit "Sign in", class: 'btn btn-success btn-large span3' %>
+              <%= f.submit "Sign in", class: 'btn btn-success span3' %>
             </div>
           </div>
         <% end %>
