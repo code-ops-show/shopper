@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     update_without_password params
   end
 
+  def is_guest?
+    name.downcase == 'guest' and email.match(/^guest_\d*@example.com/)
+  end
+
   def to_s
     name or email
   end
