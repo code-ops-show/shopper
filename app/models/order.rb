@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
 
   state_machine initial: :cart do
     before_transition cart: :purchased, do: :validates_cart
+    after_transition cart: :purchased, do: :something
 
     event :purchase do
       transition cart: :purchased
@@ -20,10 +21,6 @@ class Order < ActiveRecord::Base
       transition purchased: :canceled
     end
 
-    event :resume do
-      transition canceled: :purchased
-    end
-
     event :ship do
       transition purchased: :shipped
     end
@@ -31,6 +28,9 @@ class Order < ActiveRecord::Base
 
   def validates_cart
     address_id.present? and item.present?
+  end
+
+  def somthing
   end
   
   def get_balance
