@@ -1,4 +1,5 @@
 class CartsController < OrdersController
+  before_filter :authenticate_user!
 
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first

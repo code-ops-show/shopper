@@ -13,12 +13,12 @@ Shopper::Application.routes.draw do
   resources :categories, only: [:index] do
     resources :products, only: [:index, :show]
   end
+  resources :products do 
+    resources :items, only: [:create]
+  end
   resources :orders
   resources :carts do
     resources :addresses, only: [:new, :create]
-  end
-  resources :products do 
-    resources :items, only: [:create]
   end
   resources :items
   resources :addresses
@@ -26,8 +26,9 @@ Shopper::Application.routes.draw do
     resources :orders
     resources :addresses
   end
-
+  
   root to: 'home#index'
+
   match "/guests/new" => "guests#new"
   match "/guests/create" => "guests#create"
 end
