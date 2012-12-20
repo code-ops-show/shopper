@@ -1,11 +1,10 @@
-<%= form_for(User.new, as: :user, url: registration_path(:user), html: { multipart: true, class: "form-horizontal well well-elderflower"}) do |f| %>
+<%= form_for(User.new, as: :user, url: registration_path(:user), html: { class: "form-horizontal well well-elderflower"}) do |f| %>
   <%= content_tag :fieldset do %>
-    <h3>Sign up</h3>
-    <p>It’s free and always will be.</p>
+    <legend>New Customers <small>&mdash; Register free and always will be.</small></legend>
     <div class='control-group'>
       <%= f.label :email, class: 'control-label' %>
       <div class='controls'>
-        <%= f.email_field :email, placeholder: "E-mail" %>
+        <%= f.email_field :email, placeholder: "Email", autofocus: true %>
       </div>
     </div>
     <div class='control-group'>
@@ -20,10 +19,8 @@
         <%= f.password_field :password_confirmation, placeholder: "Password confirmation" %>
       </div>
     </div>
-    <div class='control-group'>
-      <div class='controls'>
-        <%= f.submit "Sign up", class: 'btn btn-success btn-large span3' %>
-      </div>
-    </div>
   <% end %>
+  <div class='form-actions'>
+    <%= f.submit "Sign up", class: 'btn btn-success span3' %>
+  </div>
 <% end %>
