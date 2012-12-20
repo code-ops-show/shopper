@@ -26,6 +26,10 @@ window.Cart =
             dataType: 'script'
             type: "POST"
         ), 800
+    $('#current-total').on 'click', 'button.purchase', (e) ->
+      e.preventDefault()
+      $('#modal').modal('show')
+      $('#modal').on 'shown', -> $(@).find('#order_guest_email').focus()
 
   update: (quantity = 0) ->
     cart = $('.navbar').find('.cart a')
@@ -50,6 +54,3 @@ window.Cart =
 
   setTotal: (price = 0) ->
     $('#current-total').find('.total').html(price)
-
-  shippingSubmit: ->
-    $('#shipping').find('form ').submit()

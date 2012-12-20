@@ -1,5 +1,5 @@
 class CartsController < OrdersController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:edit, :update]
 
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
@@ -16,8 +16,14 @@ class CartsController < OrdersController
         }
         format.html { redirect_to root_path }
       end
-    else 
-      render_box_error_for(@cart)
+    else
+      respond_to do |format|
+        format.js { render_box_error_for(@cart) }
+        format.html { 
+          flash[:error] = @cart.errors.messages.to_json
+          render :edit 
+        }
+      end
     end
   end
 end

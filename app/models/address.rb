@@ -6,6 +6,7 @@ class Address < ActiveRecord::Base
   scope :default, -> { where(default: true) }
 
   delegate :rate, to: :country
+  delegate :email, to: :user
 
   validates :street_address, :city, :state, :zip, :country_id, :phone, presence: true
   attr_accessible :street_address, :city, :state, :zip, :country_id, :phone, :user_id, :default
