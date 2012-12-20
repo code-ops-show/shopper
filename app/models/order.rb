@@ -10,21 +10,27 @@ class Order < ActiveRecord::Base
   scope :open_orders, -> { with_state(:cart) }
 
   state_machine initial: :cart do
+    before_transition cart: :purchased, do: :cart_has_addresses
+
     event :purchase do
-      transition :cart => :purchased
+      transition cart: :purchased
     end
 
     event :cancel do
-      transition :purchased => :canceled
+      transition purchased: :canceled
     end
 
     event :resume do
-      transition :canceled => :purchased
+      transition canceled: :purchased
     end
 
     event :ship do
-      transition :purchased => :shipped
+      transition purchased: :shipped
     end
+  end
+
+  def cart_has_addresses
+    self.address_id.present?
   end
   
   def get_balance
