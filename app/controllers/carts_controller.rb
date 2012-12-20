@@ -10,8 +10,8 @@ class CartsController < OrdersController
     if @cart.update_attributes(params[:order])
       respond_to do |format|
         format.js {
-          render action: "update_items" if params[:order][:items_attributes]
-          render action: "update_addresses" if params[:order][:address_id] or params[:order][:addresses_attributes]
+          render action: "items/update_items" if params[:order][:items_attributes]
+          render action: "addresses/update_addresses" if params[:order][:address_id]
         }
         format.html { redirect_to root_path }
       end
