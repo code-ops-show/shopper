@@ -22,11 +22,16 @@ class Order < ActiveRecord::Base
   end
 
   def assign_email
-    user = User.find_by_email(guest_email)
-    if user
-      address.user = user
+    user = address.user
+    user_exists = User.find_by_email(guest_email)
+
+    if user_exists
+      user.addresses.update_all(user_id: user_exists.id, default: true) #move to user exists
+      user_exists.addresses.where("id != ?", address.id).update_all(default: false)
+      
+      address.user = user_exists
+      user.destroy
     else
-      user = address.user
       user.email = guest_email
       errors.add(:guest_email, "Please enter email address.") unless user.save
     end

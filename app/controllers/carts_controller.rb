@@ -10,13 +10,7 @@ class CartsController < OrdersController
   def update
     @cart = Order.find(params[:id])
     if @cart.update_attributes(params[:order])
-      respond_to do |format|
-        format.js {
-          render_update_js if params[:order][:state_event]
-          render action: "items/update_items" if params[:order][:items_attributes]
-          render action: "addresses/update_addresses" if not params[:order][:state_event] and params[:order][:address_id]
-        }
-      end
+      re_sign_in if current_user.is_guest? and @cart.address and params[:order][:state_event]
     else
       render_box_error_for(@cart)
     end
@@ -29,17 +23,15 @@ private
       respond_to do |format|
         format.js { render js: "window.location = '/'" }
         format.html { 
-          flash[:notice] = "You should add product to cart before checkout."
+          flash[:error] = "You should add product to cart before purchase."
           redirect_to root_path
         }
       end
     end
   end
 
-  def render_update_js
+  def re_sign_in
     reset_session
     sign_in @cart.address.user
-
-    render action: "update"
   end
 end
