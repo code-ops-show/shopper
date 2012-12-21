@@ -22,9 +22,14 @@ class Order < ActiveRecord::Base
   end
 
   def assign_email
-    user = address.user
-    user.email = guest_email
-    errors.add(:guest_email, "Please enter email address.") unless user.save
+    user = User.find_by_email(guest_email)
+    if user
+      address.user = user
+    else
+      user = address.user
+      user.email = guest_email
+      errors.add(:guest_email, "Please enter email address.") unless user.save
+    end
   end
 
   def self.cart_by token
