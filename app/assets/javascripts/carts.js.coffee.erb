@@ -16,7 +16,7 @@ window.Cart =
             error: (jqXHR, textStatus, error) =>
               $(@).effect('highlight', {}, 2000)
               $(@).val($(@).data('quantity'))
-        ), 800
+        ), 600
     $('#shipping').on 'change', 'input[name="order[address_id]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
@@ -25,11 +25,11 @@ window.Cart =
             data: $(@).parents('form').serialize()
             dataType: 'script'
             type: "POST"
-        ), 800
+        ), 600
     $('#current-total').on 'click', 'button.purchase', (e) ->
       e.preventDefault()
-      $('#modal').modal('show')
-      $('#modal').on 'shown', -> $(@).find('#order_guest_email').focus()
+      $('#purchase').modal('show')
+      $('#purchase').on 'shown', -> $(@).find('#order_guest_email').focus()
 
   update: (quantity = 0) ->
     cart = $('.navbar').find('.cart a')

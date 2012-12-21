@@ -23,6 +23,6 @@
     </div>
   </div>
 </div>
-<div id='modal' class='modal hide fade in'>
+<div id='purchase' class='modal hide fade in'>
   <%= render (current_user.is_guest? ? 'carts/purchase/confirm_guest' : 'carts/purchase/confirm'), cart: @cart %>
 </div>
