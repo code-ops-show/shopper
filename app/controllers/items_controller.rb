@@ -12,12 +12,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = current_order.items.find(params[:id])
-    
-    if @item.update_attributes(params[:item])
-      @balance = current_order.reload.total + (session[:shipping_rate] || 0)
-    else
-      render_box_error_for(@item) 
-    end
+    render_box_error_for(@item) unless @item.update_attributes(params[:item])
   end
 
   def destroy

@@ -17,13 +17,12 @@
           <%= render 'current_total', cart: @cart %>
         <% end %>
         <%= content_tag :fieldset, class: 'actions' do %>
-        <%= form_for @cart, url: {controller: 'carts', action: :update}, html: {class: 'form-horizontal'} do |f| %>
-          <%= f.hidden_field :address_id, value: @cart.address_id %>
-          <%= f.hidden_field :state_event, value: 'purchase' %>
-          <%= f.submit "Purchase", class: 'btn btn-block btn-success' %>
-        <% end %>
+          <%= button_tag "Purchase", class: 'btn btn-block btn-success purchase' %>
         <% end %>
       </div>
     </div>
   </div>
+</div>
+<div id='modal' class='modal hide fade in'>
+  <%= render (current_user.is_guest? ? 'carts/purchase/confirm_guest' : 'carts/purchase/confirm'), cart: @cart %>
 </div>
