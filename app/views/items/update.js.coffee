@@ -1,9 +1,5 @@
-if $('#view_cart').length > 0
-  $('#item_<%= @item.id %>').replaceWith("<%= j render 'carts/items/item_fields', item: @item %>")
-  $('#item_<%= @item.id %> td').effect('highlight', {}, 400)
-else
-  $("#product_<%= @item.product.id %>").replaceWith("<%= j render @item.product %>")
-  $("#product_<%= @item.product.id %>").find('.caption').effect('highlight', {}, 2000)
+$("#product_<%= @item.product.id %>").replaceWith("<%= j render @item.product %>")
+$("#product_<%= @item.product.id %>").find('.caption').effect('highlight', {}, 2000)
 
 Cart.update(<%= current_order.reload.items_count %>)
 Cart.setSubTotal("<%= number_to_currency(current_order.total) %>")

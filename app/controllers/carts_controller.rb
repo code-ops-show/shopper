@@ -1,5 +1,6 @@
 class CartsController < OrdersController
   before_filter :authenticate_user!, only: [:edit, :update]
+  before_filter :check_items, only: [:edit, :update]
 
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
@@ -22,6 +23,20 @@ class CartsController < OrdersController
         format.html { 
           flash[:error] = @cart.errors.messages.to_json
           render :edit 
+        }
+      end
+    end
+  end
+
+private
+  def check_items
+    if current_order.items_count.eql?(0)
+
+      respond_to do |format|
+        format.js { render js: "window.location = '/'" }
+        format.html { 
+          flash[:notice] = "You should add product to cart before checkout."
+          redirect_to root_path
         }
       end
     end

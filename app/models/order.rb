@@ -11,17 +11,18 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :items
 
-  before_validation :assign_email, if: -> { user.is_guest? and guest_email }
+  before_validation :assign_email, if: -> { address and address.user.is_guest? and guest_email }
 
-  delegate :email, :user, to: :address
+  delegate :email, to: :address
 
   alias_method :order_email, :email
-  
+
   def get_balance
     total + ((not address or address.new_record?) ? 0 : address.rate)
   end
 
   def assign_email
+    user = address.user
     user.email = guest_email
     errors.add(:guest_email, "Please enter email address.") unless user.save
   end
