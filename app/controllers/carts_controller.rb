@@ -1,5 +1,4 @@
 class CartsController < OrdersController
-  before_filter :authenticate_user!, only: [:edit, :update]
   before_filter :check_items, only: [:edit]
 
   def edit
@@ -10,20 +9,7 @@ class CartsController < OrdersController
   def update
     @cart = Order.find(params[:id])
     if @cart.update_attributes(params[:order])
-
-      if params[:order][:state_event]
-        reset_session
-        sign_in @cart.address.user
-      end
-
-      respond_to do |format|
-        format.js {
-          render action: "update" if params[:order][:state_event]
-          render action: "items/update_items" if params[:order][:items_attributes]
-          render action: "addresses/update_addresses" if params[:order][:address_id]
-        }
-        format.html { redirect_to root_path }
-      end
+      re_sign_in if params[:order][:guest_email]
     else
       render_box_error_for(@cart)
     end
@@ -36,10 +22,15 @@ private
       respond_to do |format|
         format.js { render js: "window.location = '/'" }
         format.html { 
-          flash[:notice] = "You should add product to cart before checkout."
+          flash[:error] = "You should add product to cart before purchase."
           redirect_to root_path
         }
       end
     end
+  end
+
+  def re_sign_in
+    reset_session
+    sign_in @cart.address.user
   end
 end
