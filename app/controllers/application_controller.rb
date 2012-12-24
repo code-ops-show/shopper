@@ -7,14 +7,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_or_guest_user
 
 private
-
   def guest_user
     session[:guest_user_id] = session[:guest_user_id].present? ? session[:guest_user_id] : create_guest_user.id
     User.find(session[:guest_user_id])
   end
 
   def create_guest_user
-    u = User.create(:name => "guest", email: "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    u = User.create(:name => "Guest", email: "guest_#{Time.now.to_i}#{rand(99)}@example.com")
     u.save(validate: false)
     u
   end

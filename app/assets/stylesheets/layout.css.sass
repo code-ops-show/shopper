@@ -22,6 +22,8 @@ body
     padding: 10px
     margin-top: -20px
     margin-bottom: 0
+    a.close
+      right: 0
 
 hr
   border-top-color: $border
@@ -189,15 +191,19 @@ ul.main-list
   &.no-actions > fieldset
     padding: 19px
 
-div[class*="span6"]
+
+@mixin control-group($number)
   .form-horizontal
     .control-group
       > .control-label
-        width: 120px
+        width: 160px + $number
       > .controls
-        margin-left: 140px
+        margin-left: 180px + $number
     .form-actions
-      padding-left: 159px
+      padding-left: 199px + $number
+
+div[class*="span6"]
+  @include control-group(-40px)
 
 form  
   margin-bottom: 0px
@@ -237,13 +243,14 @@ footer
       font-weight: bold
 
 div.modal
+  @include control-group(-20px)
   &.cart
     width: 700px
     margin: -250px 0 0 -350px
     &.fade.in
       top: 30%
     .modal-body
-      padding: 15px 0
+      padding: 15px 0px
       table.table
         margin-bottom: 0
       &.empty
@@ -260,7 +267,7 @@ div.modal
     background-color: $mainBackground
     border-color: $border
 
-#view_cart
+#view_cart, #modal
   table.table 
     td
       vertical-align: middle

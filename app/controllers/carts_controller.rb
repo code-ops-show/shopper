@@ -1,4 +1,5 @@
 class CartsController < OrdersController
+  before_filter :check_items, only: [:edit]
 
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
@@ -8,15 +9,28 @@ class CartsController < OrdersController
   def update
     @cart = Order.find(params[:id])
     if @cart.update_attributes(params[:order])
-      respond_to do |format|
-        format.js {
-          render action: "update_items" if params[:order][:items_attributes]
-          render action: "update_addresses" if params[:order][:address_id] or params[:order][:addresses_attributes]
-        }
-        format.html { redirect_to root_path }
-      end
-    else 
+      re_sign_in if params[:order][:guest_email]
+    else
       render_box_error_for(@cart)
     end
+  end
+
+private
+  def check_items
+    if current_order.items_count.eql?(0)
+
+      respond_to do |format|
+        format.js { render js: "window.location = '/'" }
+        format.html { 
+          flash[:error] = "You should add product to cart before purchase."
+          redirect_to root_path
+        }
+      end
+    end
+  end
+
+  def re_sign_in
+    reset_session
+    sign_in @cart.address.user
   end
 end

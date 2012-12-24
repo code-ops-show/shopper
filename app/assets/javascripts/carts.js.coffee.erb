@@ -5,6 +5,7 @@ $(document).ready ->
 window.Cart =
   setup: ->
     timer = null
+    Cart.setShipping()
     $('#view_cart').on 'input', 'input[name*="[quantity]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
@@ -16,7 +17,7 @@ window.Cart =
             error: (jqXHR, textStatus, error) =>
               $(@).effect('highlight', {}, 2000)
               $(@).val($(@).data('quantity'))
-        ), 800
+        ), 600
     $('#shipping').on 'change', 'input[name="order[address_id]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
@@ -25,7 +26,24 @@ window.Cart =
             data: $(@).parents('form').serialize()
             dataType: 'script'
             type: "POST"
-        ), 800
+        ), 600
+    $('#current-total').on 'click', 'button.purchase', (e) ->
+      e.preventDefault()
+      if not $('#purchase').find('#order_address_id').val()
+        noty 
+          text: "Please choose shipping address."
+          type: 'error'
+          layout: 'topRight'
+          timeout: 4000
+      else if $('input[name*="order[items_attributes]"]').length is 0
+        noty 
+          text: "You should add product to cart before purchase."
+          type: 'error'
+          layout: 'topRight'
+          timeout: 4000
+      else
+        $('#purchase').modal('show')
+        $('#purchase').on 'shown', -> $(@).find('#order_guest_email').focus()
 
   update: (quantity = 0) ->
     cart = $('.navbar').find('.cart a')
@@ -33,7 +51,7 @@ window.Cart =
     cart.html("<i class=\"icon-shopping-cart icon-white\"></i> Cart (#{quantity})")
   
   shippingChanged: ->
-    shipping = $('[name="order[address_id]"]:checked').data('shipping-rate')
+    shipping = $('input[name="order[address_id]"]:checked').data('shipping-rate')
     shipping_for_total = $('#current-total').find('.shipping-rate').data('shipping-rate')
 
     shipping isnt shipping_for_total
@@ -42,14 +60,14 @@ window.Cart =
     $('#current-total').find('.sub-total').html(price)
 
   setShipping: ->
-    rate = $('[name="order[address_id]"]:checked').data('shipping-rate')
+    address = $('input[name="order[address_id]"]:checked')
+    rate = address.data('shipping-rate')
     shipping = $('#current-total').find('.shipping-rate')
     if shipping and rate
       shipping.html(rate)
       shipping.attr('data-shipping-rate', rate)
 
+    $('#order_address_id').val(address.val())
+
   setTotal: (price = 0) ->
     $('#current-total').find('.total').html(price)
-
-  shippingSubmit: ->
-    $('#shipping').find('form ').submit()

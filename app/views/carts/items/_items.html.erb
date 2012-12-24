@@ -1,4 +1,4 @@
-<%= form_for cart, url: {controller: 'carts', action: :update}, html: {class: 'form-horizontal'} do |f| %>
+<%= form_for cart, url: cart_path(cart), html: {class: 'form-horizontal'} do |f| %>
   <table class="table table-striped items">
     <thead>
       <tr>
