@@ -7,6 +7,7 @@ class Order
 
       state_machine initial: :cart do
         before_transition cart: :purchased, do: :validates_cart
+        after_transition  cart: :purchased, do: :set_default_address
 
         event :purchase do
           transition from: :cart, to: :purchased
@@ -31,6 +32,14 @@ class Order
 
       def validates_cart
         address_id.present? and items.present?
+      end
+
+      def set_default_address
+        unless guest_email
+          user = address.user
+          user.addresses.default.update_all(default: false)
+          address.update_attribute :default, true
+        end
       end
 
       def check_email

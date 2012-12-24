@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
 
     if user_exists
       user.addresses.update_all(user_id: user_exists.id, default: true) #move to user exists
-      user_exists.addresses.where("id != ?", address.id).update_all(default: false)
+      user_exists.addresses.where("id != ?", address.id).default.update_all(default: false)
       
       address.user = user_exists
       user.destroy
