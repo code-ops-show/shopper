@@ -7,7 +7,10 @@ class Order
 
       state_machine initial: :cart do
         before_transition cart: :purchased, do: :validates_cart
+        before_transition cart: :purchased, do: :validates_assign_email
         after_transition  cart: :purchased, do: :set_default_address
+        after_transition  cart: :purchased, do: :consolidate_stock
+        after_transition  purchased: :canceled, do: :return_stock
 
         event :purchase do
           transition from: :cart, to: :purchased
@@ -20,26 +23,47 @@ class Order
         event :ship do
           transition from: :purchased, to: :shipped
         end
-
-        state :purchase do 
-          validate :check_email
-        end
       end
 
       def validates_cart
         address_id.present? and items.present?
       end
 
-      def set_default_address
-        unless guest_email
-          user = address.user
-          user.addresses.default.update_all(default: false)
-          address.update_attribute :default, true
+      def validates_assign_email
+        user = address.user
+        user_exists
+
+        if @user_exists and @user_exists.member?
+          errors.add(:guest_email, "Please sign in. This email had already been member.") 
+        elsif not @user_exists and user.guest?
+          errors.add(:guest_email, "Please enter email address.") if guest_email.blank?
+          user.update_attributes(email: guest_email)
         end
       end
 
-      def check_email
-        errors.add(:guest_email, "No Email Available") if guest_email.match(/^guest_\d*@example.com/)
+      def set_default_address
+        user = address.user
+
+        if user.member?
+          user.set_default_to(address)
+        elsif @user_exists and @user_exists.guest?
+          user.move_to(@user_exists)
+          @user_exists.set_default_to(address)
+          user = @user_exists
+        end
+      end
+
+      def consolidate_stock
+        items.each { |item| item.consolidate_stock }
+      end
+
+      def return_stock
+        items.each { |item| item.return_stock }
+      end
+
+      private
+      def user_exists
+        @user_exists ||= User.find_by_email(guest_email)
       end
     end
   end

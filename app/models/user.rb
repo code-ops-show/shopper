@@ -20,8 +20,12 @@ class User < ActiveRecord::Base
     update_without_password params
   end
 
-  def is_guest?
+  def guest?
     type.eql?("Guest")
+  end
+
+  def member?
+    type.eql?("Member")
   end
 
   def to_s
