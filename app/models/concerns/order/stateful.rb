@@ -10,6 +10,7 @@ class Order
         before_transition cart: :purchased, do: :validates_assign_email
         after_transition  cart: :purchased, do: :set_default_address
         after_transition  cart: :purchased, do: :consolidate_stock
+        after_transition  purchased: :canceled, do: :return_stock
 
         event :purchase do
           transition from: :cart, to: :purchased
@@ -53,7 +54,11 @@ class Order
       end
 
       def consolidate_stock
-        
+        items.each { |item| item.consolidate_stock }
+      end
+
+      def return_stock
+        items.each { |item| item.return_stock }
       end
 
       private

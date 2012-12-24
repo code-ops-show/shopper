@@ -30,4 +30,14 @@ class Item < ActiveRecord::Base
   def touch_order
     order.calculate_items
   end
+
+  def consolidate_stock
+    product.quantity -= quantity
+    product.save
+  end
+
+  def return_stock
+    product.quantity += quantity
+    product.save
+  end
 end
