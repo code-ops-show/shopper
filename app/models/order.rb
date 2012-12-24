@@ -24,6 +24,7 @@ class Order < ActiveRecord::Base
   def assign_email
     user = User.find_by_email(guest_email)
     if user
+      address.user.destroy
       address.user = user
     else
       user = address.user
