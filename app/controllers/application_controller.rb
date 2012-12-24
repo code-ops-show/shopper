@@ -13,7 +13,7 @@ private
   end
 
   def create_guest_user
-    u = User.create(:name => "Guest", email: "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    u = User.create(name: "Guest", email: "guest_#{Time.now.to_i}#{rand(99)}@example.com", type: "Guest")
     u.save(validate: false)
     u
   end

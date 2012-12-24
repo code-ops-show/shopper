@@ -25,12 +25,12 @@ class Order < ActiveRecord::Base
     user = address.user
     user_exists = User.find_by_email(guest_email)
 
-    if user_exists
-      user.addresses.update_all(user_id: user_exists.id, default: true) #move to user exists
-      user_exists.addresses.where("id != ?", address.id).default.update_all(default: false)
-      
+    if user_exists and user_exists.is_guest?
+      user.move_to user_exists
+      user_exists.set_default_to address
       address.user = user_exists
-      user.destroy
+    elsif user_exists and not user_exists.is_guest?
+      errors.add(:guest_email, "Please sign in. This email had already been member.")
     else
       user.email = guest_email
       errors.add(:guest_email, "Please enter email address.") unless user.save

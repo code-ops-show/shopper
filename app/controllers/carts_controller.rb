@@ -9,7 +9,7 @@ class CartsController < OrdersController
   def update
     @cart = Order.find(params[:id])
     if @cart.update_attributes(params[:order])
-      re_sign_in if params[:order][:guest_email]
+      reset_session if current_user.is_guest? and params[:order][:guest_email]
     else
       render_box_error_for(@cart)
     end
@@ -27,10 +27,5 @@ private
         }
       end
     end
-  end
-
-  def re_sign_in
-    reset_session
-    sign_in @cart.address.user
   end
 end
