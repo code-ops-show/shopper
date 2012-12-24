@@ -17,10 +17,6 @@ class Order
           transition from: :purchased, to: :canceled
         end
 
-        event :resume do
-          transition from: :canceled, to: :purchased
-        end
-
         event :ship do
           transition from: :purchased, to: :shipped
         end
