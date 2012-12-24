@@ -6,7 +6,6 @@ window.Cart =
   setup: ->
     timer = null
     Cart.setShipping()
-    
     $('#view_cart').on 'input', 'input[name*="[quantity]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
