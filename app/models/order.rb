@@ -1,40 +1,40 @@
 class Order < ActiveRecord::Base
+  include Order::Stateful
+
   belongs_to :address
   has_many   :items,    order: 'created_at ASC'
   has_many   :products, through: :items
 
-  attr_accessible :state, :token, :address_id, :address_attributes, :items_attributes, :state_event
+  attr_accessible :state, :token, :address_id, :address_attributes, :items_attributes, :state_event, :guest_email
+  attr_accessor :guest_email
+
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :items
 
-  scope :open_orders, -> { with_state(:cart) }
+  before_validation :assign_email, if: -> { address and address.user.is_guest? and guest_email }
 
-  state_machine initial: :cart do
-    before_transition cart: :purchased, do: :validates_cart
+  delegate :email, to: :address
 
-    event :purchase do
-      transition cart: :purchased
-    end
+  alias_method :order_email, :email
 
-    event :cancel do
-      transition purchased: :canceled
-    end
-
-    event :resume do
-      transition canceled: :purchased
-    end
-
-    event :ship do
-      transition purchased: :shipped
-    end
-  end
-
-  def validates_cart
-    address_id.present? and item.present?
-  end
-  
   def get_balance
     total + ((not address or address.new_record?) ? 0 : address.rate)
+  end
+
+  def assign_email
+    user = address.user
+    user_exists = User.find_by_email(guest_email)
+
+    if user_exists and user_exists.is_guest?
+      user.move_to user_exists
+      user_exists.set_default_to address
+      address.user = user_exists
+    elsif user_exists and not user_exists.is_guest?
+      errors.add(:guest_email, "Please sign in. This email had already been member.")
+    else
+      user.email = guest_email
+      errors.add(:guest_email, "Please enter email address.") unless user.save
+    end
   end
 
   def self.cart_by token
