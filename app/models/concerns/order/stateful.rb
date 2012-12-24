@@ -7,8 +7,9 @@ class Order
 
       state_machine initial: :cart do
         before_transition cart: :purchased, do: :validates_cart
-        before_transition cart: :purchased, do: :validate_and_set_default
+        before_transition cart: :purchased, do: :validates_assign_email
         after_transition  cart: :purchased, do: :set_default_address
+        after_transition  cart: :purchased, do: :consolidate_stock
 
         event :purchase do
           transition from: :cart, to: :purchased
@@ -27,23 +28,37 @@ class Order
         address_id.present? and items.present?
       end
 
-      def set_default_address
-        address.user.set_default_to address if address.user.member?
+      def validates_assign_email
+        user = address.user
+        user_exists
+
+        if @user_exists and @user_exists.member?
+          errors.add(:guest_email, "Please sign in. This email had already been member.") 
+        elsif not @user_exists and user.guest?
+          errors.add(:guest_email, "Please enter email address.") if guest_email.blank?
+          user.update_attributes(email: guest_email)
+        end
       end
 
-      def validate_and_set_default
+      def set_default_address
         user = address.user
-        user_exists = User.find_by_email(guest_email)
 
-        if user_exists and user_exists.guest?
-          user.move_to(user_exists)
-          user_exists.set_default_to(address)
-          address.user = user_exists
-        else
-          user.email = guest_email
-          errors.add(:guest_email, "Please sign in. This email had already been member.") if user_exists and user_exists.member?
-          errors.add(:guest_email, "Please enter email address.") unless user.save
+        if user.member?
+          user.set_default_to(address)
+        elsif @user_exists and @user_exists.guest?
+          user.move_to(@user_exists)
+          @user_exists.set_default_to(address)
+          user = @user_exists
         end
+      end
+
+      def consolidate_stock
+        
+      end
+
+      private
+      def user_exists
+        @user_exists ||= User.find_by_email(guest_email)
       end
     end
   end
