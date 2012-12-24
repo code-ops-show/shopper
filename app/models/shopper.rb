@@ -1,0 +1,3 @@
+class Shopper < Guest
+
+end
