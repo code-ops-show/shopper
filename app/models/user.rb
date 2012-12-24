@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def is_guest?
-    name.downcase == 'guest' and email.match(/^guest_\d*@example.com/)
+    type.eql?("Guest")
   end
 
   def to_s
