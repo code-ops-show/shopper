@@ -7,6 +7,7 @@ class Order
 
       state_machine initial: :cart do
         before_transition cart: :purchased, do: :validates_cart
+        before_transition cart: :purchased, do: :validate_and_set_default
         after_transition  cart: :purchased, do: :set_default_address
 
         event :purchase do
@@ -20,10 +21,6 @@ class Order
         event :ship do
           transition from: :purchased, to: :shipped
         end
-
-        state :purchase do 
-          validate :check_email
-        end
       end
 
       def validates_cart
@@ -31,15 +28,22 @@ class Order
       end
 
       def set_default_address
-        unless guest_email
-          user = address.user
-          user.addresses.default.update_all(default: false)
-          address.update_attribute :default, true
-        end
+        address.user.set_default_to address if address.user.member?
       end
 
-      def check_email
-        errors.add(:guest_email, "No Email Available") if guest_email.match(/^guest_\d*@example.com/)
+      def validate_and_set_default
+        user = address.user
+        user_exists = User.find_by_email(guest_email)
+
+        if user_exists and user_exists.guest?
+          user.move_to(user_exists)
+          user_exists.set_default_to(address)
+          address.user = user_exists
+        else
+          user.email = guest_email
+          errors.add(:guest_email, "Please sign in. This email had already been member.") if user_exists and user_exists.member?
+          errors.add(:guest_email, "Please enter email address.") unless user.save
+        end
       end
     end
   end
