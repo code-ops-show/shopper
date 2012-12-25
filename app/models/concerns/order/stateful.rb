@@ -55,8 +55,7 @@ class Order
 
       def consolidate_stock
         items.each { |item| item.consolidate_stock }
-        self.balance = self.get_balance
-        self.save
+        calculate_balance
       end
 
       def return_stock
