@@ -1,0 +1,23 @@
+<%= semantic_form_for [:admin, @order], html: { multipart: true } do |f| %>
+  <fieldset class="inputs">
+    <ol>
+      <li>
+        <%= f.label :id %>
+        <%= @order.id %>
+      </li>
+      <li>
+        <%= f.label :address %>
+        <%= @order.address %>
+      </li>
+      <li>
+        <%= f.label :user_email %>
+        <%= @order.address.email %>
+      </li>
+      <li>
+        <%= f.label :state %>
+        <%= f.collection_select :state_event, @order.state_transitions, :event, :human_to_name, include_blank: @order.human_state_name %>
+      </li>
+    </ol>
+  </fieldset>
+  <%= f.submit %>
+<% end %>

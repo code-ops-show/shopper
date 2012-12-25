@@ -22,4 +22,8 @@ class Address < ActiveRecord::Base
       user.default_address.update_attributes(default: false) if user.default_address.present?
     end
   end
+
+  def to_s
+    country.name
+  end
 end
