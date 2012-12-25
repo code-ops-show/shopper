@@ -29,6 +29,6 @@ Shopper::Application.routes.draw do
   
   root to: 'home#index'
 
-  match "/guests/new" => "guests#new"
-  match "/guests/create" => "guests#create"
+  resources :guests, only: [:new, :create, :update]
+  match "/thankful" => "guests#thankful"
 end
