@@ -18,7 +18,7 @@ window.Cart =
               $(@).effect('highlight', {}, 2000)
               $(@).val($(@).data('quantity'))
         ), 600
-    $('#shipping').on 'change', 'input[name="order[address_id]"]', (e) ->
+    $('#shipping').on 'click', 'input[name="order[address_id]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
           $.ajax
@@ -60,14 +60,15 @@ window.Cart =
     $('#current-total').find('.sub-total').html(price)
 
   setShipping: ->
-    address = $('input[name="order[address_id]"]:checked')
-    rate = address.data('shipping-rate')
+    checked = $('#shipping input[name="order[address_id]"]:checked')
+    rate = checked.data('shipping-rate')
     shipping = $('#current-total').find('.shipping-rate')
     if shipping and rate
       shipping.html(rate)
       shipping.attr('data-shipping-rate', rate)
 
-    $('#order_address_id').val(address.val())
+    if checked.length is 1 and not $('#order_address_id').val() > 0
+      setTimeout (-> checked.click()), 100
 
   setTotal: (price = 0) ->
     $('#current-total').find('.total').html(price)

@@ -28,4 +28,9 @@ class Order < ActiveRecord::Base
     self.total = items.sum(&:sub_total)
     self.save
   end
+
+  def calculate_balance
+    self.balance = get_balance
+    self.save
+  end
 end
