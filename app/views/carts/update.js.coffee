@@ -1,7 +1,7 @@
 state = "<%= @cart.state %>"
 switch state
   when 'purchased'
-    window.location = if <%= current_user.nil? %> then '/thankful' else '/'
+    window.location = '<%= status_orders_path(@cart, @cart.state) %>'
   when 'cart'
     $('#view_cart.modal').html("<%= j render(current_order.items.present? ? 'show' : 'show_empty') %>")
     $('#checkout').html("<%= j render 'edit', cart: @cart.reload if current_user %>")

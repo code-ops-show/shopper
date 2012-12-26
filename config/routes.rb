@@ -16,7 +16,9 @@ Shopper::Application.routes.draw do
   resources :products do 
     resources :items, only: [:create]
   end
-  resources :orders
+  resources :orders do 
+    get ":id/status/:status", action: :show, as: :status, on: :collection
+  end
   resources :carts do
     resources :addresses, only: [:new, :create]
   end
@@ -29,6 +31,5 @@ Shopper::Application.routes.draw do
   
   root to: 'home#index'
 
-  resources :guests, only: [:new, :create, :update]
-  match "/thankful" => "guests#thankful"
+  resources :guests, only: [:new, :create]
 end
