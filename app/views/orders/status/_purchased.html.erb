@@ -2,6 +2,16 @@
   <div class='row'>
     <div class='span8 offset2'>
       <div class='well well-elderflower no-actions'>
+        <%= content_tag :fieldset, class: 'order-invoice' do %>
+          <span class='order'>Order Number is <%= @order.id %></span>
+          <span class='pull-right'>
+            <a class='btn'>
+              <i class='icon-print'></i> Print Invoice
+            </a>
+          </span>
+        <% end %>
+      </div>
+      <div class='well well-elderflower no-actions'>
         <%= content_tag :fieldset do %>
           <p class='lead'>Thank you for your purchase, keep enjoy shopping! :)</p>
           <p>I hope you enjoy your Shopper products.</p>
@@ -14,13 +24,10 @@
           </div>
         <% end %>
       </div>
+      <%# if @guest.present? and @guest.guest? %>
+      <% @guest = current_user %>
+        <%= render 'orders/status/purchased_sign_up' %>
+      <%# end %>
     </div>
   </div>
-  <% if @guest.present? and @guest.guest? %>
-    <div class='row'>
-      <div class='span8 offset2'>
-        <%= render 'orders/status/purchased_sign_up' %>
-      </div>
-    </div>
-  <% end %>
 </div>
