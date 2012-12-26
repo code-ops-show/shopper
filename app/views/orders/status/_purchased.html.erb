@@ -5,9 +5,9 @@
         <%= content_tag :fieldset, class: 'order-invoice' do %>
           <span class='order'>Order Number is <%= @order.id %></span>
           <span class='pull-right'>
-            <a class='btn'>
+            <%= link_to order_path(@order, format: "pdf"), class: 'btn' do %>
               <i class='icon-print'></i> Print Invoice
-            </a>
+            <% end %>
           </span>
         <% end %>
       </div>

@@ -10,10 +10,10 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = OrderPdf.new(@order, view)
-        send_data pdf.render, filename: "order_#{@order.id}.pdf",
-                              type: 'application/pdf',
-                              disposition: 'pdf'
+        pdf = OrderPdf.new(@order, view_context)
+        send_data pdf.render, filename: "order_#{@order.id}",
+                              type: "application/pdf",
+                              disposition: "inline"
       end
     end
   end
