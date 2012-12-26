@@ -66,9 +66,9 @@ class Order
 
     def send_mail
       case state
-        when 'purchased' then OrderMailer.purchased_state(self).deliver
-        when 'canceled'  then OrderMailer.canceled_state(self).deliver
-        when 'shipped'   then OrderMailer.shipped_state(self).deliver
+        when 'purchased' then OrderMailer.delay.purchased_state(self)
+        when 'canceled'  then OrderMailer.delay.canceled_state(self)
+        when 'shipped'   then OrderMailer.delay.shipped_state(self)
       end
     end
 
