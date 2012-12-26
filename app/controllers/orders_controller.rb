@@ -6,6 +6,16 @@ class OrdersController < ApplicationController
   def show
     @order = Order.where(id: params[:id]).includes(items: [:product]).first
     get_guest if params[:status] and @order.state == params[:status]
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = OrderPdf.new(@order, view)
+        send_data pdf.render, filename: "order_#{@order.id}.pdf",
+                              type: 'application/pdf',
+                              disposition: 'pdf'
+      end
+    end
   end
 
 private
