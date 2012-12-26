@@ -24,10 +24,9 @@
           </div>
         <% end %>
       </div>
-      <%# if @guest.present? and @guest.guest? %>
-      <% @guest = current_user %>
+      <% if @guest.present? and @guest.guest? %>
         <%= render 'orders/status/purchased_sign_up' %>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 </div>
