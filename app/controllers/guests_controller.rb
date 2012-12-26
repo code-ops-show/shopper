@@ -14,7 +14,7 @@ class GuestsController < ApplicationController
     if @guest.update_attributes(params[:guest])
       member = Member.find(params[:id])
       sign_in member
-      redirect_to root_path, notice: "Create account successfully! :)"
+      redirect_to root_path, notice: "Welcome! You have created account successfully."
     else
       @guest.errors.each { |name, msg| flash[:error] = "#{name} #{msg}".humanize }
       redirect_to :back
