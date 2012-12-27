@@ -1,6 +1,6 @@
 <%= form_for("user", url: user_session_path, html: { class: "well well-elderflower sign-in no-actions" }) do |f| %>
   <%= content_tag :fieldset do %>
-    <legend>Returning Customers</legend>
+    <legend>Have an account?</legend>
     <div class="form-inline form-field">
       <%= f.email_field :email, placeholder: "Your Email", class: 'input-medium' %>
       <%= f.password_field :password, placeholder: "Password", class: 'input-medium' %>

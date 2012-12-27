@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     name or email
   end
 
+  def name_from_email
+    email.split('@')[0].gsub(/[._-]/, " ").humanize
+  end
+
   def default_address
     address ||= addresses.default.first
   end

@@ -8,4 +8,9 @@ class Guest < User
     addresses.where("id != ?", address.id).default.update_all(default: false)
     address.update_attributes(default: true)
   end
+
+  def to_member
+    self.name = name_from_email
+    self.type = "Member"
+  end
 end
