@@ -12,8 +12,11 @@ class Product < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search, against: [:name, :description],
-                  using: {tsearch: {dictionary: "english"}},
-                  associated_against: {category: :name}
+                  using: {tsearch: {dictionary: "english"}}
+
+  def self.text_search(query)
+    query.present? ? search(query) : scoped
+  end
 
   def self.by_category(category_id)
     category_id.present? ? joins(:category).where(categories: { slug: category_id }) : scoped
