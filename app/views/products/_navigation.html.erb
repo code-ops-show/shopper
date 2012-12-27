@@ -1,9 +1,19 @@
+<div class='well well-small'>
+  <p>
+  <%= form_tag request.path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: 'input-medium' %>
+      <%= submit_tag "Search", name: nil, class: 'btn btn-success btn-block' %>
+  <% end %>
+  </p>
+</div>
+
 <ul class='nav nav-tabs nav-stacked'>
   <li class='<%= 'active' if request.path == products_path %>'><a href="<%= products_path %>">All Products</a></li>
   <% Category.all.each do |category| %>
     <li class='<%= 'active' if request.path == category_products_path(category) %>'><a href="<%= category_products_path(category) %>"><%= category.name %></a></li>
   <% end %>
 </ul>
+
 
 <div class='price-rate well well-small clearfix'>
   <h5 class='header'>Price Range</h5>

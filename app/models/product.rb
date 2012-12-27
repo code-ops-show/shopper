@@ -10,6 +10,14 @@ class Product < ActiveRecord::Base
   scope :last_four_products, order('created_at DESC').limit(4)
   scope :available,          -> { where("quantity != ?", 0) }
 
+  include PgSearch
+  pg_search_scope :search, against: [:name, :description],
+                  using: {tsearch: {dictionary: "english"}}
+
+  def self.text_search(query)
+    query.present? ? search(query) : scoped
+  end
+
   def self.by_category(category_id)
     category_id.present? ? joins(:category).where(categories: { slug: category_id }) : scoped
   end
