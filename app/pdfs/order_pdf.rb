@@ -22,7 +22,7 @@ class OrderPdf < Prawn::Document
       end
 
       bounding_box([bounds.left + 260, bounds.top], width: 260) do
-        text "Order Number is #{@order.id}", style: :bold
+        text "Invoice No. ##{@order.id}", style: :bold
         move_down 10
         text "Shipping & Billing to:", style: :bold
         text "#{@order.address.full_address}", size: 10

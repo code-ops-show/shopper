@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.order('created_at DESC')
+    @orders = current_user.orders.includes(address: [:country]).order('created_at DESC')
   end
 
   def show
@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
       respond_to do |format|
         format.html
+        format.js
         format.pdf do
           pdf = OrderPdf.new(@order, view_context)
           send_data pdf.render, filename: "order_#{@order.id}",

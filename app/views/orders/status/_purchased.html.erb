@@ -3,7 +3,7 @@
     <div class='span8 offset2'>
       <div class='well well-elderflower no-actions'>
         <%= content_tag :fieldset, class: 'order-invoice' do %>
-          <span class='order'>Order Number is <%= @order.id %></span>
+          <span class='order'>Invoice No. #<%= @order.id %></span>
           <span class='pull-right'>
             <%= link_to order_path(@order, format: "pdf"), class: 'btn' do %>
               <i class='icon-print'></i> Print Invoice
