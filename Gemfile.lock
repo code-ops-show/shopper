@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/prawnpdf/prawn.git
+  revision: 9c937d7be3fea313474b9301aa2c9539b2249973
+  specs:
+    prawn (1.0.0.rc1)
+      afm
+      pdf-reader (>= 0.9.0, < 2.0)
+      ruby-rc4
+      ttfunk (~> 1.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,6 +52,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
+    afm (0.2.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -135,9 +146,6 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
-    prawn (0.12.0)
-      pdf-reader (>= 0.9.0)
-      ttfunk (~> 1.0.2)
     quiet_assets (1.0.1)
       railties (~> 3.1)
     rack (1.4.1)
@@ -242,7 +250,7 @@ DEPENDENCIES
   machinist (>= 2.0.0.beta2)
   meta_search (>= 1.1.0.pre)
   pg
-  prawn
+  prawn!
   quiet_assets
   rails (= 3.2.8)
   rmagick

@@ -16,7 +16,7 @@ gem "breadcrumbs_on_rails"
 gem 'whenever'
 gem 'daemons'
 gem 'delayed_job_active_record'
-gem 'prawn'
+gem "prawn", git: 'git://github.com/prawnpdf/prawn.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

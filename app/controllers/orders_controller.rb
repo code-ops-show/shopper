@@ -4,17 +4,22 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.where(id: params[:id]).includes(items: [:product]).first
-    get_guest if params[:status] and @order.state == params[:status]
+    @order = current_user.orders.where(id: params[:id]).includes(items: [:product]).first
 
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = OrderPdf.new(@order, view_context)
-        send_data pdf.render, filename: "order_#{@order.id}",
-                              type: "application/pdf",
-                              disposition: "inline"
+    if @order
+      get_guest if params[:status] and @order.state == params[:status]
+
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = OrderPdf.new(@order, view_context)
+          send_data pdf.render, filename: "order_#{@order.id}",
+                                type: "application/pdf",
+                                disposition: "inline"
+        end
       end
+    else
+      redirect_to root_path, flash: { error: "Order is Unavailable." }
     end
   end
 
