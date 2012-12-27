@@ -1,5 +1,8 @@
 class CartsController < OrdersController
   before_filter :check_items, only: [:edit]
+  
+  def show
+  end
 
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
@@ -18,7 +21,6 @@ class CartsController < OrdersController
 private
   def check_items
     if current_order.items_count.eql?(0)
-
       respond_to do |format|
         format.js { render js: "window.location = '/'" }
         format.html { 

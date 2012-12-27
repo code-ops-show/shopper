@@ -141,18 +141,33 @@ ul.dropdown-menu
   input, textarea, td
     margin: 0
 
-ul.main-list
-  list-style: none
-  margin: 0 0 20px 0
-  padding: 6px 0
-  > li
-    background-color: white
-    margin: 6px 0
-    padding: 6px
-    border: 1px solid #ddd
-    border-radius: 4px
-    &.success
-      background-color: #DFF0D8
+ul
+  &.main-list
+    list-style: none
+    margin: 0 0 20px 0
+    padding: 6px 0
+    > li
+      background-color: white
+      margin: 6px 0
+      padding: 6px
+      border: 1px solid #ddd
+      border-radius: 4px
+      &.success
+        background-color: #DFF0D8
+  &.cream-list
+    > li
+      padding: 0
+      > h5
+        background-color: #FFF5DE
+        margin: 0
+        padding: 12px
+        border-top-left-radius: 4px
+        border-top-right-radius: 4px
+        border-bottom: 1px solid #F0DED7
+      > .content
+        padding: 12px
+        dl.dl-horizontal
+          margin: 0
 
 .well
   &.main-list
@@ -244,13 +259,16 @@ footer
       padding: 10px 20px 0 20px
       font-weight: bold
 
+@mixin modal-size($width, $top)
+  width: $width
+  margin: -250px 0 0 (0 - $width/2)
+  &.fade.in
+    top: $top
+
 div.modal
   @include control-group(-20px)
   &.cart
-    width: 700px
-    margin: -250px 0 0 -350px
-    &.fade.in
-      top: 30%
+    @include modal-size(700px, 30%)
     .modal-body
       padding: 15px 0px
       table.table
@@ -260,6 +278,24 @@ div.modal
         .alert
           padding-top: 16px
           padding-bottom: 16px
+  &.order
+    @include modal-size(700px, 30%)
+    .modal-body 
+      padding: 15px 0
+      > fieldset
+        margin-bottom: 10px
+        dl.dl-horizontal
+          margin-top: 0
+      table.table:not(.total)
+        tr:last-child > td
+          border-bottom: 1px solid #ddd
+      table.table.total > tfoot
+        th 
+          text-align: right
+        th, td
+          padding: 4px 8px
+          border-top: none
+
   &.address 
     > form > .modal-body
       max-height: 430px

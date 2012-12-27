@@ -26,4 +26,8 @@ class Address < ActiveRecord::Base
   def to_s
     country.name
   end
+
+  def full_address
+    "#{street_address} #{city}, #{state} #{zip} #{country.name}"
+  end
 end
