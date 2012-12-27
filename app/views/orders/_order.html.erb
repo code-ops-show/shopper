@@ -1,6 +1,31 @@
-<li>
-  <%= link_to user_order_path(current_user, order), remote: true do %>
-    <%= l order.updated_at, format: :long %> (<%= pluralize(order.items.size, 'item') %>)
-  <% end %>
-  <span class='label label-success pull-right'><%= order.state.humanize %></span>
+<li class='clearfix'>
+  <h5>
+    <%= link_to user_order_path(current_user, order), remote: true do %>
+      Invoice No. #<%= order.id %>
+    <% end %>
+    <div class='pull-right'>
+      <span class='label label-success'><%= order.state.humanize %></span>
+    </div>
+  </h5>
+  <div class='content clearfix'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <dl class='dl-horizontal'>
+          <dt>Date</dt>
+          <dd><%= l order.updated_at, format: :long %></dd>
+          <dt>Shipping address</dt>
+          <dd><%= order.address.full_address %></dd>
+          <dt>Order items</dt>
+          <dd><%= pluralize(order.items_count, 'item') %></dd>
+        </dl>
+      </div>
+      <div class='span3'>
+        <span class='actions pull-right'>
+          <%= link_to order_path(order, format: "pdf"), class: 'btn btn-small' do %>
+            <i class='icon-print'></i> Print Invoice
+          <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
 </li>
