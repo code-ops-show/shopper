@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_filter :set_price_range, only: [:index]
 
   def index
-    @products = Product.by_category(params[:category_id]).by_price_range(session[:min], session[:max])
+    @products = Product.by_category(params[:category_id]).text_search(params[:query]).by_price_range(session[:min], session[:max])
   end
 
   def show
