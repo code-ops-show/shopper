@@ -1,0 +1,6 @@
+<div class='well well-small clearfix'>
+  <%= form_tag request.path, method: :get, class: 'form-inline' do %>
+    <%= text_field_tag :query, params[:query], placeholder: 'typing words', class: 'input-xxlarge' %>
+    <%= submit_tag "Search", name: nil, class: 'btn btn-success span2' %>
+  <% end %>
+</div>
