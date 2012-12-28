@@ -11,6 +11,10 @@ class OrderPdf < Prawn::Document
     footer
   end
 
+  def price(num)
+    @view.number_to_currency(num)
+  end
+
   def header
     repeat :all do
       bounding_box([bounds.left, bounds.top], width: 250) do
@@ -50,7 +54,12 @@ class OrderPdf < Prawn::Document
   def items_rows
     [["Product name", "Unit Price", "Quantity", "Full Price"]] +
     @order.items.map do |item|
-      [item.product.name, item.product.price, item.quantity, item.sub_total] 
+      [
+        item.product.name, 
+        price(item.product.price), 
+        item.quantity, 
+        price(item.sub_total)
+      ]
     end
   end
 
@@ -66,9 +75,9 @@ class OrderPdf < Prawn::Document
 
   def total_rows
     [
-      ["", "Sub Total", "#{@order.total}"],
-      ["", "Shipping Rate", "#{@order.address.rate rescue 'not calculated'}"],
-      ["", "Balance", "#{@order.balance}"]
+      ["", "Sub Total", "#{price(@order.total)}"],
+      ["", "Shipping Rate", "#{price(@order.address.rate) rescue 'not calculated'}"],
+      ["", "Balance", "#{price(@order.balance)}"]
     ]
   end
 

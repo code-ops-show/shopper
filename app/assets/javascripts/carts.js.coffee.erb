@@ -3,17 +3,17 @@ $(document).ready ->
 
 window.Cart =
   setup: ->
-    Cart.setShipping()
     @eventCart()
     @eventShipping()
     @eventPurchase()
+    Cart.setShippingAddress()
 
   update: (quantity = 0) ->
     cart = $('.navbar').find('.cart a')
     cart.stop(true, true).effect('pulsate', { times: 3 })
     cart.html("<i class=\"icon-shopping-cart icon-white\"></i> Cart (#{quantity})")
 
-  setShipping: ->
+  setShippingAddress: ->
     checked = $('#shipping input[name="order[address_id]"]:checked')
 
     if checked.length is 1 and not $('#order_address_id').val() > 0
