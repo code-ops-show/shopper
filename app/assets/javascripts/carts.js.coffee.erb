@@ -1,11 +1,26 @@
 $(document).ready ->
   Cart.setup()
-  Cart.setShipping()
 
 window.Cart =
   setup: ->
-    timer = null
     Cart.setShipping()
+    @eventCart()
+    @eventShipping()
+    @eventPurchase()
+
+  update: (quantity = 0) ->
+    cart = $('.navbar').find('.cart a')
+    cart.stop(true, true).effect('pulsate', { times: 3 })
+    cart.html("<i class=\"icon-shopping-cart icon-white\"></i> Cart (#{quantity})")
+
+  setShipping: ->
+    checked = $('#shipping input[name="order[address_id]"]:checked')
+
+    if checked.length is 1 and not $('#order_address_id').val() > 0
+      setTimeout (-> checked.click()), 100
+
+  eventCart: ->
+    timer = null
     $('#view_cart').on 'input', 'input[name*="[quantity]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
@@ -18,6 +33,9 @@ window.Cart =
               $(@).effect('highlight', {}, 2000)
               $(@).val($(@).data('quantity'))
         ), 600
+
+  eventShipping: ->
+    timer = null
     $('#shipping').on 'click', 'input[name="order[address_id]"]', (e) ->
       if timer then clearTimeout(timer)
       timer = setTimeout (=> 
@@ -27,6 +45,9 @@ window.Cart =
             dataType: 'script'
             type: "POST"
         ), 600
+
+  eventPurchase: ->
+    timer = null
     $('#current-total').on 'click', 'button.purchase', (e) ->
       e.preventDefault()
       if not $('#purchase').find('#order_address_id').val()
@@ -44,31 +65,3 @@ window.Cart =
       else
         $('#purchase').modal('show')
         $('#purchase').on 'shown', -> $(@).find('#order_guest_email').focus()
-
-  update: (quantity = 0) ->
-    cart = $('.navbar').find('.cart a')
-    cart.stop(true, true).effect('pulsate', { times: 3 })
-    cart.html("<i class=\"icon-shopping-cart icon-white\"></i> Cart (#{quantity})")
-  
-  shippingChanged: ->
-    shipping = $('input[name="order[address_id]"]:checked').data('shipping-rate')
-    shipping_for_total = $('#current-total').find('.shipping-rate').data('shipping-rate')
-
-    shipping isnt shipping_for_total
-
-  setSubTotal: (price = 0) ->
-    $('#current-total').find('.sub-total').html(price)
-
-  setShipping: ->
-    checked = $('#shipping input[name="order[address_id]"]:checked')
-    rate = checked.data('shipping-rate')
-    shipping = $('#current-total').find('.shipping-rate')
-    if shipping and rate
-      shipping.html(rate)
-      shipping.attr('data-shipping-rate', rate)
-
-    if checked.length is 1 and not $('#order_address_id').val() > 0
-      setTimeout (-> checked.click()), 100
-
-  setTotal: (price = 0) ->
-    $('#current-total').find('.total').html(price)
