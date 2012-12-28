@@ -1,6 +1,15 @@
-<div class='well well-small clearfix'>
-  <%= form_tag request.path, method: :get, class: 'form-inline' do %>
-    <%= text_field_tag :query, params[:query], placeholder: 'typing words', class: 'input-xxlarge' %>
+<div id='search-bar' class='well well-small clearfix'>
+  <%= form_tag request.path, method: :get, class: 'search form-inline pull-left' do %>
+    <%= text_field_tag :query, params[:query], placeholder: 'Typing searching words', class: 'span4' %>
     <%= submit_tag "Search", name: nil, class: 'btn btn-success span2' %>
+  <% end %>
+  <%= form_tag request.path, method: :get, class: 'sorting form-inline pull-right' do %>
+    Sort by 
+    <select class='span2'>
+      <option>Name: A-Z</option>
+      <option>Name: Z-A</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+    </select>
   <% end %>
 </div>
