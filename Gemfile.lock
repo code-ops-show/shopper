@@ -253,8 +253,8 @@ DEPENDENCIES
   machinist (>= 2.0.0.beta2)
   meta_search (>= 1.1.0.pre)
   pg
-  prawn!
   pg_search
+  prawn!
   quiet_assets
   rails (= 3.2.8)
   rmagick
