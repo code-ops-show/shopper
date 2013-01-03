@@ -20,3 +20,4 @@
 //= require noty/themes/default
 //= require shopper
 //= require carts
+//= require products

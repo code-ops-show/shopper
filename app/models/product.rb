@@ -25,4 +25,14 @@ class Product < ActiveRecord::Base
   def self.by_price_range(min, max)
     (min.present? and max.present?) ? where("price >= ? and price <= ?", min, max) : scoped
   end
+
+  def self.sort_by(type)
+    case type.to_i
+      when 1 then order('products.name ASC')
+      when 2 then order('products.name DESC')
+      when 3 then order('products.price ASC')
+      when 4 then order('products.price DESC')
+      else scoped
+    end
+  end
 end
