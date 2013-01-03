@@ -1,3 +1,15 @@
+@mixin font-gray
+  font-size: 11px
+  font-weight: bold
+  text-transform: uppercase
+  color: #999
+
+#search-bar
+  .sorting
+    @include font-gray
+    select
+      font-size: 13px
+
 .price-rate
   > h5.header
     background-color: #FF7979
@@ -6,11 +18,7 @@
     padding: 6px
     border-radius: 4px
   > .price
-    text-transform: uppercase
-    vertical-align: baseline
-    font-weight: bold
-    font-size: 11px
-    color: #999
+    @include font-gray
     span > input
       margin-left: 8px
 
