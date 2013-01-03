@@ -11,9 +11,9 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :items
 
-  scope :only_completed,   -> { where("state != ?", 'cart') }
-  scope :only_cart,        -> { with_state(:cart) }
-  scope :only_shipping,    -> { with_state(:shipped) }
+  scope :only_completed, -> { where("state != ?", 'cart') }
+  scope :only_cart,      -> { with_state(:cart) }
+  scope :only_shipping,  -> { with_state(:shipped) }
   scope :only_cancel,    -> { with_state(:canceled) }
 
   delegate :email, to: :address
