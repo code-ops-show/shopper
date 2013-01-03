@@ -6,7 +6,7 @@
     <div class='caption'>
       <h4><%= link_to product.name, product, title: product.name %></h4>
       <p><%= truncate(product.description, length: 110) %></p>
-      <h4 class='price'><%= number_to_currency(product.price) %></h4>
+      <h4 class='price'><%= number_to_price(product.price) %></h4>
       <%= render 'products/add_to_cart', product: product %>
     </div>
   </div>

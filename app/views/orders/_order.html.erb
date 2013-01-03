@@ -20,7 +20,7 @@
           <dt>Order items</dt>
           <dd><%= pluralize(order.items_count, 'item') %></dd>
           <dt>Balance</dt>
-          <dd><%= number_to_currency(order.balance) %></dd>
+          <dd><%= number_to_price(order.balance) %></dd>
         </dl>
       </div>
       <div class='span2'>

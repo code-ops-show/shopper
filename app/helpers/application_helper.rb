@@ -1,4 +1,10 @@
+# encoding: UTF-8
+
 module ApplicationHelper
+  def number_to_price price
+    number_to_currency(price, unit: "฿")
+  end
+
   def render_menu_for text, path, regxp = nil
     active = request.path == path ? 'active' : ''
     active = request.path.match(regxp) ? 'active' : '' if regxp

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class OrderPdf < Prawn::Document
   def initialize(order, view)
     super(page_size: 'A4', page_layout: :portrait)
@@ -12,7 +14,8 @@ class OrderPdf < Prawn::Document
   end
 
   def price(num)
-    @view.number_to_currency(num)
+    self.font("/Library/Fonts/Arial Unicode.ttf") # adjust font path / symbol such as ฿
+    @view.number_to_price(num)
   end
 
   def header

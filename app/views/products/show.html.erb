@@ -22,7 +22,7 @@
             <div class="form-inline">
               <h3>
                 <div class='row-fluid'>
-                  <div class='span5'><%= number_to_currency @product.price %></div>
+                  <div class='span5'><%= number_to_price @product.price %></div>
                   <div class='span7'><%= render 'products/add_to_cart', product: @product %></div>
                 </div>
               </h3>

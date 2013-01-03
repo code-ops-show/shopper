@@ -17,17 +17,17 @@
       <tr>
         <td></td>
         <th width='165' class='right'>Sub Total</th>
-        <td width='90'><%= number_to_currency(order.total) %></td>
+        <td width='90'><%= number_to_price(order.total) %></td>
       </tr>
       <tr>
         <td></td>
         <th>Shipping Rate</th>
-        <td><%= number_to_currency(order.address.rate) %></td>
+        <td><%= number_to_price(order.address.rate) %></td>
       </tr>
       <tr>
         <td></td>
         <th>Balance</th>
-        <td><%= number_to_currency(order.balance) %></td>
+        <td><%= number_to_price(order.balance) %></td>
       </tr>
     </tfoot>
   </table>
