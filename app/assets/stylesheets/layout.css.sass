@@ -230,6 +230,10 @@ form
   .help-inline > small
     color: #999
 
+@-moz-document url-prefix()
+  input[type="file"]
+    height: 25px
+
 $btnLight: $link
 $btnDark: #E84A5F
 $btnBackground: darken($btnLight, 5%)

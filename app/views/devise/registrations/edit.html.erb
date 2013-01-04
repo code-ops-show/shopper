@@ -27,7 +27,6 @@
           <div class='control-group'>
             <%= f.label :avatar, class: 'control-label' %>
             <div class='controls'>
-              <%= puts current_user.avatar %>
               <%= image_tag current_user.avatar_url(:thumb) %>
               <%= f.file_field :avatar %>
             </div>
