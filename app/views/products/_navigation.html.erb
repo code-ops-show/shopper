@@ -9,8 +9,10 @@
   <h5 class='header'>Price Range</h5>
   <div class='price'>
     <%= form_tag request.path, method: :get do %>
-      <span class='pull-right'>from <%= text_field_tag 'min', session[:min], class: 'span2', placeholder: 'min' %></span>
-      <span class='pull-right'>to <%= text_field_tag 'max', session[:max], class: 'span2', placeholder: 'max' %></span>
+      <div class='clearfix'>
+        <span class='pull-right'>from <%= text_field_tag 'min', session[:min], class: 'span2', placeholder: 'min' %></span>
+        <span class='pull-right'>to <%= text_field_tag 'max', session[:max], class: 'span2', placeholder: 'max' %></span>
+      </div>
       <%= button_tag 'View', name: nil, class: 'btn btn-success btn-block' %>
     <% end %>
   </div>
