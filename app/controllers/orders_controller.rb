@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.where(id: params[:id]).includes(items: [:product]).first
-    get_guest if params[:status] and @order.state == params[:status]
+    get_guest if @order.state == params[:status]
   end
 
 private

@@ -12,21 +12,26 @@ describe ItemsController do
   end
 
   describe "POST 'create'" do
-    it "return http success" do
+    it "should return http success" do
       post :create, item: @item, product_id: product.id, format: :js
       response.should be_succes
     end
 
-    it "return http success" do
+    it "should error qountity must be greater than 0" do
       @item = { quantity: -1 }
       post :create, item: @item, product_id: product.id, format: :js
       response.body.should include "Quantity must be greater than 0"
     end
 
-     it "creates a new item" do
-      expect{
-        post :create, item: @item, product_id: product.id, format: :js
-      }.to change(Item, :count).by(1)
+    it "should creates a new item" do
+      controller.stub(:current_product).and_return(false)
+      post :create, item: @item, product_id: product.id, format: :js
+      response.body.should include "Product is not available or out of stock."
+    end
+
+    it "should" do
+      post :create, item: @item, product_id: product.id, format: :js
+
     end
   end
 
@@ -56,6 +61,23 @@ describe ItemsController do
       put :update, id: @item.id, item: item_attr, format: :js
       @item.reload
       @item.quantity.should eq(4)
+    end
+  end
+
+  describe 'DELETE destroy' do
+
+    before :each do
+      controller.stub!(:current_order).and_return(order)
+    end
+    it "return http success" do
+      delete :destroy, id: item.id, format: :js
+      response.should be_succes
+    end
+
+    it "should deletes the address" do
+      expect{
+        delete :destroy, id: item.id, format: :js
+      }.to change(Item,:count).by(-1)
     end
   end
 end

@@ -102,11 +102,5 @@ describe 'Stateful' do
         product.quantity.should eq 11
       end
     end
-
-    describe "send_mail" do
-      it "should send mail when state change" do
-        
-      end
-    end
   end
 end
