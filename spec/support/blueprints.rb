@@ -35,7 +35,6 @@ Address.blueprint do
   state             { "state-#{sn}" }
   zip               { sn }
   phone             { sn }
-  email             { "email-#{sn}@test.com" }
   user              { object.user || User.make! }
   country           { object.country || Country.make! }
 end
