@@ -2,11 +2,12 @@ class CartsController < OrdersController
   before_filter :check_items, only: [:edit]
   
   def show
+    @cart = Order.where(id: params[:id]).includes(items: [:product]).first
   end
 
   def edit
     @cart = Order.where(id: params[:id]).includes(items: [:product]).first
-    @cart.address = @cart.address || current_or_guest_user.default_address || Address.new
+    @cart.address = get_address || current_or_guest_user.default_address || Address.new
   end
 
   def update
@@ -34,5 +35,9 @@ private
   def setup_guest(cart)
     reset_session
     session[:guest_email] = cart.reload.address.email
+  end
+
+  def get_address
+    current_or_guest_user.addresses.where(id: @cart.address_id).first
   end
 end
