@@ -93,5 +93,11 @@ describe CartsController do
       put :update, id: order.id, order: { address_id: address.id, guest_email: user.email }, format: :js
       session[:guest_email].should eq user.email 
     end
+
+    it "should render error box" do
+      Order.any_instance.stub(:update_attributes).and_return(false)
+      put :update, id: order.id, order: { address_id: order.address.id, guest_email: '' }, format: :js
+      response.body.should eq "{\"noty\":{}}"
+    end
   end
 end

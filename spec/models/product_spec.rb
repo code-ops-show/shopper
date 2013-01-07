@@ -7,8 +7,8 @@ describe Product do
 
   describe "Model setup and utilities" do
 
-    let!(:product)       { Product.make! }
-    let(:category)      { product category }
+    let!(:product)        { Product.make! }
+    let(:category)        { product.category }
 
     it "should have scope for last four products" do
       products = []
@@ -20,7 +20,7 @@ describe Product do
 
     it "should show only quantity more than 0" do
       Product.make!(quantity: 0)
-      Product.available.length.should eq 2
+      Product.available.last.should eq product
     end
 
     describe "self.text_search(query)" do
@@ -34,9 +34,9 @@ describe Product do
     end
 
     describe "self.by_category(category_id)" do
-      # it "should return product by category" do
-      #   Product.by_category(category.id).first.should eq product
-      # end
+      it "should return product by category" do
+        Product.by_category(category.slug).first.should eq product
+      end
 
       it "should return scoped if no product price in rang" do
         Product.by_category('').should eq Product.all
@@ -45,7 +45,7 @@ describe Product do
 
     describe "self.by_price_range(min, max)" do
       it "should return product by pricerange" do
-        Product.by_price_range(50, 200).size.should eq 2
+        Product.by_price_range(50, 200).last.should eq product
       end
 
       it "should return nil if no product price in rang" do
