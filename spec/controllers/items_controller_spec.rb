@@ -39,7 +39,6 @@ describe ItemsController do
     let(:item_attr) { { quantity: 4 } }
     let(:item_fail) { { quantity: 10000 } }
 
-
     before :all do
       @item = order.items.make!
     end

@@ -21,7 +21,6 @@ describe CartsController do
       response.should be_success
     end
 
-
     it "should assign order" do
       get :edit, id: order.id, format: :js
       assigns[:cart].should_not be_nil

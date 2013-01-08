@@ -27,8 +27,6 @@ describe AddressesController do
   end
 
   describe "POST 'create'" do
-    
-
     it "return http success" do
       post :create, address: address_attr, format: :js
       response.should be_succes
