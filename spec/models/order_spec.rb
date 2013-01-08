@@ -9,8 +9,8 @@ describe Order do
       @order = Order.make!(token: '12321kjljo')
     end
 
-    let(:item)   { Item.make! }
-    let(:order)   { item.order }
+    let(:item)  { Item.make! }
+    let(:order) { item.order }
 
     describe 'state_machine' do
       it "should be an initial state" do
