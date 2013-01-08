@@ -9,15 +9,24 @@ describe Address do
     let(:address)   { Address.make! }
     let(:user)      { address.user }
 
-    it "should set default" do
-      address.set_default.should be_true
-    end
+    describe "set_default" do
+      it "should set default" do
+        address.set_default
+        address.default.should be_true
+      end
 
-    it "should set default" do
-      @address = user.addresses.make!( default: true )
-      @address.default.should be_true
-      address.reload
-      address.default.should_not be_true
+      it "should set default" do
+        @address = user.addresses.make!( default: true )
+        @address.default.should be_true
+        address.reload
+        address.default.should_not be_true
+      end
+    end
+    
+    describe "description" do
+      it "should to_s equal country name" do
+        address.to_s.should equal address.country.name
+      end
     end
   end
 end

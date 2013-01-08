@@ -35,10 +35,11 @@ class Order
 
     def validates_assign_email
       user = address.user
+      @user_exists = user_exists
 
-      if user_exists and user_exists.member?
+      if @user_exists and @user_exists.member?
         errors.add(:guest_email, "Please sign in. This email had already been member.") 
-      elsif not user_exists and user.guest?
+      elsif not @user_exists and user.guest?
         errors.add(:guest_email, "Please enter email address.") if guest_email.blank?
         user.update_attributes(email: guest_email)
       end
@@ -46,13 +47,14 @@ class Order
 
     def set_default_address
       user = address.user
-
+      @user_exists = user_exists
+      
       if user.member?
         user.set_default_to(address)
-      elsif user_exists and user_exists.guest?
-        user.move_to(user_exists)
-        user_exists.set_default_to(address)
-        user = user_exists
+      elsif @user_exists and @user_exists.guest?
+        user.move_to(@user_exists)
+        @user_exists.set_default_to(address)
+        user = @user_exists
       end
     end
 
@@ -75,7 +77,7 @@ class Order
 
     private
     def user_exists
-      @user ||= User.find_by_email(guest_email)
+      @user_exists ||= User.find_by_email(guest_email)
     end
   end
 end

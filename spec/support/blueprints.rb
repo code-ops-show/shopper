@@ -29,17 +29,34 @@ User.blueprint do
   password          { "secretssss" }
 end
 
+Guest.blueprint do
+  email             { "guest#{sn}@test.com" }
+  password          { "secretssss" }
+  type              { "Guest" }
+end
+
+Member.blueprint do
+  email             { "member#{sn}@test.com" }
+  password          { "secretssss" }
+  type              { "Member" }
+end
+
 Address.blueprint do
   street_address    { "street-#{sn}" }
   city              { "city-#{sn}" }
   state             { "state-#{sn}" }
   zip               { sn }
   phone             { sn }
-  email             { "email-#{sn}@test.com" }
-  user              { object.user || User.make! }
   country           { object.country || Country.make! }
+  user              { object.user || User.make! }
 end
 
 Country.blueprint do
   name              { "country-#{sn}" }
+  shipping_rate    { object.shipping_rate || ShippingRate.make! }
+end
+
+ShippingRate.blueprint do
+  name              { "shipping-#{sn}" }
+  rate              { 100 }
 end

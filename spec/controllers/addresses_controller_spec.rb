@@ -7,12 +7,10 @@ describe AddressesController do
 
   let(:address_attr) { { street_address: 'street-1', city: 'city-1', 
                            state: 'state-1', zip: 12223, 
-                           country_id: 1, phone: 2312, email: "test@test.com",
-                           user_id: user.id } }
+                           country_id: 1, phone: 2312, user_id: user.id } }
   let(:address_attr_fail) { { street_address: 'street-1', city: 'city-1', 
                          state: 'state-1', zip: 12223,
-                         country_id: 1, phone: 2312, 
-                         user_id: user.id } }
+                         country_id: 1, user_id: user.id } }
 
   before { sign_in user }
 
@@ -29,8 +27,6 @@ describe AddressesController do
   end
 
   describe "POST 'create'" do
-    
-
     it "return http success" do
       post :create, address: address_attr, format: :js
       response.should be_succes
@@ -86,12 +82,6 @@ describe AddressesController do
       @address.reload
       @address.street_address.should eq("street-1")
     end
-
-    # it "should changes @address's attributes" do
-    #   put :update, id: @address.id, address: address_attr_fail, format: :js
-    #   @address.reload
-    #   response.body.should include "can't be blank"
-    # end
   end
 
   describe 'DELETE destroy' do
