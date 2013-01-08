@@ -33,8 +33,8 @@ private
   end
 
   def setup_guest(cart)
-    reset_session
-    session[:guest_email] = cart.reload.address.email
+    reset_session; cart.reload
+    session[:guest_email] = cart.address.email
   end
 
   def get_address
