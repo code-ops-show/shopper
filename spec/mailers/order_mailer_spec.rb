@@ -1,50 +1,38 @@
 require "spec_helper"
+include ApplicationHelper
 
 describe OrderMailer do
-  
+
   let(:order)       { Order.make! }
-  let!(:address)    { order.address }
-  let(:user)        { address.user }
+  let(:item)        { order.items.make! }
 
   describe "purchased_state," do
     let(:mail) { OrderMailer.purchased_state(order) }
 
-    it "renders the headers" do
-      mail.subject.should eq("Order purchased")
-      mail.to.should eq([order.address.email])
-      mail.from.should eq(["shopper@example.com"])
-    end
+    it_should_behave_like "renders the headers"
 
     it "renders the body" do
-      mail.body.encoded.should include 'status: purchased'
+      mail.body.encoded.should include 'Thank you for your purchase :)'
     end
   end
 
   describe "shipped_state" do
     let(:mail) { OrderMailer.shipped_state(order) }
 
-    it "renders the headers" do
-      mail.subject.should eq("Order shipped")
-      mail.to.should eq([order.address.email])
-      mail.from.should eq(["shopper@example.com"])
-    end
+    it_should_behave_like "renders the headers"
 
     it "renders the body" do
-      mail.body.encoded.should include 'status: shipped'
+      mail.body.encoded.should include 'Your purchase order shipped'
     end
   end
 
   describe "canceled_state" do
     let(:mail) { OrderMailer.canceled_state(order) }
 
-    it "renders the headers" do
-      mail.subject.should eq("Order canceled")
-      mail.to.should eq([order.address.email])
-      mail.from.should eq(["shopper@example.com"])
-    end
+    it_should_behave_like "renders the headers"
 
     it "renders the body" do
-      mail.body.encoded.should include 'status: canceled'
+      mail.body.encoded.should include 'Your purchase order canceled'
     end
   end
 end

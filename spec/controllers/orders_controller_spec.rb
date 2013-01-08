@@ -12,7 +12,7 @@ describe OrdersController do
   end
 
   describe "GET 'show" do
-   it "should return http success" do
+    it "should return js success" do
       get :show, id: order.id, format: :js
       response.should be_success
     end
@@ -25,6 +25,11 @@ describe OrdersController do
     it "should assign order" do
       get :show, id: order.id, format: :js
       assigns[:order].should eq order
+    end
+
+    it "should return http success" do
+      get :show, id: order.id
+      response.should be_success
     end
 
     it "should assign guest" do
@@ -40,6 +45,21 @@ describe OrdersController do
       get :show, id: order.id, status: 'purchased'
       assigns[:guest].should be_nil
       session[:guest_email].should be_nil
+    end
+
+    it "should return pdf success" do
+      get :show, id: order.id, format: :pdf
+      response.should be_success
+    end
+
+    it "should redirec to root path when don't have order" do
+      get :show, id: 200
+      response.should redirect_to root_path
+    end
+
+    it "should flash error when don't have order" do
+      get :show, id: 200
+      flash[:error].should eq 'Order is Unavailable.'
     end
   end
 

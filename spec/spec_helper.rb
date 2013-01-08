@@ -25,6 +25,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.include Devise::TestHelpers, :type => :controller
   config.include AuthMacros
+  config.include ActionView::TestCase::Behavior, example_group: {file_path: %r{spec/pdfs}}
 
   config.color_enabled = true
 

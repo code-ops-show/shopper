@@ -56,5 +56,35 @@ describe Product do
         Product.by_price_range('',nil).should eq Product.all
       end
     end
+
+    describe "self.sort_by(type)" do
+
+      before :all do
+        Product.make!(name: 'Ant', price: 20)
+        Product.make!(name: 'zoo', price: 30)
+        Product.make!(name: 'highest-price', price: 6000)
+        Product.make!(name: 'lowest-price', price: 0)
+      end
+
+      it "should return name by ASC" do
+        Product.sort_by(1).first.name.should eq 'Ant'
+      end
+
+      it "should return name by DESC" do
+        Product.sort_by(2).first.name.should eq 'zoo'
+      end
+
+      it "should return price by ASC" do
+        Product.sort_by(3).first.name.should eq 'lowest-price'
+      end
+
+      it "should return price by DESC" do
+        Product.sort_by(4).first.name.should eq 'highest-price'
+      end
+
+      it "should return price by DESC" do
+        Product.sort_by(5).should eq Product.all
+      end
+    end
   end
 end
