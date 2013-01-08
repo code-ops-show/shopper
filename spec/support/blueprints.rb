@@ -26,10 +26,10 @@ Item.blueprint do
   order             { object.order || Order.make! }
 end
 
-# Order.blueprint do
-#   token             { rand(2468 ** 10).to_s(32) }
-#   address           { object.address || Address.make! }
-# end
+Order.blueprint do
+  token             { rand(2468 ** 10).to_s(32) }
+  address           { object.address || Address.make! }
+end
 
 Product.blueprint do
   name              { "product-#{sn}" }
@@ -125,4 +125,5 @@ end
 
 Order.blueprint(:only) do
   token             { rand(2468 ** 10).to_s(32) }
+  address           { nil }
 end
