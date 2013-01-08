@@ -18,7 +18,7 @@ describe ProductsController do
 
     it "should assign the all product to the view" do
       get :index
-      assigns[:products].should == Product.all
+      assigns[:products].should eq Product.all
     end
 
     it "should assign the all product to the view by category" do
@@ -50,7 +50,7 @@ describe ProductsController do
 
     it "should assign the all product to the view" do
       get :show, id: product.id
-      assigns[:product].should == product
+      assigns[:product].should eq product
     end
   end
 end
