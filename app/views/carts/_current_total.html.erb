@@ -16,7 +16,7 @@
     <tr>
       <td>Shipping Rate</td>
       <td class='shipping-rate price'>
-        <%= (cart.address and cart.address.rate) ? number_to_price(cart.address.rate) : "not calculated" %>
+        <%= (cart.address.present? and cart.address.country.present? and cart.address.rate) ? number_to_price(cart.address.rate) : "not calculated" %>
       </td>
     </tr>
   </tbody>
