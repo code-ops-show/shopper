@@ -20,10 +20,24 @@ Country.blueprint do
   shipping_rate     { object.shipping_rate || ShippingRate.make! }
 end
 
+Guest.blueprint do
+  name              { "Guest" }
+  email             { "guest#{sn}@test.com" }
+  password          { "secretssss" }
+  type              { "Guest" }
+end
+
 Item.blueprint do
   quantity          { 1 }
   product           { object.product || Product.make! }
   order             { object.order || Order.make! }
+end
+
+Member.blueprint do
+  name              { "Member" }
+  email             { "member#{sn}@test.com" }
+  password          { "secretssss" }
+  type              { "Member" }
 end
 
 Order.blueprint do
@@ -50,20 +64,6 @@ User.blueprint do
   password          { "secretssss" }
 end
 
-User.blueprint(:guest) do
-  name              { "Guest" }
-  email             { "guest#{sn}@test.com" }
-  password          { "secretssss" }
-  type              { "Guest" }
-end
-
-User.blueprint(:member) do
-  name              { "Member" }
-  email             { "member#{sn}@test.com" }
-  password          { "secretssss" }
-  type              { "Member" }
-end
-
 ######################
 ## Item with Member ##
 ######################
@@ -75,7 +75,7 @@ Address.blueprint(:member) do
   zip               { sn }
   phone             { sn }
   country           { object.country || Country.make! }
-  user              { object.user || User.make!(:member) }
+  user              { object.user || Member.make! }
 end
 
 Item.blueprint(:member) do
@@ -100,7 +100,6 @@ Address.blueprint(:no_user) do
   zip               { sn }
   phone             { sn }
   country           { object.country || Country.make! }
-  user              { object.user || User.make! }
 end
 
 Item.blueprint(:no_user) do

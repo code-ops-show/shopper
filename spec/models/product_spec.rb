@@ -53,17 +53,17 @@ describe Product do
       end
 
       it "should return scoped if no product price in rang" do
-        Product.by_price_range('',nil).should eq Product.all
+        Product.by_price_range('', nil).should eq Product.all
       end
     end
 
     describe "self.sort_by(type)" do
 
       before :all do
-        Product.make!(name: 'Ant', price: 20)
-        Product.make!(name: 'zoo', price: 30)
+        Product.make!(name: 'Ant', price: 1000)
+        Product.make!(name: 'zebra', price: 2000)
         Product.make!(name: 'highest-price', price: 6000)
-        Product.make!(name: 'lowest-price', price: 0)
+        Product.make!(name: 'lowest-price', price: 10)
       end
 
       it "should return name by ASC" do
@@ -71,7 +71,7 @@ describe Product do
       end
 
       it "should return name by DESC" do
-        Product.sort_by(2).first.name.should eq 'zoo'
+        Product.sort_by(2).first.name.should eq 'zebra'
       end
 
       it "should return price by ASC" do
