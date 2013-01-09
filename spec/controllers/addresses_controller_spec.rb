@@ -11,7 +11,6 @@ describe AddressesController do
                               zip: 12223,
                               country_id: 1,
                               phone: 2312,
-                              email: "test@test.com",
                               user_id: user.id
                             }
                           }
