@@ -19,8 +19,10 @@ window.Cart =
     if checked.length is 1 and not $('#order_address_id').val() > 0
       setTimeout (-> checked.click()), 10
     else if checked.length is 0
-      address = $('#shipping input[name="order[address_id]"]')
-      setTimeout (-> address.click()), 10
+      setTimeout (->
+        $('#order_address_id').val("")
+        $('#shipping input[name="order[address_id]"]').click()
+      ), 10
 
   eventCart: ->
     timer = null
