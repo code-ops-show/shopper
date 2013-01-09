@@ -19,4 +19,13 @@ describe "Users Requests" do
     page.find(:css, "#user_email").value.should == "bot001@test.com"
     page.should have_content "bot biography"
   end
+
+  it "should upload avatar" do
+    attach_file "user_avatar", Rails.root.join('public', 'artellectual.png')
+    click_button 'Update'
+
+    visit edit_user_registration_path
+    page.should have_css "img[alt='Thumb_artellectual']"
+    page.should_not have_css "img[alt='Thumb_default']"
+  end
 end
