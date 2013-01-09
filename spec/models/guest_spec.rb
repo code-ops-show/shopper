@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Guest do
-  let!(:guest)       { Guest.make! }
-  let!(:address)     { guest.addresses.make! }
+  let!(:guest)   { Guest.make! }
+  let!(:address) { guest.addresses.make! }
 
   describe "move_to user" do
     it "should move address to exit user" do
