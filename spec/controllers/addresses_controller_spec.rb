@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe AddressesController do
-
   let!(:user)             { User.make!}
   let!(:address)          { user.addresses.make! }
   let(:address_attr)      {
@@ -23,7 +22,6 @@ describe AddressesController do
                               state: 'state-1',
                               zip: 12223,
                               country_id: 1,
-                              phone: 2312, 
                               user_id: user.id
                             }
                           }
@@ -43,8 +41,6 @@ describe AddressesController do
   end
 
   describe "POST 'create'" do
-    
-
     it "return http success" do
       post :create, address: address_attr, format: :js
       response.should be_succes
@@ -100,12 +96,6 @@ describe AddressesController do
       @address.reload
       @address.street_address.should eq("street-1")
     end
-
-    # it "should changes @address's attributes" do
-    #   put :update, id: @address.id, address: address_attr_fail, format: :js
-    #   @address.reload
-    #   response.body.should include "can't be blank"
-    # end
   end
 
   describe 'DELETE destroy' do

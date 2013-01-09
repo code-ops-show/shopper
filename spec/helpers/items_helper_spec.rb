@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe ItemsHelper do
@@ -7,7 +8,7 @@ describe ItemsHelper do
 
   describe 'full_price' do
     it "should return item's unit price x item's quantity" do
-      helper.full_price(item).should eq('$100.00')
+      helper.full_price(item).should eq '฿100.00'
     end
 
     it "should return item not be nil" do

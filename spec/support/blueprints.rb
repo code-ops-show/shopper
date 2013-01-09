@@ -100,6 +100,7 @@ Address.blueprint(:no_user) do
   zip               { sn }
   phone             { sn }
   country           { object.country || Country.make! }
+  user              { object.user || User.make! }
 end
 
 Item.blueprint(:no_user) do

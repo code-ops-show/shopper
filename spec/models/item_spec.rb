@@ -9,13 +9,40 @@ describe Item do
     let(:product)  { item.product }
     let(:order)    { item.order }
 
-    it "should return unit price" do
-      item.product_price.should eq(product.price)
+    it "should return calculate total price" do
+      item.calculate_total.should eq(product.price)
     end
 
-    it "should return full price" do
-      item.sub_total.should eq(100)
+    describe "increment_quantity" do
+      it "should increment quantity" do
+        item.increment_quantity.should eq 1
+      end
     end
+
+    describe "touch_order" do
+      it "should touch order" do
+        item.update_attributes(quantity: 5)
+        item.save
+        item.touch_order
+        order.items_count.should eq 5
+        order.total.should eq 500
+      end
+    end
+
+    describe "consolidate_stock" do
+      it "should consolidate stock" do
+        item.consolidate_stock
+        product.quantity.should eq 9
+      end
+    end
+
+    describe "return_stock" do
+      it "should return stock" do
+        item.return_stock.should be_true
+        product.quantity.should eq 11
+      end
+    end
+
     context "update" do 
       it "should not be valid on update" do 
         expect { 

@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe ApplicationHelper do
 
   let(:item)        { Item.make! }
@@ -20,14 +21,10 @@ describe ApplicationHelper do
   end
 
   describe 'render_cart_menu' do
-
-
-
     it "should render link to edit oder path" do
       controller.request.path = edit_order_path(order.id)
       helper.render_cart_menu
     end
-
   end
 
   describe 'render_user_menu' do
@@ -48,7 +45,6 @@ describe ApplicationHelper do
         helper.render_user_menu.should include "Log out"
       end
     end
-    
 
     context "No user login" do
       it "should render login/register" do

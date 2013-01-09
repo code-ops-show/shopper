@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   alias_method :order_email, :email
 
   def get_balance
-    total + ((not address or address.new_record?) ? 0 : address.rate)
+    total + ((not address or address.new_record?) ? 0 : address.rate).to_f
   end
 
   def self.cart_by token
