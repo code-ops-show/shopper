@@ -47,7 +47,6 @@ class Order
 
     def set_default_address
       user = address.user
-      @user_exists = user_exists
       
       if user.member?
         user.set_default_to(address)
