@@ -1,4 +1,4 @@
-<li class='clearfix'>
+<li id='order_<%= order.id %>' class='clearfix'>
   <h5>
     <%= link_to user_order_path(current_user, order), remote: true do %>
       Invoice No. #<%= order.id %>

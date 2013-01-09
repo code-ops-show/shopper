@@ -9,14 +9,14 @@
   <tbody>
     <tr>
       <td>Sub Total</td>
-      <td width='90' class='sub-total price' data-sub-total='<%= cart.total %>'>
+      <td width='90' class='sub-total price'>
         <%= number_to_price(cart.total) %>
       </td>
     </tr>
     <tr>
       <td>Shipping Rate</td>
-      <td class='shipping-rate price' data-shipping-rate='<%= cart.address.rate rescue "not calculated" %>'>
-        <%= number_to_price(cart.address.rate) rescue "not calculated" %>
+      <td class='shipping-rate price'>
+        <%= (cart.address.present? and cart.address.country.present? and cart.address.rate) ? number_to_price(cart.address.rate) : "not calculated" %>
       </td>
     </tr>
   </tbody>

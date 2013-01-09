@@ -27,7 +27,6 @@
           <div class='control-group'>
             <%= f.label :avatar, class: 'control-label' %>
             <div class='controls'>
-              <%= puts current_user.avatar %>
               <%= image_tag current_user.avatar_url(:thumb) %>
               <%= f.file_field :avatar %>
             </div>
@@ -39,11 +38,11 @@
             </div>
           </div>
         <% end %>
-        <%= content_tag :fieldset do %>
+        <%= content_tag :fieldset, id: 'addresses' do %>
           <legend>
             Address
             <span class='pull-right'>
-              <%= link_to new_user_address_path(current_user), remote: true, class: 'btn btn-small' do %>
+              <%= link_to new_user_address_path(current_user), remote: true, class: 'btn btn-small add' do %>
                 <i class='icon-plus'></i>
               <% end %>
           </legend>

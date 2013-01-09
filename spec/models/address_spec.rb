@@ -6,8 +6,8 @@ describe Address do
   it { should have_many :orders }
 
   describe "Model setup and utilities" do
-    let(:address)   { Address.make! }
-    let(:user)      { address.user }
+    let(:address) { Address.make! }
+    let(:user)    { address.user }
 
     it "should set default" do
       address.set_default.should be_true

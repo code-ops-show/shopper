@@ -2,17 +2,31 @@ require 'spec_helper'
 
 describe AddressesController do
 
-  let!(:user)        { User.make!}
-  let!(:address)     { user.addresses.make! }
-
-  let(:address_attr) { { street_address: 'street-1', city: 'city-1', 
-                           state: 'state-1', zip: 12223, 
-                           country_id: 1, phone: 2312, email: "test@test.com",
-                           user_id: user.id } }
-  let(:address_attr_fail) { { street_address: 'street-1', city: 'city-1', 
-                         state: 'state-1', zip: 12223,
-                         country_id: 1, phone: 2312, 
-                         user_id: user.id } }
+  let!(:user)             { User.make!}
+  let!(:address)          { user.addresses.make! }
+  let(:address_attr)      {
+                            {
+                              street_address: 'street-1',
+                              city: 'city-1',
+                              state: 'state-1',
+                              zip: 12223,
+                              country_id: 1,
+                              phone: 2312,
+                              email: "test@test.com",
+                              user_id: user.id
+                            }
+                          }
+  let(:address_attr_fail) {
+                            { 
+                              street_address: 'street-1',
+                              city: 'city-1',
+                              state: 'state-1',
+                              zip: 12223,
+                              country_id: 1,
+                              phone: 2312, 
+                              user_id: user.id
+                            }
+                          }
 
   before { sign_in user }
 

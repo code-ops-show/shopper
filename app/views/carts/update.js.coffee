@@ -3,7 +3,7 @@ switch state
   when 'purchased'
     window.location = '<%= status_orders_path(@cart, @cart.state) %>'
   when 'cart'
-    $('#view_cart.modal').html("<%= j render(current_order.items.present? ? 'show' : 'show_empty') %>")
+    $('#view_cart.modal').html("<%= j render (current_order.items.present? ? 'show' : 'show_empty'), cart: @cart %>")
     $('#checkout').html("<%= j render 'edit', cart: @cart.reload if current_user %>")
     $('#current-total').effect('highlight', {}, 400)
 
