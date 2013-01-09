@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Users Requests" do
-  let(:user) { User.make! }
+  let(:user) { Member.make! }
 
   before do
     login user

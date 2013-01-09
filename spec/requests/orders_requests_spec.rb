@@ -22,7 +22,7 @@ describe "Orders Requests" do
   end
 
   context "purchased", js: true do
-    let(:guest)   { User.make!(:guest) }
+    let(:guest)   { Guest.make! }
     let(:item)    { Item.make!(:no_user) }
     let(:order)   { item.order }
     let(:address) { order.address }

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Carts Requests" do
   context "guest without address", js: true do
-    let(:guest)    { User.make!(:guest) }
+    let(:guest)    { Guest.make! }
     let(:item)     { Item.make!(:only) }
     let(:order)    { item.order }
     let!(:country) { Country.make! }
@@ -40,9 +40,9 @@ describe "Carts Requests" do
         click_button "Save"
       end
 
-      sleep 1
       address = guest.addresses.reload.last
 
+      sleep 2
       wait_until(10) { page.find(:css, "#current-total td.shipping-rate.price").visible? }
       within "#current-total td.shipping-rate.price" do
         page.should have_content "100.00"
@@ -53,8 +53,8 @@ describe "Carts Requests" do
   end
 
   context "guest", js: true do
-    let(:guest)   { User.make!(:guest) }
-    let(:member)  { User.make!(:member) }
+    let(:guest)   { Guest.make! }
+    let(:member)  { Member.make! }
     let(:item)    { Item.make!(:no_user) }
     let(:order)   { item.order }
     let(:address) { order.address }
