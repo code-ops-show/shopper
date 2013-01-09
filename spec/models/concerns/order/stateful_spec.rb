@@ -7,8 +7,8 @@ describe 'Stateful' do
       @order.items.make!
     end
 
-    let(:member)   { Member.make!(email: 'test@test.com') }
-    let!(:guest)   { Guest.make!(email: 'guest@test.com') }
+    let(:member)   { Member.make!(email: 'member@test.com') }
+    let!(:guest)   { Guest.make! }
     let!(:address) { guest.addresses.make! }
     let!(:order)   { address.orders.make! }
     let!(:item)    { order.items.make! }
