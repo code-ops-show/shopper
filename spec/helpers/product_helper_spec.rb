@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ProductsHelper do
-
   let(:item)        { Item.make! }
   let(:product)     { item.product }
   let(:order)       { item.order }
@@ -21,15 +20,13 @@ describe ProductsHelper do
   end
 
   describe 'add_cart_for' do
-    before :each do
-      @product  =  Product.make!(id: 100 ) 
-    end
     it "should return update" do
       helper.add_cart_for(product).should eq order.items.first
     end
 
     it "should return create" do
-      helper.add_cart_for(@product).should include @product
+      product_new = Product.make!
+      helper.add_cart_for(product_new).should include product_new
     end
   end
 end
