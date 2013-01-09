@@ -48,12 +48,12 @@ class Order
     def set_default_address
       user = address.user
       
-      if user.member?
-        user.set_default_to(address)
-      elsif @user_exists and @user_exists.guest?
+      if @user_exists and @user_exists.guest?
         user.move_to(@user_exists)
         @user_exists.set_default_to(address)
         user = @user_exists
+      else
+        user.set_default_to(address)
       end
     end
 
