@@ -24,6 +24,7 @@ describe 'Stateful' do
       end
 
       it "should change to :cart on :purchased" do
+        @order.reload
         @order.purchase!
         @order.purchased?.should be_true
       end

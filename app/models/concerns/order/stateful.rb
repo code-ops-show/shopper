@@ -52,7 +52,7 @@ class Order
         user.move_to(@user_exists)
         @user_exists.set_default_to(address)
         user = @user_exists
-      else
+      elsif user.guest? or user.member?
         user.set_default_to(address)
       end
     end
