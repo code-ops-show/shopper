@@ -8,6 +8,7 @@ end
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+# require 'capybara/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
 
@@ -26,8 +27,11 @@ RSpec.configure do |config|
 
   config.mock_with :rspec
   config.include Devise::TestHelpers, :type => :controller
-  config.include AuthMacros
   config.include ActionView::TestCase::Behavior, example_group: {file_path: %r{spec/pdfs}}
+  config.include Rails.application.routes.url_helpers
+  # config.include Capybara::DSL
+  # config.include Capybara::RSpecMatchers
+  config.include AuthMacros
 
   config.color_enabled = true
 

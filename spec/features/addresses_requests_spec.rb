@@ -1,21 +1,20 @@
 require 'spec_helper'
 
-describe "Addresses Requests" do
-  let(:address)  { Address.make! }
-  let(:user)     { address.user }
-  let(:country)  { address.country }
+feature "Addresses Requests" do
+  given(:address)  { Address.make! }
+  given(:user)     { address.user }
+  given(:country)  { address.country }
 
-  before do 
+  background do 
     login user
     visit edit_user_registration_path
   end
 
-  it "should create new address", js: true do
+  scenario "should create new address", js: true do
     within_fieldset "addresses" do
       page.find(:css, "a.add").click
     end
     
-    wait_until(10) { page.find(:css, "#modal").visible? }
     within "#modal" do
       fill_in "address_street_address", with: "street 001"
       fill_in "address_city", with: "city 001"
@@ -31,12 +30,11 @@ describe "Addresses Requests" do
     end
   end
 
-  it "should edit address", js: true do
+  scenario "should edit address", js: true do
     within "#address_#{address.id}" do
       page.find(:css, "a.edit").click
     end
     
-    wait_until(10) { page.find(:css, "#modal").visible? }
     within "#modal" do
       fill_in "address_street_address", with: "edit street 002"
       fill_in "address_city", with: "edit city 002"
@@ -52,7 +50,7 @@ describe "Addresses Requests" do
     end
   end
 
-  it "should remove address", js: true do
+  scenario "should remove address", js: true do
     within "#address_#{address.id}" do
       page.find(:css, "a.remove").click
     end
@@ -63,11 +61,11 @@ describe "Addresses Requests" do
   end
 
   context "set default" do
-    it "should have address default" do
+    scenario "should have address default" do
       page.should have_css "#address_#{address.id}.success"
     end
 
-    it "should unset/set address's default", js: true do
+    scenario "should unset/set address's default", js: true do
       within "#address_#{address.id}" do
         page.find(:css, "a.default").click
       end

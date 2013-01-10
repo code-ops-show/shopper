@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Products Requests" do
-  let(:member) { Member.make! }
-  let(:order)  { Order.make! }
+feature "Products Requests" do
+  given(:member) { Member.make! }
+  given(:order)  { Order.make! }
 
-  before :all do
+  background :all do
     Product.destroy_all
     Category.destroy_all
 
@@ -15,12 +15,12 @@ describe "Products Requests" do
     @category2 = @product2.category
   end
 
-  before { login member }
+  background { login member }
 
   context "#index" do
-    before { visit products_path }
+    background { visit products_path }
 
-    it "should view products by category" do
+    scenario "should view products by category" do
       click_link @category.name
       page.should have_content "ant product"
       page.should_not have_content "bird product"
@@ -30,14 +30,14 @@ describe "Products Requests" do
       page.should have_content "bird product"
     end
 
-    it "should add product to cart", js: true do
+    scenario "should add product to cart", js: true do
       within "#product_#{@product.id}" do
         click_button "Add Cart"
       end
       page.should have_content "Cart (1)"
     end
 
-    it "should show out of stock when available" do
+    scenario "should show out of stock when available" do
       within "#product_#{@product3.id}" do
         page.should have_content "Out of Stock"
         page.should_not have_content "Add to Cart"
@@ -45,7 +45,7 @@ describe "Products Requests" do
     end
 
     context "filter" do
-      it "should display by price range" do
+      scenario "should display by price range" do
         within "div.price" do
           fill_in "min", with: 0
           fill_in "max", with: 100
@@ -57,7 +57,7 @@ describe "Products Requests" do
         page.should_not have_content "zebra product"
       end
 
-      it "should search product by keyword" do
+      scenario "should search product by keyword" do
         fill_in "query", with: "bird product"
         click_button "Search"
 
@@ -68,28 +68,28 @@ describe "Products Requests" do
     end
 
     context "sorting", js: true do
-      it "should sorting by name A-Z" do
+      scenario "should sorting by name A-Z" do
         select "Name: A-Z", from: 'sort_by'
 
         within "ul.thumbnails li:first-child" do page.should have_content "ant product" end
         within "ul.thumbnails li:last-child"  do page.should have_content "zebra product" end
       end
 
-      it "should sorting by name Z-A" do
+      scenario "should sorting by name Z-A" do
         select "Name: Z-A", from: 'sort_by'
 
         within "ul.thumbnails li:first-child" do page.should have_content "zebra product" end
         within "ul.thumbnails li:last-child"  do page.should have_content "ant product" end
       end
 
-      it "should sorting by Price: Low to High" do
+      scenario "should sorting by Price: Low to High" do
         select "Price: Low to High", from: 'sort_by'
 
         within "ul.thumbnails li:first-child" do page.should have_content "ant product" end
         within "ul.thumbnails li:last-child"  do page.should have_content "zebra product" end
       end
 
-      it "should sorting by Price: High to Low" do
+      scenario "should sorting by Price: High to Low" do
         select "Price: High to Low", from: 'sort_by'
 
         within "ul.thumbnails li:first-child" do page.should have_content "zebra product" end
@@ -99,7 +99,7 @@ describe "Products Requests" do
   end
 
   context "#show" do
-    it "should add product to cart", js: true do
+    scenario "should add product to cart", js: true do
       within "#product_#{@product.id}" do
         click_link "ant product"
       end
@@ -108,7 +108,7 @@ describe "Products Requests" do
       page.should have_content "Cart (1)"
     end
 
-    it "should show out of stock when unavailable" do
+    scenario "should show out of stock when unavailable" do
       within "#product_#{@product3.id}" do
         click_link "zebra product"
       end

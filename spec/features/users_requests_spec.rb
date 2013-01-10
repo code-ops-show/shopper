@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe "Users Requests" do
-  let(:user) { Member.make! }
+feature "Users Requests" do
+  given(:user) { Member.make! }
 
   before do
     login user
     visit edit_user_registration_path
   end
 
-  it "should edit user" do
+  scenario "should edit user" do
     fill_in "user_name", with: "Bot 001"
     fill_in "user_email", with: "bot001@test.com"
     fill_in "user_bio", with: "bot biography"
@@ -20,7 +20,7 @@ describe "Users Requests" do
     page.should have_content "bot biography"
   end
 
-  it "should upload avatar" do
+  scenario "should upload avatar" do
     attach_file "user_avatar", Rails.root.join('public', 'artellectual.png')
     click_button 'Update'
 

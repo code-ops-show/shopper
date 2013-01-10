@@ -60,6 +60,9 @@ describe Product do
     describe "self.sort_by(type)" do
 
       before :all do
+        Product.destroy_all
+        Category.destroy_all
+
         Product.make!(name: 'Ant', price: 1000)
         Product.make!(name: 'zebra', price: 2000)
         Product.make!(name: 'highest-price', price: 6000)
