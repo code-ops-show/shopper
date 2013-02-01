@@ -30,7 +30,7 @@ describe AddressesController do
   describe "GET 'new'" do
     it "return http success" do
       get :new, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "assigns to the new address" do
@@ -42,7 +42,7 @@ describe AddressesController do
   describe "POST 'create'" do
     it "return http success" do
       post :create, address: address_attr, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "creates a new address" do
@@ -60,7 +60,7 @@ describe AddressesController do
   describe "Get 'edit'" do
     it "return http success" do
       get :edit, id: address.id, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "hould assign the address not nil" do
@@ -81,7 +81,7 @@ describe AddressesController do
 
     it "return http success" do
       put :update, id: @address.id, address: address_attr, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "should located the requested @address " do
@@ -100,7 +100,7 @@ describe AddressesController do
   describe 'DELETE destroy' do
     it "return http success" do
       delete :destroy, id: address.id, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "should deletes the address" do

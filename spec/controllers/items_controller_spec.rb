@@ -13,7 +13,7 @@ describe ItemsController do
   describe "POST 'create'" do
     it "should return http success" do
       post :create, item: @item, product_id: product.id, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "should error qountity must be greater than 0" do
@@ -49,7 +49,7 @@ describe ItemsController do
 
     it "return http success" do
       put :update, id: @item.id, item: item_attr, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "should located the requested @address " do
@@ -77,7 +77,7 @@ describe ItemsController do
     
     it "return http success" do
       delete :destroy, id: item.id, format: :js
-      response.should be_succes
+      response.should be_success
     end
 
     it "should deletes the address" do

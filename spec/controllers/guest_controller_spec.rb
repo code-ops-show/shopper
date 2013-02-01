@@ -16,7 +16,7 @@ describe GuestsController do
   describe "GET 'new'" do
     it "return http success" do
       get :new
-      response.should be_succes
+      response.should be_success
     end
   end
 
