@@ -6,14 +6,14 @@
 
 # Ignore bundler config
 /.bundle
-
+.DS_Store
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+/config/database.yml
 /db/migrate/20121019085904_create_admin_notes.rb
 /coverage/index.html
 /coverage/.resultset.json
