@@ -18,7 +18,7 @@ development:
   reconnect: false
   database: shopper_development
   pool: 5
-  username: zacksiri
+  username: deployer
   password:
   host: localhost
 
@@ -46,7 +46,7 @@ test:
   reconnect: false
   database: shopper_test
   pool: 5
-  username: zacksiri
+  username: deployer
   password:
   host: localhost
 
@@ -56,6 +56,6 @@ production:
   reconnect: false  
   database: shopper_production
   pool: 5
-  username: zacksiri
+  username: deployer
   password:
   host: localhost
