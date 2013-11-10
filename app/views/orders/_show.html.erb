@@ -1,0 +1,43 @@
+<div class='modal-header'>
+  <button class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+  <h4>Invoice No. #<%= order.id %></h4>
+</div>
+<div class='modal-body'>
+  <%= content_tag :fieldset, class: 'clearfix' do %>
+    <dl class='dl-horizontal'>
+      <dt>Date</dt>
+      <dd><%= l order.updated_at, format: :long %></dd>
+      <dt>Shipping Address</dt>
+      <dd><%= order.address.full_address %></dd>
+    </dl>
+  <% end %>
+  <%= render 'items/items', items: order.items, partial_type: 'item' %>
+  <table class='table total'>
+    <tfoot>
+      <tr>
+        <td></td>
+        <th width='165' class='right'>Sub Total</th>
+        <td width='90'><%= number_to_price(order.total) %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <th>Shipping Rate</th>
+        <td><%= number_to_price(order.address.rate) %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <th>Balance</th>
+        <td><%= number_to_price(order.balance) %></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div class='modal-footer'>
+  <div class='pull-left'>
+    <span class='label label-success'><%= order.state.humanize %></span>
+  </div>
+  <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+  <%= link_to order_path(order, format: "pdf"), class: 'btn' do %>
+    <i class='icon-print'></i> Print Invoice
+  <% end %>
+</div>

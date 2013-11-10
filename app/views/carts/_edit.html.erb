@@ -1,0 +1,28 @@
+<div class='container'>
+  <div class='row'>
+    <div class='span8'>
+      <div class='well well-elderflower'>
+        <%= content_tag :fieldset, id: 'view_cart' do  %>
+          <legend>Cart Items</legend>
+          <%= render 'carts/items/items', cart: cart %>
+        <% end %>
+        <%= content_tag :fieldset, id: 'shipping' do  %>
+          <%= render 'carts/addresses/shipping', cart: cart %>
+        <% end %>
+      </div>
+    </div>
+    <div class='span4'>
+      <div id='current-total' class='well well-elderflower'>
+        <%= content_tag :fieldset, class: 'content' do %>
+          <%= render 'carts/current_total', cart: cart %>
+        <% end %>
+        <%= content_tag :fieldset, class: 'actions' do %>
+          <%= button_tag "Purchase", class: 'btn btn-block btn-success purchase' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div id='purchase' class='modal hide fade in'>
+  <%= render (current_user.member? ? 'carts/purchase/confirm' : 'carts/purchase/confirm_guest'), cart: cart %>
+</div>

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Shopingcart::Application.load_tasks
+Shopper::Application.load_tasks

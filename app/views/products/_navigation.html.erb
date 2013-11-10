@@ -1,0 +1,19 @@
+<ul class='nav nav-tabs nav-stacked'>
+  <li class='<%= 'active' if request.path == products_path %>'><a href="<%= products_path %>">All Products</a></li>
+  <% Category.all.each do |category| %>
+    <li class='<%= 'active' if request.path == category_products_path(category) %>'><a href="<%= category_products_path(category) %>"><%= category.name %></a></li>
+  <% end %>
+</ul>
+
+<div class='price-rate well well-small clearfix'>
+  <h5 class='header'>Price Range</h5>
+  <div class='price'>
+    <%= form_tag request.path, method: :get do %>
+      <div class='clearfix'>
+        <span class='pull-right'>from <%= text_field_tag 'min', session[:min], class: 'span2', placeholder: 'min' %></span>
+        <span class='pull-right'>to <%= text_field_tag 'max', session[:max], class: 'span2', placeholder: 'max' %></span>
+      </div>
+      <%= button_tag 'View', name: nil, class: 'btn btn-success btn-block' %>
+    <% end %>
+  </div>
+</div>

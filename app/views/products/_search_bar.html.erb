@@ -1,0 +1,16 @@
+<div id='search-bar' class='well well-small clearfix'>
+  <div class='row-fluid'>
+    <div class='span3'>
+      <%= form_tag request.path, method: :get, class: 'sorting form-inline' do %>
+        Sort by
+        <%= select_tag :sort_by, options_for_select({"Name: A-Z" => 1, "Name: Z-A" => 2, "Price: Low to High" => 3, "Price: High to Low" => 4 }, selected: "#{session[:sort_by]}"), class: 'span9' %>
+      <% end %>
+    </div>
+    <div class='span9'>
+      <%= form_tag request.path, method: :get, class: 'search form-inline pull-left span12' do %>
+        <%= text_field_tag :query, params[:query], placeholder: 'Typing searching words', class: 'span10' %>
+        <%= submit_tag "Search", name: nil, class: 'btn btn-success span2' %>
+      <% end %>
+    </div>
+  </div>
+</div>

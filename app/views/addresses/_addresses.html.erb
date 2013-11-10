@@ -1,0 +1,5 @@
+<ul class="main-list">
+  <% current_or_guest_user.addresses.includes(:country).sort.each do |address| %>
+    <%= render "addresses/address", address: address %> 
+  <% end %>
+</ul>

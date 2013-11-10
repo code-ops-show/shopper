@@ -1,0 +1,18 @@
+<%= semantic_form_for [:admin, @product], html: { multipart: true } do |f| %>
+  <fieldset class="inputs">
+    <ol>
+      <li><%= f.input :name %></li>
+      <li><%= f.input :description %></li>
+      <li><%= f.input :quanity %></li>
+      <li><%= f.input :price %></li>
+      <li>
+        <% if @product.cover? %>
+          <%= f.label :cover %>
+          <%= image_tag @product.cover_url(:thumb) %>
+        <% end %>
+      </li>
+      <li><%= f.input :cover %></li>
+    </ol>
+  </fieldset>
+  <%= f.submit %>
+<% end %>

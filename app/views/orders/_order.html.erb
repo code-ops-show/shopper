@@ -1,0 +1,31 @@
+<li id='order_<%= order.id %>' class='clearfix'>
+  <h5>
+    <%= link_to user_order_path(current_user, order), remote: true do %>
+      Invoice No. #<%= order.id %>
+    <% end %>
+    <div class='pull-right'>
+          <%= link_to order_path(order, format: "pdf"), class: 'btn btn-mini' do %>
+            <i class='icon-print'></i> Print Invoice
+          <% end %>
+    </div>
+  </h5>
+  <div class='content clearfix'>
+    <div class='row-fluid'>
+      <div class='span10'>
+        <dl class='dl-horizontal'>
+          <dt>Date</dt>
+          <dd><%= l order.updated_at, format: :long %></dd>
+          <dt>Shipping address</dt>
+          <dd><%= order.address.full_address %></dd>
+          <dt>Order items</dt>
+          <dd><%= pluralize(order.items_count, 'item') %></dd>
+          <dt>Balance</dt>
+          <dd><%= number_to_price(order.balance) %></dd>
+        </dl>
+      </div>
+      <div class='span2'>
+        <span class='label label-success pull-right'><%= order.state.humanize %></span>
+      </div>
+    </div>
+  </div>
+</li>

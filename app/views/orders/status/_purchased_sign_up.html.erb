@@ -1,0 +1,21 @@
+<%= form_for @guest, as: :guest, url: guest_path(@guest), html: { class: 'form-horizontal well well-elderflower' } do |f| %>
+  <%= content_tag :fieldset do %>
+    <legend>Easy Access</legend>
+    <div class='control-group'>
+      <%= f.label :password, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.password_field :password, placeholder: "Password" %>
+        <span class="help-inline"><small>minimum is 6 characters</small></span>
+      </div>
+    </div>
+    <div class='control-group'>
+      <%= f.label :password_confirmation, 'Retype', class: 'control-label' %>
+      <div class='controls'>
+        <%= f.password_field :password_confirmation, placeholder: "Password confirmation" %>
+      </div>
+    </div>
+  <% end %>
+  <div class='form-actions'>
+    <%= f.submit 'Create Account', class: 'btn btn-success' %>
+  </div>
+<% end %>

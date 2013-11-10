@@ -1,0 +1,13 @@
+<li id='address_<%= address.id %>' class='<%= 'success' if address.default == true %>'>
+  <%= link_to user_address_path(current_or_guest_user, address, address: {default: (not address.default)}), method: :put, remote: true, class: "btn btn-mini btn-link default" do %>
+    <i class="<%= address.default == true ? 'icon-star' : 'icon-minus' %>"></i>
+  <% end %>
+  <%= link_to edit_user_address_path(current_or_guest_user, address), remote: true do %>
+    <%= truncate(address.street_address, length: 60) %> / <%= address.country.name %>
+  <% end %>
+
+  <div class="pull-right">
+    <%= link_to edit_user_address_path(current_or_guest_user, address), remote: true, class: 'btn btn-mini edit' do %><i class='icon-edit'></i><% end %>
+    <%= link_to user_address_path(current_or_guest_user, address), method: :delete, remote: true, confirm: "You sure?", class: 'btn btn-mini remove' do %><i class='icon-remove'></i><% end %>
+  </div>
+</li>

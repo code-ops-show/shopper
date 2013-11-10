@@ -1,0 +1,28 @@
+<legend>
+  Shipping Address
+  <div class='pull-right'>
+    <%= link_to new_cart_address_path(cart), remote: true, class: 'btn btn-small' do %>
+      <i class='icon-plus'></i> New Address
+    <% end %>
+  </div>
+</legend>
+<div class="radios">
+  <%= form_for(cart, url: cart_path(cart), remote: true, html: { class: 'form-horizontal' }) do |f| %>
+    <% current_user.addresses.includes(country: [:shipping_rate]).sort.each do |address| %>
+      <%= content_tag_for :label, address do %>
+        <%= f.radio_button :address_id, address.id, checked: ((address.id == cart.address_id) || (not cart.address_id and address.default)) %>
+          <div class='row-fluid address'>
+            <div class='span1 checked'>
+              <i class='icon-ok-sign icon-white' class='hide'></i>
+              <i class='icon-minus' class='hide'></i>
+            </div>
+            <div class='span9'><%= address.street_address %></div>
+            <div class='span2'><span class='pull-right'><%= address.country.name %></span></div>
+          </div>
+      <% end %>
+    <% end %>
+    <% if current_user.addresses.size.eql?(0) %>
+      <div class='alert alert-info'>Create new address</div>
+    <% end %>
+  <% end %>
+</div>

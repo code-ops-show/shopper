@@ -1,102 +1,330 @@
 @import "bootstrap"
+@import "noty"
 
-$navbarBorder: #cd6fbe
-$navbg: #1f0e3a
-$maintext: #935480
-$hover: #e1bdb8
-$link: #e470af
-$shadow: #753659
+$mainText: $black
+$mainBackground: darken(#FEFAF6, 1%)
+$link: #FF7979
+$hover: #FF6161
+$shadow: $white
+$navbar: #FF7979
+$navbarBorder: #ccc
+$border: #F0DED7
+$footer: #f1f1f1
 
-
-body 
-  color: $maintext
+body
+  padding-top: 60px
+  color: $mainText
   font-family: 'Lato', sans-serif
+  background-color: $mainBackground
+  // background: $mainBackground
+  // background-image: url(asset-path('bg.png', 'image'))
+  #flash
+    padding: 10px
+    margin-top: -20px
+    margin-bottom: 0
+    a.close
+      right: 0
+
+hr
+  border-top-color: $border
 
 a
   color: $link
-a:hover
-  color: $hover
+  &:hover
+    color: $hover
+    text-decoration: none
 
-.btn
-  border-radius: 2px
+@mixin thumbnail($height, $width, $p-height: 80px)
+  .cover
+    width: $height
+    height: $width
+    overflow: hidden
+    a > img
+      min-width: $height
+      min-height: $width
+  &.category
+    padding: 0
+    div.caption
+      padding: 4px 9px
+    a.thumb
+      width: $height
+      height: $width
+  div.caption
+    h4.price
+      text-align: right
+    p
+      height: $p-height
+
+ul.thumbnails
+  li
+    > div.thumbnail
+      background-color: white
+      border: 1px solid $border
+      padding: 0
+      h1, h2, h3
+        margin: 0
+      h4, h5, h6
+        margin: 0 0 10px 0
+      h4
+        height: 20px
+        overflow: hidden
+    &.span3
+      @include thumbnail(218px, 145px, 80px)
+    &.span4
+      @include thumbnail(298px, 198px, 120px)
+
+.navbar-pastel 
+  .navbar-inner
+    background-color: $navbar
+    background-image: -moz-linear-gradient(top, darken($navbar, 3%), $navbar)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(darken($navbar, 3%)), to($navbar))
+    background-image: -webkit-linear-gradient(top, darken($navbar, 3%), $navbar)
+    background-image: -o-linear-gradient(top, darken($navbar, 3%), $navbar)
+    background-image: linear-gradient(to bottom, darken($navbar, 3%), $navbar)
+    background-repeat: repeat-x
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='darken($navbar, 3%)', endColorstr='$navbar', GradientType=0)
+    border-color: darken($navbar, 20%)
+  .nav 
+    > .active > a, 
+    > .active > a:hover, 
+    > .active > a:focus, 
+    li.dropdown.open > .dropdown-toggle, 
+    li.dropdown.active > .dropdown-toggle, 
+    li.dropdown.open.active > .dropdown-toggle,
+      color: white
+      background-color: darken($navbar, 5%)
+      .caret
+        border-top-color: white
+        border-bottom-color: white
+    li.dropdown > .dropdown-toggle .caret,
+      border-top-color: white
+      border-bottom-color: white
+    > li 
+      > a
+        &:focus,
+        &:hover,
+          color: white
+          background-color: darken($navbar, 5%)
+          border: 0
+          -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15)
+          -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15)
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.15)
+          outline: 0
+  .brand, .nav > li > a
+    color: white
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2)
+
+.nav-tabs
+  &.nav-stacked
+    > li > a
+      background-color: white
+    > li.active > a, 
+    > li.active > a:hover
+      background-color: $hover
+      border-color: $hover
+      color: white
+
+#search-bar
+  @extend .navbar-inner
+  min-height: 30px
+  padding: 8px
+
+ul.dropdown-menu
+  li > a
+    &:hover
+      color: white
+      background: $hover
+  li.active > a
+    color: white
+    background: $hover
+    &:hover
+      color: white
+      background: $hover
+
+.no-bottom, .control-group.no-bottom
+  margin: 0
+  input, textarea, td
+    margin: 0
+
+ul
+  &.main-list
+    list-style: none
+    margin: 0 0 20px 0
+    padding: 6px 0
+    > li
+      background-color: white
+      margin: 6px 0
+      padding: 6px
+      border: 1px solid #ddd
+      border-radius: 4px
+      &.success
+        background-color: #DFF0D8
+  &.cream-list
+    > li
+      padding: 0
+      > h5
+        background-color: #FFF5DE
+        margin: 0
+        padding: 12px
+        border-top-left-radius: 4px
+        border-top-right-radius: 4px
+        border-bottom: 1px solid #F0DED7
+      > .content
+        padding: 12px
+        dl.dl-horizontal
+          margin: 0
+
+.well
+  &.main-list
+    padding: 2px 6px
+  &.well-elderflower
+    padding: 0
+    background-color: white
+    border-color: $border
+    legend
+      border-bottom-color: #DDD1C8
+      margin-bottom: 0
+      padding-top: 19px
+    fieldset
+      padding: 0 19px
+    .form-actions
+      background-color: #F9F4F0
+      border-top-color: #DDD1C8
+      border-bottom-left-radius: 4px
+      border-bottom-right-radius: 4px
+      margin-top: 0
+      margin-bottom: 0
+      padding-left: 160px + 39px
+  &.well-nav-list
+    padding: 8px 0
+    max-width: 220px
+    .nav-list
+      > .active > a,
+      > .active > a:hover
+        background-color: $hover
+  &.sign-in > fieldset
+    .form-inline
+      &.form-field > .btn.btn-success
+        width: 84px
+      &.form-helper
+        padding: 6px 0 0
+  &.no-actions > fieldset
+    padding: 19px
+
+
+@mixin control-group($number)
+  .form-horizontal
+    .control-group
+      > .control-label
+        width: 160px + $number
+      > .controls
+        margin-left: 180px + $number
+    .form-actions
+      padding-left: 199px + $number
+
+div[class*="span6"]
+  @include control-group(-40px)
 
 form  
   margin-bottom: 0px
+  .help-inline > small
+    color: #999
 
-input[type='email']:focus, input[type='password']:focus, 
-input[type='text']:focus, textarea:focus
-  border-color: $hover
-  box-shadow: 0px 0px 4px $hover
-  background: white
-  color: $link
+@-moz-document url-prefix()
+  input[type="file"]
+    height: 25px
 
-div.navbar
-  margin-bottom: 0px
-  div.navbar-inner
-    border-radius: 0px
-    box-shadow: 0px 0px 0px
-    background: $navbg
-    border: none
-    border-bottom: 2px solid $navbarBorder
-    div.container 
-      width: 940px
-    a.brand
-      padding-top: 5px
-      padding-bottom: 0px
-      position: relative
-      bottom: -3px
-      color: $link
-      text-shadow: 0 0 0
-  ul.nav
-    margin-right: 0px
-    > li
-      margin-left: 5px
-      margin-right: 5px
-      > a
-        text-shadow: none
-        padding: 7px 10px 7px
-        margin-top: 10px
-        color: $link
-        text-shadow: 0px 1px 1px #000
-      > a:hover
-        color: $hover
-    > li.active
-      > a
-        border-radius: 2px
-        color: $white
-        background: $link
-  
-      > a:hover
-        background: $navbarBorder
-        color: white
-    > li.dropdown.open
-      > a.dropdown-toggle
-        border-radius: 2px
-        background: $link
-        color: white
+$btnLight: $link
+$btnDark: #E84A5F
+$btnBackground: darken($btnLight, 5%)
+$btnBackgroundDark: #CC2A41
 
-ul.dropdown-menu
-  li
-    a:hover
-      background: $link
-  li:hover
-    a
-      color: white !important
-  li.active
-    a
-      background: $link
-    a:hover
-      background: $hover
+.btn-primary
+  color: white
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+  background-color: $btnBackground
+  background-image: -moz-linear-gradient(top, $btnLight, $btnDark)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($btnLight), to($btnDark))
+  background-image: -webkit-linear-gradient(top, $btnLight, $btnDark)
+  background-image: -o-linear-gradient(top, $btnLight, $btnDark)
+  background-image: linear-gradient(to bottom, $btnLight, $btnDark)
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF$btnLight', endColorstr='#FF$btnTo', GradientType=0)
+  border-color: $btnDark $btnDark $btnBackgroundDark
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+  *background-color: $btnDark
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)
+  &:active, &.active
+    background-color: $btnBackgroundDark \9
+  &:hover, &:active, &.active, &.disabled, &[disabled]
+    color: white
+    background-color: $btnDark
+    *background-color: $btnLight
 
 footer
-  border-top: 2px solid $navbarBorder
   margin-top: 40px
-  background: $navbg
-  div.container
-    margin-top: 20px
-    color: white
   div.copy-right
-    padding-bottom: 20px
-    span
-      color: $link
-      margin-bottom: 10px
+    p
+      padding: 10px 20px 0 20px
+      font-weight: bold
+
+@mixin modal-size($width, $top)
+  width: $width
+  margin: -250px 0 0 (0 - $width/2)
+  &.fade.in
+    top: $top
+
+div.modal
+  @include control-group(-20px)
+  &.cart
+    @include modal-size(700px, 50%)
+    .modal-body
+      padding: 15px 0px
+      table.table
+        margin-bottom: 0
+      &.empty
+        padding: 20px 15px
+        .alert
+          padding-top: 16px
+          padding-bottom: 16px
+  &.order
+    @include modal-size(700px, 30%)
+    .modal-body 
+      padding: 15px 0
+      > fieldset
+        margin-bottom: 10px
+        dl.dl-horizontal
+          margin-top: 0
+      table.table:not(.total)
+        tr:last-child > td
+          border-bottom: 1px solid #ddd
+      table.table.total > tfoot
+        th 
+          text-align: right
+        th, td
+          padding: 4px 8px
+          border-top: none
+
+  &.address 
+    > form > .modal-body
+      max-height: 430px
+    &.fade.in
+      top: 40%
+  div.modal-footer
+    background-color: $mainBackground
+    border-color: $border
+
+#view_cart, #modal
+  table.table 
+    td
+      vertical-align: middle
+    &.items
+      td > div.thumb
+        width: 40px
+        height: 27px
+        overflow: hidden
+        > img
+          min-width: 40px
+          min-height: 27px
+
+

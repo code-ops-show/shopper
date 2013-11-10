@@ -1,0 +1,13 @@
+<%= content_tag_for :tr, item, class: 'no-bottom' do %>
+  <td><div class='thumb'><%= image_tag item.product.cover.thumb %></div></td>
+  <td><%= item.product.name %></td>
+  <td><%= number_to_price(item.product_price) %></td>
+  <td>
+    <%= i.number_field :quantity, in: 1..item.product.quantity, data: { quantity: item.quantity }, class: 'input-mini'%>
+  </td>
+  <td><%= full_price(item) %></td>
+  <td>
+    <%= link_to item_path(item), method: :delete, remote: true, class: 'btn btn-link remove', confirm: "Are you sure remove #{item.product.name} from cart?" do %><i class='icon-remove'></i><% end %>
+  </td>
+  <%= i.hidden_field :id %>
+<% end %>

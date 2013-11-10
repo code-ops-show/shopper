@@ -1,0 +1,48 @@
+$hover: #FF7979
+
+body.carts #flash
+  margin-bottom: 20px
+
+#current-total
+  div.total
+    display: inline-block
+    width: 100%
+    margin: 20px 0
+    font-size: 36px
+    line-height: 36px
+    text-align: center
+  table.table
+    td.price
+      text-align: right
+  fieldset.actions
+    padding-bottom: 19px
+
+#shipping .radios
+  padding: 19px 0
+  label
+    cursor: pointer
+    div.address
+      display: block
+      width: inherit
+      background-color: #f9f9f9
+      padding: 9px
+      border-radius: 4px
+      border: 1px solid #ddd
+      > div[class*="span"]
+        min-height: 10px
+        .icon-ok-sign
+          display: none
+      > div.checked
+        text-align: center
+    input
+      position: absolute
+      top: -20px
+    input:checked + div.address
+      background-color: $hover
+      color: #F7F7F7
+      border-color: $hover
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2)
+      .icon-ok-sign
+        display: inline-block
+      .icon-minus
+        display: none

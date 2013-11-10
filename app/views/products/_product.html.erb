@@ -1,0 +1,13 @@
+<%= content_tag_for(:li, product, class: 'span3') do |product| %>
+  <div class='thumbnail no-bottom'>
+    <div class='cover'>
+      <%= link_to image_tag(product.cover.thumb, title: product.name), product %>
+    </div>
+    <div class='caption'>
+      <h4><%= link_to product.name, product, title: product.name %></h4>
+      <p><%= truncate(product.description, length: 110) %></p>
+      <h4 class='price'><%= number_to_price(product.price) %></h4>
+      <%= render 'products/add_to_cart', product: product %>
+    </div>
+  </div>
+<% end %>

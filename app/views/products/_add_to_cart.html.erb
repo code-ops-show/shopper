@@ -1,0 +1,12 @@
+<% if product.quantity > 0 %>
+  <%= form_for add_cart_for(product), html: { class: 'pull-right' }, remote: true do |f| %>
+    <%= f.number_field :new_quantity, value: 1, min: 1, in: 1..product.quantity, class: 'input-mini' %>
+    <%= f.hidden_field :increment, value: true %>
+    <button class="btn btn-inverse add"><i class="icon-shopping-cart icon-white"></i> Add Cart</button>
+  <% end %>
+<% else %>
+  <div class='out-of-stock'>
+    <button class='btn btn-block btn-danger disabled'><i class="icon-shopping-cart icon-white"></i> Out of Stock</button>
+  </div>
+<% end %>
+<div class='clearfix'></div>

@@ -1,0 +1,17 @@
+<header>
+  <div class='container'>
+    <h1>Orders History</h1>
+  </div>
+</header>
+<div class="container">
+  <div class='row'>
+    <div class='span3'>
+      <%= render 'devise/shared/navigation_list' %>
+    </div>
+    <div class='span9'>
+      <ul class='well main-list cream-list'>
+        <%= render @orders %>
+      </ul>
+    </div>
+  </div>
+</div>

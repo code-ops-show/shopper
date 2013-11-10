@@ -1,0 +1,23 @@
+<legend>Your Current Total</legend>
+<div class='total'><%= number_to_price(cart.get_balance) %></div>
+<table class='table'>
+  <thead>
+    <tr>
+      <th colspan='2'>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sub Total</td>
+      <td width='90' class='sub-total price'>
+        <%= number_to_price(cart.total) %>
+      </td>
+    </tr>
+    <tr>
+      <td>Shipping Rate</td>
+      <td class='shipping-rate price'>
+        <%= (cart.address.present? and cart.address.country.present? and cart.address.rate) ? number_to_price(cart.address.rate) : "not calculated" %>
+      </td>
+    </tr>
+  </tbody>
+</table>

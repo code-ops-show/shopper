@@ -1,0 +1,27 @@
+<%= form_for(User.new, as: :user, url: registration_path(:user), html: { class: "form-horizontal well well-elderflower"}) do |f| %>
+  <%= content_tag :fieldset do %>
+    <legend>New Customers <small>&mdash; Register free and always will be.</small></legend>
+    <div class='control-group'>
+      <%= f.label :email, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+      </div>
+    </div>
+    <div class='control-group'>
+      <%= f.label :password, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.password_field :password, placeholder: "Password" %>
+      </div>
+    </div>
+    <div class='control-group'>
+      <%= f.label :password_confirmation, 'Retype' ,class: 'control-label' %>
+      <div class='controls'>
+        <%= f.password_field :password_confirmation, placeholder: "Password confirmation" %>
+      </div>
+    </div>
+  <% end %>
+  <div class='form-actions'>
+    <%= f.hidden_field :type, value: "Member" %>
+    <%= f.submit "Sign up", class: 'btn btn-success span3' %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<%= content_tag_for :tr, item, class: 'no-bottom' do %>
+  <td><div class='thumb'><%= image_tag item.product.cover.thumb %></div></td>
+  <td><%= item.product.name %></td>
+  <td><%= number_to_price(item.product_price) %></td>
+  <td><%= item.quantity %></td>
+  <td><%= full_price(item) %></td>
+<% end %>

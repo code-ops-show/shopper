@@ -1,0 +1,16 @@
+<table class="table table-striped items">
+  <thead>
+    <tr>
+      <th width='40'></th>
+      <th>Product Name</th>
+      <th width='90'>Unit Price</th>
+      <th width='40'>Quantity</th>
+      <th width='90'>Full Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.sort.each do |item| %>
+      <%= render "items/#{partial_type}", item: item  %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+@import "layout"
+
+$heroBackground: darken(#C4C4C4, 20%) //A96565-A87878 brown, C4C4C4 gray
+$heroBorder: darken($heroBackground, 8%)
+$heroShadow: darken($heroBackground, 16%)
+
+body.home
+  padding-top: 40px
+  #flash.alert
+    margin: 0
+  div.hero-unit  
+    border-radius: 0px
+    background: $heroBackground
+    background-image: url(asset-path('random_grey_variations.png', 'image'))
+    -webkit-box-shadow: inset 0 8px 16px -8px $heroBorder, inset 0 -8px 16px -8px $heroBorder
+    -moz-box-shadow: inset 0 8px 16px -8px $heroBorder, inset 0 -8px 16px -8px $heroBorder
+    box-shadow: inset 0 8px 16px -8px $heroBorder, inset 0 -8px 16px -8px $heroBorder
+    h1
+      color: #FEFAF6
+      text-shadow: -1px 1px 6px $heroShadow
+    p
+      color: #FFCCC0

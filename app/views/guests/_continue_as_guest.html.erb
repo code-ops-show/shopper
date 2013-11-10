@@ -1,0 +1,9 @@
+<div class="well well-elderflower no-actions">
+  <%= content_tag :fieldset do %>
+    <legend>Checkout Now</legend>
+    <p class='hide'>Proceed to checkout and you will have an opportunity to create an account at the end</p>
+    <p>You do not need to create an account to checkout.</p>
+    <p>You will have an option to create an account when you complete your order.</p>
+    <span class='pull-right'><%= link_to 'Continue as a Guest', guests_path, method: :create, class: 'btn btn-primary' %></span>
+  <% end %>
+</div>

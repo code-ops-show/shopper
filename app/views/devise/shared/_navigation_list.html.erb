@@ -1,0 +1,7 @@
+<div class='well well-nav-list'>
+  <ul class='nav nav-list'>
+    <li class='nav-header'>User</li>
+    <%= render_menu_for "Profile", edit_user_registration_path %>
+    <%= render_menu_for "Orders History", user_orders_path(current_user) %>
+  </ul>
+</div>

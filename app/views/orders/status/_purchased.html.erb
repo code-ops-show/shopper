@@ -1,0 +1,32 @@
+<div class='container'>
+  <div class='row'>
+    <div class='span8 offset2'>
+      <div class='well well-elderflower no-actions'>
+        <%= content_tag :fieldset, class: 'order-invoice' do %>
+          <span class='order'>Invoice No. #<%= @order.id %></span>
+          <span class='pull-right'>
+            <%= link_to order_path(@order, format: "pdf"), class: 'btn' do %>
+              <i class='icon-print'></i> Print Invoice
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+      <div class='well well-elderflower no-actions'>
+        <%= content_tag :fieldset do %>
+          <p class='lead'>Thank you for your purchase, keep enjoy shopping! :)</p>
+          <p>I hope you enjoy your Shopper products.</p>
+          <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you.</p>
+          <p>If you have any questions about your order, or comments about your shopping experience, please contact our and let our know.</p>
+          <br>
+          <div class='pull-right'>
+            <a href='/' class='btn'>Continue Shopping</a>
+            <% if current_user and current_user.member? %><a href='<%= user_orders_path(current_user) %>' class='btn btn-success'>Go to Orders History</a><% end %>
+          </div>
+        <% end %>
+      </div>
+      <% if @guest.present? and @guest.guest? %>
+        <%= render 'orders/status/purchased_sign_up' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<%= form_for("user", url: user_session_path, html: { class: "well well-elderflower sign-in no-actions" }) do |f| %>
+  <%= content_tag :fieldset do %>
+    <legend>Have an account?</legend>
+    <div class="form-inline form-field">
+      <%= f.email_field :email, placeholder: "Your Email", class: 'input-medium' %>
+      <%= f.password_field :password, placeholder: "Password", class: 'input-medium' %>
+      <%= f.submit "Sign in", class: 'btn btn-success btn-medium' %>
+    </div>
+    <div class='form-inline form-helper'>
+      <%= f.label :remember_me, class: 'checkbox' do %>
+        <%= f.check_box :remember_me %> Remember Me
+      <% end %>
+      <%= link_to "Forgot your password?", new_password_path('user'), class: 'pull-right' %>
+    </div>
+  <% end %>
+<% end %>

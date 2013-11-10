@@ -1,0 +1,37 @@
+<div class='control-group'>
+  <%= f.label :street_address, class: 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :street_address, size: "10x5", class: 'input-xlarge' %>
+  </div>
+</div>
+<div class='control-group'>
+  <%= f.label :city, class: 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :city, class: 'input-xlarge' %>
+  </div>
+</div>
+<div class='control-group'>
+  <%= f.label :state, class: 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :state, class: 'input-xlarge' %>
+  </div>
+</div>
+<div class='control-group'>
+  <%= f.label :zip, class: 'control-label' %>
+  <div class='controls'>
+    <%= f.number_field :zip, class: 'input-xlarge' %>
+  </div>
+</div>
+<div class='control-group'>
+  <%= f.label :country_id, class: 'control-label' %>
+  <div class='controls'>
+    <%= f.select :country_id, options_for_countries((f.object.country_id rescue nil)), include_blank: true %>
+  </div>
+</div>
+<div class='control-group'>
+    <%= f.label :phone, class: 'control-label' %>
+  <div class='controls'>
+    <%= f.phone_field :phone, class: 'input-xlarge' %>
+  </div>
+</div>
+<%= f.hidden_field :user_id, value: current_or_guest_user.id %>

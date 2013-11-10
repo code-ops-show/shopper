@@ -1,53 +1,76 @@
-<header class='jumbotron subhead'>
+<header>
   <div class='container'>
-    <h1>Edit <%= resource_name.to_s.humanize %>: <%= resource %></h1>
+    <h1>Edit <%= resource_name.to_s.humanize %></h1>
   </div>
 </header>
 <div class="container">
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: 'form-horizontal' }) do |f| %>
-  <div class='codemy-well clearfix'>
-    <%= content_tag :fieldset, class: 'span7 offset2' do %>      
-      <div class='control-group'>
-        <%= f.label :name, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.text_field :name, class: 'input-xlarge' %>
-        </div>
-      </div>
-      <div class='control-group'>
-        <%= f.label :email, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.email_field :email, class: 'input-xlarge' %>
-        </div>
-      </div>
-      <div class='control-group'>
-        <div class='controls'>
-          <%= attachinary_file_field_tag 'user[avatar]', resource, :avatar %>
-        </div>
-      </div>
-      <div class='control-group'>
-        <%= f.label :bio, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.text_area :bio, size: "10x5" , class: 'input-xlarge' %>
-        </div>
-      </div>
-      <div class='control-group'>
-        <%= f.label :password, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.password_field :password, :autocomplete => "off", class: 'input-xlarge' %>
-          <span class="help-block">Leave empty if you don't want to change</span>
-        </div>
-      </div>
-      <div class='control-group'>
-        <%= f.label :password_confirmation, "Retype Password" ,class: 'control-label' %>
-        <div class='controls'>
-          <%= f.password_field :password_confirmation, class: 'input-xlarge' %>
-          <span class="help-block">Must be the same as the one above</span>
-        </div>
-      </div>
-      <div class='offset2'>
-        <%= f.submit "Update", class: 'btn btn-large btn-success span3' %>
-      </div>
-    <% end %>
+  <div class='row'>
+    <div class='span3'>
+      <%= render 'devise/shared/navigation_list' %>
     </div>
-  <% end %>
+    <div class='span9'>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true, method: :put, class: 'form-horizontal well well-elderflower' }) do |f| %>
+        <%= content_tag :fieldset do %>
+          <legend>Information</legend>
+          <div class='control-group'>
+            <%= f.label :name, class: 'control-label' %>
+            <div class='controls'>
+              <%= f.text_field :name, placeholder: 'Name', class: 'input-xlarge' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= f.label :email, class: 'control-label' %>
+            <div class='controls'>
+              <%= f.email_field :email, placeholder: 'Email', class: 'input-xlarge' %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= f.label :avatar, class: 'control-label' %>
+            <div class='controls'>
+              <%= image_tag current_user.avatar_url(:thumb) %>
+              <%= f.file_field :avatar %>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= f.label :bio, class: 'control-label' %>
+            <div class='controls'>
+              <%= f.text_area :bio, size: "10x5", placeholder: 'Biography', class: 'input-xlarge' %>
+            </div>
+          </div>
+        <% end %>
+        <%= content_tag :fieldset, id: 'addresses' do %>
+          <legend>
+            Address
+            <span class='pull-right'>
+              <%= link_to new_user_address_path(current_user), remote: true, class: 'btn btn-small add' do %>
+                <i class='icon-plus'></i>
+              <% end %>
+          </legend>
+          <div id="user_addresses">
+            <%= render 'addresses/addresses' %>
+          </div>
+        <% end %>
+        <%= content_tag :fieldset do %>
+          <legend>Change Password</legend>
+          <div class='control-group'>
+            <%= f.label :password, class: 'control-label' %>
+            <div class='controls'>
+              <%= f.password_field :password, :autocomplete => "off", class: 'input-xlarge' %>
+              <span class="help-block">Leave empty if you don't want to change</span>
+            </div>
+          </div>
+          <div class='control-group'>
+            <%= f.label :password_confirmation, "Retype Password" ,class: 'control-label' %>
+            <div class='controls'>
+              <%= f.password_field :password_confirmation, class: 'input-xlarge' %>
+              <span class="help-block">Must be the same as the one above</span>
+            </div>
+          </div>
+        <% end %>
+        <div class='form-actions'>
+          <%= f.submit "Update", class: 'btn btn-success span2' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

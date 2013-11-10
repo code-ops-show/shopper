@@ -1,0 +1,42 @@
+<div class='container'>
+  <div class='product'>
+    <div class='product-header'><%= render_breadcrumbs separator: '&nbsp; /  &nbsp;' %></div>
+    <div class="row-fluid">
+      <div class='span7'>
+        <div class='cover'>
+          <%= image_tag @product.cover %></div>
+        </div>
+      <div class='span5'>
+        <div class='product-details'>
+          <div class='title'>
+            <h2><%= truncate(@product.name, length: 40) %> <small><%= @product.category.name %></small></h2>
+          </div>
+          <div class='description'>
+            <%= truncate(@product.description, length: 240) %>
+          </div>
+          <div class='actions'>
+            <% if @product.quantity > 0 %>
+              In Stock <span class='badge badge-success'><%= @product.quantity %></span>
+            <% end %>
+            <hr>
+            <div class="form-inline">
+              <h3>
+                <div class='row-fluid'>
+                  <div class='span5'><%= number_to_price @product.price %></div>
+                  <div class='span7'><%= render 'products/add_to_cart', product: @product %></div>
+                </div>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class='row-fluid'>
+      <div class='span12'>
+        <h4>Description</h4>
+        <%= simple_format @product.description %>
+      </div>
+    </div>
+  </div>
+</div>

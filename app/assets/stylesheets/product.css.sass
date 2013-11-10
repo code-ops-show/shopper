@@ -1,0 +1,57 @@
+@mixin font-gray
+  font-size: 11px
+  font-weight: bold
+  text-transform: uppercase
+  color: #999
+
+#search-bar
+  .sorting
+    @include font-gray
+    select
+      font-size: 13px
+
+.price-rate
+  > h5.header
+    background-color: #FF7979
+    color: white
+    margin-top: 0px
+    padding: 6px
+    border-radius: 4px
+  > .price
+    @include font-gray
+    span > input
+      margin-left: 8px
+
+.container > .product
+  padding: 19px
+  background-color: white
+  border: 1px solid #eee
+  border-radius: 6px
+  .product-header
+    background-color: whiteSmoke
+    border-radius: 6px
+    margin-bottom: 19px
+    padding: 9px
+    font-weight: normal
+    color: #999
+  .span7 > .cover 
+    width: 517px
+    height: 344px
+    overflow: hidden
+    > img
+      min-width: 517px
+      min-height: 344px
+  .product-details
+    position: relative
+    height: 344px
+    > .title
+      small
+        display: block
+    > .description
+      margin: 25px 0
+    > .actions
+      position: absolute
+      bottom: 0
+      width: 100%
+      > .form-inline .out-of-stock
+        padding: 6px 0
