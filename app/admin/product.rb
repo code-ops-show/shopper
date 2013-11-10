@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
   belongs_to :category
 
-  before_filter :only => [:new, :show, :edit, :update, :destroy] do
+  before_filter do
     @category = Category.where(slug: params[:category_id]).first!
   end
 
