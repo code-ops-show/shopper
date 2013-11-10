@@ -9,6 +9,9 @@
 .DS_Store
 # Ignore the default SQLite database.
 /db/*.sqlite3
+# Ignore the public uploads folder
+/public/uploads
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp

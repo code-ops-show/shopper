@@ -1,14 +1,11 @@
 ActiveAdmin.register Category do
-  before_filter do
-    Category.class_eval do
-      def to_param
-        id.to_s
-      end
-    end
-  end
 
   action_item do
     link_to "New product", new_admin_category_product_path(category) if action_name == 'show'
+  end
+
+  before_filter :only => [:show, :edit, :update, :destroy] do
+    @category = Category.where(slug: params[:id]).first!
   end
   
   index do

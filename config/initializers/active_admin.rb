@@ -6,7 +6,6 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Shopper"
-  config.before_filter :revert_friendly_id
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -147,22 +146,4 @@ ActiveAdmin.setup do |config|
   #
   # Set the CSV builder separator (default is ",")
   # config.csv_column_separator = ','
-end
-
-ActiveAdmin::ResourceController.class_eval do
-  protected
-
-  def revert_friendly_id
-    model_name = self.class.name.match(/::(.*)Controller$/)[1].singularize
-
-    # Will throw a NameError if the class does not exist
-    Module.const_get model_name
-
-    eval(model_name).class_eval do
-      def to_param
-        id.to_s
-      end
-    end
-  rescue NameError
-  end
 end
