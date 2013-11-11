@@ -4,6 +4,24 @@ Shopper is an open source shopping cart created to demonstrate what students of 
 
 ![Shopper App](https://codemy-production.s3.amazonaws.com/uploads/post/28/icon/product-index-page.png "Product Index Page")
 
+## Feature List
+
++ User Registration / Sign In
++ Admin Interface
++ Product Management (Creating, Updating, Deleting)
++ Image Uploading
++ Product Search and Browsing
++ Product Categorisation
++ Shopping Cart
++ Transactional Emailing
++ Invoicing
++ Order History
++ Stock Keeping
++ Shipping Rates Calculation
++ Checking Out
++ Customer Profile Page
++ Address Management
+
 ## Installation
 
 Please see this [playlist](http://www.youtube.com/playlist?list=PLjQo0sojbbxUav7I746f0lT4apGX8-iON) on youtube for tutorial on how to deploy a rails app.
