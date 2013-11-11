@@ -11,3 +11,10 @@ Please see this [playlist](http://www.youtube.com/playlist?list=PLjQo0sojbbxUav7
 If you would like to see what the shopping cart app looks like watch this video
 
 [DOFD Episode 6](http://www.youtube.com/watch?v=hhPunp5m5v8&list=PLjQo0sojbbxUav7I746f0lT4apGX8-iON&index=6)
+
+## Roadmap
+
++ Upgrade to Rails 4
++ Clean up assets (move to transponder gem)
++ Clean up front end design
++ Some sort of Payment Integration (probably paypal)
