@@ -15,6 +15,8 @@ If you would like to see what the shopping cart app looks like watch this video
 ## Roadmap
 
 + Upgrade to Rails 4
++ Upgrade to Bootstrap 3
 + Clean up assets (move to transponder gem)
 + Clean up front end design
 + Some sort of Payment Integration (probably paypal)
++ Use fixtures for tests instead of machinist
