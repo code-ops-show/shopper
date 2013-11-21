@@ -28,6 +28,10 @@ Please see this [playlist](http://www.youtube.com/playlist?list=PLjQo0sojbbxUav7
 
 ## Quick Overview
 
+What the fine folks at Ruby5 had to say about it!
+
+[Ruby5 Episode 420 (Nov 19th 2013)](http://ruby5.envylabs.com/episodes/456-episode-420-november-19th-2013)
+
 If you would like to see what the shopping cart app looks like watch this video
 
 [DOFD Episode 6](http://www.youtube.com/watch?v=hhPunp5m5v8&list=PLjQo0sojbbxUav7I746f0lT4apGX8-iON&index=6)
