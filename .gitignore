@@ -11,7 +11,7 @@
 /db/*.sqlite3
 # Ignore the public uploads folder
 /public/uploads
-
+.ruby-version
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
