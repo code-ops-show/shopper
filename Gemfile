@@ -19,6 +19,13 @@ gem 'delayed_job_active_record'
 gem 'prawn', git: 'git://github.com/prawnpdf/prawn.git'
 gem 'pg_search'
 
+platforms :rbx do 
+  gem 'minitest'
+  gem 'rubysl'
+  gem 'racc'
+  gem 'rubinius-coverage', '~> 2.0.1'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -39,6 +46,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
+  gem 'selenium-webdriver'
 end
 
 
