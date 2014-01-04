@@ -26,10 +26,6 @@ Shopper is an open source shopping cart created to demonstrate what students of 
 
 Please see this [playlist](http://www.youtube.com/playlist?list=PLjQo0sojbbxUav7I746f0lT4apGX8-iON) on youtube for tutorial on how to deploy a rails app.
 
-<<<<<<< HEAD
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/codemy/shopper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-=======
 ## Quick Overview
 
 What the fine folks at Ruby5 had to say about it!
@@ -48,4 +44,5 @@ If you would like to see what the shopping cart app looks like watch this video
 + Clean up front end design
 + Some sort of Payment Integration (probably paypal)
 + Use fixtures for tests instead of machinist
->>>>>>> release/1.2.1
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/codemy/shopper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
