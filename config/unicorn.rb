@@ -21,7 +21,7 @@ worker_processes 2
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-working_directory "/opt/www/cheqin.me/current" # available in 0.94.0+
+working_directory "/opt/www/cheqin.me" # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
@@ -37,8 +37,8 @@ pid "/tmp/unicorn.shopper.pid"
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "/opt/www/cheqin.me/current/log/unicorn.stderr.log"
-stdout_path "/opt/www/cheqin.me/current/log/unicorn.stdout.log"
+stderr_path "/opt/www/cheqin.me/log/unicorn.stderr.log"
+stdout_path "/opt/www/cheqin.me/log/unicorn.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
